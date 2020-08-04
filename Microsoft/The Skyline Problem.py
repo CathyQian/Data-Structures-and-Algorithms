@@ -20,13 +20,17 @@ Notes:
     There must be no consecutive horizontal lines of equal height in the output skyline. For instance, [...[2 3], [4 5], [7 5], [11 5], [12 7]...] is not acceptable; the three lines of height 5 should be merged into one in the final output as such: [...[2 3], [4 5], [12 7], ...]
 
 """
+
+# still need to digest
+
 from heapq import heappush, heappop
 class Solution:
     def getSkyline(self, buildings: List[List[int]]) -> List[List[int]]:
         #using -h, because we need the seg with higher h be pushed first to the hori_segs corner [[1,2,1],[1,2,2],[1,2,3]]
         #place -h in front of r to avodid corner case [[3,10,20],[3,9,19],[3,8,18],[3,7,17],[3,6,16],[3,5,15],[3,4,14]]
-        bud_start = [(l,-h,r) for l,r, h in buildings]
-        bud_end = [(r,0,sys.maxsize) for _,r, _ in buildings]
+        
+        bud_start = [(l,-h, r) for l, r, h in buildings]
+        bud_end = [(r, 0, sys.maxsize) for _, r, _ in buildings]
         hori_segs = sorted(bud_start+bud_end)
         
         # check the max current height when we have a new horizontal segment if the new max height is different from
