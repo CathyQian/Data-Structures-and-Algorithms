@@ -44,10 +44,10 @@ class Solution:
         head = root
         while head:
             cur = head
-            while cur and cur.left:
+            while cur and cur.left: # important condition
                 cur.left.next = cur.right
                 if cur.next:
                     cur.right.next = cur.next.left
-                cur = cur.next
+                cur = cur.next # not under if statement
             head = head.left
         return root

@@ -59,7 +59,7 @@ class Solution:
         if not headA and not headB:
             return None
         head1, head2 = headA, headB
-        while head1!= head2:
+        while head1!= head2: # edge case head1 == None and head2 == None, so head1 == head2
             if head1:
                 head1 = head1.next
             else:

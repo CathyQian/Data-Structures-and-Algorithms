@@ -45,6 +45,7 @@ rotate the input matrix in-place such that it becomes:
 
 """
 # clockwise rotation = reverse row + matrix transpose
+# elements swamp in Python: a, b = b, a
 class Solution:
     def rotate(self, matrix: List[List[int]]) -> None:
         """
@@ -56,13 +57,9 @@ class Solution:
         # reverse rows
         m, n = len(matrix), len(matrix[0])
         for i in range(m//2):
-            temp = matrix[i]
-            matrix[i] = matrix[m-1-i]
-            matrix[m-1-i] = temp
+            matrix[i], matrix[m-1-i] = matrix[m-1-i], matrix[i] 
             
         # matrix transpose
         for i in range(m):
             for j in range(i+1, n):
-                temp = matrix[i][j]
-                matrix[i][j] = matrix[j][i]
-                matrix[j][i] = temp
+                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]

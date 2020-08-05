@@ -30,7 +30,7 @@ Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         if not matrix or not matrix[0]:
-            return None
+            return None # not return null
         m, n = len(matrix), len(matrix[0])
         up, down, left, right = 0, m-1, 0, n-1
         res = []
