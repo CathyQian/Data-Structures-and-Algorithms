@@ -3,5 +3,7 @@ A collection of efforts to master computer science data structures and algorithm
 
 
 #### Trie:
+
 [208. Implement Trie (Prefix Tree)](208. Implement Trie (Prefix Tree).py)
+
 [212. Word Search II](212. Word Search II.py) 
