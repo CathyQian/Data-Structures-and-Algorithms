@@ -1,0 +1,3 @@
+"""
+Number of Closed Islands
+"""

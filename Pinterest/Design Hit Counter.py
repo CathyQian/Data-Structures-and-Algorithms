@@ -67,7 +67,8 @@ class HitCounter:
         return len(self.hits)
 
 # follow up, scale up for large number of hits
-# problem of the previous method is both time and space complexity goes up too quickly with large number of hits
+# problem of the previous method is both time and space complexity goes up linearly with large number of hits
+# per second
 
 from collections import OrderedDict
 
@@ -77,8 +78,8 @@ class HitCounter:
         """
         Initialize your data structure here.
         """
-        self.c = 0 # record lenth
-        self.od = OrderedDict()      
+        self.c = 0 # number of hits in the past 5 min
+        self.od = OrderedDict()  # timestamp: counts
 
     def hit(self, timestamp: int) -> None:
         """

@@ -71,3 +71,11 @@ class Solution:
                     dp2[cj, b2] = min(dp2.get((cj,b2), float('inf')), dp[ci, b] + (cost[i][cj - 1] if cj != a else 0))
             dp, dp2 = dp2, {}
         return min([dp[c, b] for c, b in dp if b == target] or [-1])
+
+
+"""
+Paint House I, II, III 三道题的共同点是从上到下每一层都要考虑所有情况，得出针对每一种情况的min，然后
+移到下一层
+
+global min = 1) min for all options in each layer 2) min of min in the last layer
+"""

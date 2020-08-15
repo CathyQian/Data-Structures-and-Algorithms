@@ -17,7 +17,7 @@ Explanation: The longest valid parentheses substring is "()()"
 
 """
 # method 1, brutal force, time complexity O(n3), space complexity O(n)
-# time exceed limit in Leetcode
+# time exceed limit in Leetcode, lots of duplicated work, need optimization
 class Solution:
     def longestValidParentheses(self, s: str) -> int:
         maxlen = 0

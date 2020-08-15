@@ -1,7 +1,8 @@
 """
 Random Pick with Blacklist
 
-Given a blacklist B containing unique integers from [0, N), write a function to return a uniform random integer from [0, N) which is NOT in B.
+Given a blacklist B containing unique integers from [0, N), write a function to return a uniform random integer
+from [0, N) which is NOT in B.
 
 Optimize it such that it minimizes the call to system’s Math.random().
 
@@ -56,6 +57,8 @@ The input is two lists: the subroutines called and their arguments. Solution's c
 扫描B里面的元素，如果这个数>=M, 这个数肯定不能通过randrange(M)随机取到，不用处理
 如果这个数<M, 这个数会通过randrange(M)取到，需要mapping到一个大于等于M且不在B里面的数
 注意为什么一定要大于等于M呢，因为小于M的数会被randrange(M)随机取到，不需要mapping
+
+time & space complexity: O(len(B))
 """
 class Solution:
     def __init__(self, N: int, B: List[int]):

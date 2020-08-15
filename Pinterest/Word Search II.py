@@ -60,9 +60,14 @@ class Solution:
         if self.keyword in child: 
             self.res.append(child.pop(self.keyword))
         # continue searching along the same path to see if other words can be found
-        if child:
+        if child: # not elif
             for x, y in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
                 if 0 <= i+x < len(board) and 0 <= j+y < len(board[0]) and board[i+x][j+y] in child:
                     board[i][j] = '#' # don't forget this step
                     self.dfs(board, i+x, j+y, child)
                     board[i][j] = char # don't forget this step
+
+"""
+use Trie to search for words with the same prefix in one DFS
+if not using Trie, needs to do one dfs for one word, time exceed limit
+"""

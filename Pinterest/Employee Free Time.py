@@ -57,3 +57,12 @@ class Solution:
                 e0 = max(e0, e1)
         return res
             
+"""
+
+# compare with Interval List Intersections, very similar problem but different solution logic
+- Interval list intersections: known there are only Two list, so can use two pointers; employee free time can have many
+employees, so can't use pointers
+- The number of employees/intervals doesn't matter in both cases
+- Interval list intersections: intervals are already sorted, so pointers can move from left to right
+- Employee free time: need to sort first, sort unknwon number of lists ---> minHeap
+"""

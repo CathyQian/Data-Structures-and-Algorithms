@@ -31,3 +31,56 @@ Note:
 
 
 """
+
+# dfs following topological sort alogrithm in Geeks&Geeks
+# Main difference is to use different label of a node before and after recursion to detect cycle
+
+from collections import defaultdict
+class Solution:
+
+    def findOrder(self, numCourses, prerequisites):
+        """
+        :type numCourses: int
+        :type prerequisites: List[List[int]]
+        :rtype: List[int]
+        """
+        
+        self.adj_list = defaultdict(list)
+        for dest, src in prerequisites:
+            self.adj_list[src].append(dest)
+
+        self.topological_sorted_order = []
+        self.has_cycle = False
+
+        # By default all vertces are 0 -- unvisited, 1 --- visited but may be visited again if there is cycle,
+        # 2 --- visited and will not be visited again, put in stack
+        self.color = {k: 0 for k in range(numCourses)}
+        
+        for vertex in range(numCourses):
+            if self.color[vertex] == 0:
+                self.dfs(vertex)
+            if self.has_cycle:
+                break
+
+        return [] if self.has_cycle else self.topological_sorted_order[::-1]
+    
+    def dfs(self, node):
+            # Don't recurse further if we found a cycle already
+            if self.has_cycle:
+                return
+
+            # Start the recursion
+            self.color[node] = 1
+
+            # Traverse on neighboring vertices
+            if node in self.adj_list: # node may not in adj list
+                for neighbor in self.adj_list[node]:
+                    if self.color[neighbor] == 0:
+                        self.dfs(neighbor)
+                    elif self.color[neighbor] == 1: # this node is visited again in the same loop
+                        self.has_cycle = True
+                        return
+
+            # Recursion ends. We mark it as black
+            self.color[node] = 2
+            self.topological_sorted_order.append(node)

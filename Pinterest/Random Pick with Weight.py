@@ -55,12 +55,17 @@ Constraints:
 """
 
 class Solution:
-
     def __init__(self, nums: List[int]):
         self.cumsum = [0]
         for n in nums:
             self.cumsum.append(self.cumsum[-1] + n)
+        self.cumsum.pop(0)
 
     def pickIndex(self) -> int:
-        where = random.randint(0, self.cumsum[-1]-1)
-        return bisect.bisect_left(self.cursum, where) - 1
+        where = random.randint(1, self.cumsum[-1]) # 1,2, .... 10
+        return bisect.bisect_left(self.cumsum, where) # [2, 10]
+      
+"""
+using random.randint to generate random numbers
+using bisect.bisect_left to get idx of random numbers
+"""
