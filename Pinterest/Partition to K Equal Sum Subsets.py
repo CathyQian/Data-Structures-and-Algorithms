@@ -16,3 +16,51 @@ Note:
     0 < nums[i] < 10000.
 
 """
+
+"""
+dfs
+The key point here is that the nums list needs to be sorted in descending order before doing dfs. This is
+because the search is more efficient starting from big numbers than small numbers.
+Let's look at an example:
+nums = [4,5,3,2,5,5,5,1,5,5,5,5,3,5,5,2]
+k = 13
+
+Sort nums in ascending order:
+[1,2,2,3,3,4,5,5,5,5,5,5,5,5,5,5]
+
+Target value = 5, if search from small value, [1,2,2] is one combination. However, this will leave the rest 
+numbers impossible to divide into 12 groups with equal sum since big numbers are less flexible than small numbers.
+This will result in Time Exceed Limit in OJ. 
+If we search from the big numbers, we can quickly find all the 5, then 4 (find its match 1), then 3 (find its match 2)
+Finished.
+"""
+ # this is the most important line
+        # search is more efficient if start from bigger number compared to small number
+class Solution:
+    def canPartitionKSubsets(self, nums: List[int], k: int) -> bool:
+        if sum(nums) % k != 0:
+            return False
+       
+        nums.sort(reverse=True) # needs to be reversed
+        self.visited = [False] * len(nums)
+        target = sum(nums) // k
+  
+        return self.dfs(0, 0, k, nums, target)
+
+    def dfs(self, start, curr, k, nums, target):
+        if k == 1:
+            return True
+        if curr > target:
+            return False
+        if curr == target:   
+            return self.dfs(0, 0, k-1, nums, target)
+
+        for i in range(start, len(nums)):
+            if self.visited[i]:
+                continue
+            self.visited[i] = True
+            if self.dfs(i+1, curr + nums[i], k, nums, target):
+                return True
+            self.visited[i] = False
+            
+        return False
