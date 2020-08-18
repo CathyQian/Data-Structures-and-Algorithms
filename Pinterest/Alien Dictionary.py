@@ -23,11 +23,11 @@ class Solution:
 
         # Step 0: create data structures + the in_degree of each unique letter to 0.
         adj_list = defaultdict(set)
-        in_degree = {c : 0 for word in words for c in word}
+        in_degree = {c : 0 for word in words for c in word} # dictionary comprehension
 
         # Step 1: We need to populate adj_list and in_degree.
         # For each pair of adjacent words...
-        for first_word, second_word in zip(words, words[1:]):
+        for first_word, second_word in zip(words, words[1:]): # use of zip
             for c, d in zip(first_word, second_word):
                 if c != d:
                     if d not in adj_list[c]:
@@ -54,7 +54,7 @@ class Solution:
         if len(output) < len(in_degree):
             return ""
         # Otherwise, convert the ordering we found into a string and return it.
-        return "".join(output)
+        return "".join(output) # string operation
 
 
 

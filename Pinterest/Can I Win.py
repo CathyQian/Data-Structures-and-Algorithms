@@ -5,7 +5,7 @@ Can I Win
 https://leetcode.com/problems/can-i-win/discuss/95319/Python-solution-with-detailed-explanation/169008
 
 state: allowed numbers to put in the list
-use recursion + memorization to reduce memory
+use dfs + memorization to reduce memory
 
 
     We create an array allowed which has all the integers from 1 to maxChoosableInteger.
@@ -23,7 +23,7 @@ class Solution:
         return self.helper([i for i in range(1, maxChoosableInteger+1)], desiredTotal)
     
     def helper(self, nums, total):
-        state = str(nums)
+        state = str(nums) # can't use ''.join(nums) because num in nums are integer not string
         if state not in self.memo:
             #if total in set(nums) or total == 0: #  wrong
             if nums[-1] >= total: # reach or exceed desiredTotal wins
