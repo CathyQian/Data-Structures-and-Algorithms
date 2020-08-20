@@ -32,14 +32,13 @@ Notes:
     The answer output can be returned in any order.
 
 """
-
+import collections
 class Solution:
     def subdomainVisits(self, cpdomains: List[str]) -> List[str]:
         domain_count = collections.defaultdict(int)
         for cpdomain in cpdomains:
             contents = cpdomain.split()
             count, domain = contents[0], contents[1]
-            subdomains = []
             for i in range(len(domain)):
                 if domain[i] == '.':
                     domain_count[domain[i+1:]] += int(count)

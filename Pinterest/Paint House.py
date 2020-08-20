@@ -26,9 +26,22 @@ class Solution:
     def minCost(self, costs: List[List[int]]) -> int:
         if not costs or not costs[0]:
             return 0
+        pre = [0, 0, 0]
+        for c in costs:
+            cur = [0]*3 # need to reset cur at the beginning of each loop
+            cur[0] = c[0] + min(pre[1], pre[2])
+            cur[1] = c[1] + min(pre[0], pre[2])
+            cur[2] = c[2] + min(pre[0], pre[1])
+            pre = cur
+        return min(pre)
+
+# usually use pre and cur two rows, but can be replaced by one row as shown above
+# more concise code
+class Solution:
+    def minCost(self, costs: List[List[int]]) -> int:
+        if not costs or not costs[0]:
+            return 0
         row = [0, 0, 0]
         for r in costs:
             row[0], row[1], row[2] = r[0] + min(row[1], row[2]), r[1] + min(row[0], row[2]), r[2] + min(row[0], row[1])
         return min(row)
-
-# usually use pre and cur two rows, but can be replaced by one row as shown above

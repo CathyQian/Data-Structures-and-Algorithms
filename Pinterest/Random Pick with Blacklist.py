@@ -52,7 +52,7 @@ The input is two lists: the subroutines called and their arguments. Solution's c
 下面的思路非常巧妙：M = N - len(B)
 随机取一个从0到M-1的整数，如果这个数不在B里面，可以直接返回
 如果这个数在B里面，不能直接返回，需要做些mapping
-那么怎么做mapping呢
+那么怎么做mapping呢, mapping到一个大于等于M且不在B里面的数
 
 扫描B里面的元素，如果这个数>=M, 这个数肯定不能通过randrange(M)随机取到，不用处理
 如果这个数<M, 这个数会通过randrange(M)取到，需要mapping到一个大于等于M且不在B里面的数

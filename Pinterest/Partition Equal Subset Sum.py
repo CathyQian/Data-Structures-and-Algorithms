@@ -12,7 +12,7 @@ class Solution:
         target = sum(nums)//2
         curr = set([target])
         for idx, num in enumerate(nums):
-            new = set()
+            new = set() # start new
             for val in curr:
                 if val > num:
                     new.add(val-num)

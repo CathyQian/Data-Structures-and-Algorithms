@@ -32,7 +32,7 @@ Note:
 
 """
 
-# dfs following topological sort alogrithm in Geeks&Geeks
+# dfs following topological sort alogrithm in Geeks&Geeks, can also use bfs
 # Main difference is to use different label of a node before and after recursion to detect cycle (!!!!)
 
 from collections import defaultdict
@@ -49,6 +49,7 @@ class Solution:
         for dest, src in prerequisites:
             self.adj_list[src].append(dest)
 
+        # dfs
         self.topological_sorted_order = []
         self.has_cycle = False
 

@@ -39,7 +39,7 @@ Explanation: The endWord "cog" is not in wordList, therefore no possible transfo
 
 """
 # don't need to use visited, truncate set directly
-
+# bfs
 class Solution:
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
         wordList = set(wordList)

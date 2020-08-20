@@ -58,8 +58,8 @@ class Solution:
         pre = costs[0]
         for i in range(1, n):
             cur = [0]*k
-            premin = self.min2(pre)
-            for j in range(k):
+            premin = self.min2(pre)  # O(k)
+            for j in range(k):  # O(k)
                 cur[j] = costs[i][j] + premin[j]
             pre = cur
         return min(pre)

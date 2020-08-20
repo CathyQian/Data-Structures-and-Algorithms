@@ -34,21 +34,26 @@ This will result in Time Exceed Limit in OJ.
 If we search from the big numbers, we can quickly find all the 5, then 4 (find its match 1), then 3 (find its match 2)
 Finished.
 """
- # this is the most important line
-        # search is more efficient if start from bigger number compared to small number
+# this is the most important line
+# search is more efficient if start from bigger number compared to small number
+# dfs
 class Solution:
     def canPartitionKSubsets(self, nums: List[int], k: int) -> bool:
+        if k < 1:
+            return False
+
         if sum(nums) % k != 0:
             return False
        
-        nums.sort(reverse=True) # needs to be reversed
-        self.visited = [False] * len(nums)
+        nums.sort(reverse=True) # needs to be reversed !!!!!
+        self.visited = [False] * len(nums) # record which numbers has been used so far
         target = sum(nums) // k
   
         return self.dfs(0, 0, k, nums, target)
 
     def dfs(self, start, curr, k, nums, target):
-        if k == 1:
+
+        if k == 1: # k won't go to 0
             return True
         if curr > target:
             return False
@@ -56,7 +61,7 @@ class Solution:
             return self.dfs(0, 0, k-1, nums, target)
 
         for i in range(start, len(nums)):
-            if self.visited[i]:
+            if self.visited[i]: # this node can't be used in the following dfs
                 continue
             self.visited[i] = True
             if self.dfs(i+1, curr + nums[i], k, nums, target):

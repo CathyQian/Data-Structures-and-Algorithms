@@ -6,7 +6,7 @@ Number of Closed Islands
 因为number of islands会把扫描过的点标记为-1, 在这道题里面，需要判断某个点为0且是否触及边界，如果一个点事先被改为-1， 那么这个点
 相当于提供了新的边界，所以最后结果比应得结果大。
 """
-# wrong solution, how to correct
+# wrong solution, no way to make it correct using this logic
 class Solution:
     def closedIsland(self, grid: List[List[int]]) -> int:
         if not grid or not grid[0]:

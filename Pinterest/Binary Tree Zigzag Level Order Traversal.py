@@ -28,6 +28,8 @@ return its zigzag level order traversal as:
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+# bfs
 class Solution:
     def zigzagLevelOrder(self, root: TreeNode) -> List[List[int]]:
         if not root: # edge case

@@ -30,13 +30,13 @@ class Solution:
         count = 0
         for i in range(len(grid)):
             for j in range(len(grid[0])):
-                if grid[i][j] == '1':
+                if grid[i][j] == '1': # input elements are string not integer
                     self.dfs(grid, i, j)
                     count += 1
         return count
     
     def dfs(self, grid, i, j):
-        grid[i][j] = '#'
+        grid[i][j] = '#' # mask visited nodes
         for x, y in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
             if  len(grid) > i+x >= 0 and len(grid[0]) > j+y >= 0 and grid[i+x][j+y] == '1':
                 self.dfs(grid, i+x, y+j)

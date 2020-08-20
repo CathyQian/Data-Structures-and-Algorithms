@@ -25,18 +25,19 @@ class Solution:
         adj_list = defaultdict(set)
         in_degree = {c : 0 for word in words for c in word} # dictionary comprehension
 
+        # bfs traversal of graph (layer determined by the in_degree)
         # Step 1: We need to populate adj_list and in_degree.
         # For each pair of adjacent words...
         for first_word, second_word in zip(words, words[1:]): # use of zip
+            # Check that second word isn't a prefix of first word.
+           if second_word == first_word[:len(second_word)] and len(second_word) < len(first_word):
+                return ""
             for c, d in zip(first_word, second_word):
                 if c != d:
                     if d not in adj_list[c]:
                         adj_list[c].add(d)
                         in_degree[d] += 1
                     break
-            # if nothing has been done in the for loop
-            else: # Check that second word isn't a prefix of first word.
-                if len(second_word) < len(first_word): return ""
 
         # Step 2: We need to repeatedly pick off nodes with an indegree of 0.
         output = []
@@ -67,13 +68,13 @@ def alienOrder(self, words: List[str]) -> str:
 
     # Step 1: Find all edges and put them in reverse_adj_list.
     for first_word, second_word in zip(words, words[1:]):
+        # Check that second word isn't a prefix of first word.
+        if second_word == first_word[:len(second_word)] and len(second_word) < len(first_word):
+                return ""
         for c, d in zip(first_word, second_word):
             if c != d: 
                 reverse_adj_list[d].append(c)
                 break
-        else: # Check that second word isn't a prefix of first word.
-            if len(second_word) < len(first_word): 
-                return ""
 
     # Step 2: Depth-first search.
     seen = {} # False = grey, True = black.

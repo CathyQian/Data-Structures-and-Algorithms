@@ -69,9 +69,11 @@ class Solution:
         for (i, j) in positions:
             x = (i, j) # tuple can be key of dictionary, list can not.
             if x not in islands.parent:
+                # add node if it doesn't exist
                 islands.parent[x] = x
                 islands.rank[x] = 0
                 islands.count += 1
+                # union with neighbors if possible
                 for y in [(i+1, j), (i-1, j), (i, j+1), (i, j-1)]:
                     if y in islands.parent:
                         islands.union(x, y)

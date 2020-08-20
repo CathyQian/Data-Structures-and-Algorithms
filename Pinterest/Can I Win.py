@@ -16,6 +16,8 @@ use dfs + memorization to reduce memory
     What is the time complexity? For a brute force solution, the game tree has 10 choices at first level, each of these choices has 9 choices at second level, and so on. So the complexity is N!. But with memoization, we only compute 2^N sub-problems, and in each problem we do O(N) work. So total time complexity is O(N2^N).
 
 """
+"""此题要求先走的人赢， 如果是后走的人赢呢？
+"""
 
 class Solution:
     def canIWin(self, maxChoosableInteger: int, desiredTotal: int) -> bool:
@@ -32,8 +34,10 @@ class Solution:
                 self.memo[state] = False
             else:
                 self.memo[state] = False
+                
                 for i in range(len(nums)): # O(2^n) time since there is 2^n states in total
                     if not self.helper(nums[:i] + nums[i+1:], total - nums[i]): # take elements without replacement
-                        self.memo[state] = True
+                        self.memo[state] = True 
+                        # the first person pick nums[i] as its first element
                         break # make sure to jump out of the for loop here
         return self.memo[state]

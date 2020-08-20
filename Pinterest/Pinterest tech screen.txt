@@ -1,0 +1,94 @@
+"""
+INPUT:
+    a
+    about
+    bat
+    car
+    dog
+    ...
+
+OUTPUT:
+    a,b,c,d,...
+
+INPUT:
+    bat
+    car
+    dog
+    a
+    about
+    ...
+
+OUTPUT:
+    b,c,d,a,...
+
+INPUT: a sorted list of words (that is sorted according to an ordering we don't know)
+OUTPUT: a valid ordering for the list of words
+
+"""
+"""
+b --> c
+c --> d
+d --> a
+
+adj_list: vertix --> vertix
+    [b] : [c]
+    [c] : [d]
+    [d] : [a]
+in_degree:
+    'b' : 0
+    c : 1
+    d : 1
+    a : 1
+bfs search
+d = [b]
+
+
+ab
+a
+"""
+from typing import List
+import collections
+
+class Solution:
+    def charOrder(self, words:List[str]) -> List[str]:
+        adj_list = collections.defaultdict(list)
+        in_degree = {char: 0 for word in words for char in word}
+        
+        for first_word, second_word in zip(words, words[1:]):
+            i = 0
+            while i < len(first_word) and first_word[i] == second_word[i]:
+                i += 1
+            if i < len(first_word):
+                adj_list[first_word[i]].append(second_word[i])
+                in_degree[second_word[i]] += 1
+        
+        d = collections.deque([key for key in in_degree if in_degree[key] == 0])
+        output = []
+        
+        print(adj_list)
+        
+        # bfs
+        while d:
+            c = d.popleft()
+            for cc in adj_list[c]:
+                in_degree[cc] -= 1
+                if in_degree[cc] == 0:
+                    d.append(cc)
+            output.append(c)
+
+        if len(output) < len(in_degree):
+            return None
+        
+        return output
+
+words = [
+    "bat",
+    "car",
+    "dog",
+    "a",
+    "about"
+]
+
+test = Solution()
+
+print(test.charOrder(words)) 
