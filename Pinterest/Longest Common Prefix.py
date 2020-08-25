@@ -24,17 +24,12 @@ All given inputs are in lowercase letters a-z.
 
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
-        res, m = "", len(strs)
-        if m == 0: # edge case, or else min() will have no inputs
-            return res
-        j = 0
-        minlength = min([len(strs[i]) for i in range(m)])
-        while j < minlength:
-            val = strs[0][j]
-            for i in range(1, m):
-                if strs[i][j] != val:
-                       return res
-            res += val
-            j += 1
-        return res
+        if not strs: # edge case, or else min() will have no inputs
+            return ""
+        shortest = min(strs, key=len) # find shortest string
+        for i, ch in enumerate(shortest):
+            for others in strs:
+                if others[i] != ch:
+                    return shortest[:i]
+        return shortest
             

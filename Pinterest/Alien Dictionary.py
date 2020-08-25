@@ -59,39 +59,55 @@ class Solution:
 
 
 
-# dfs
+# dfs: reverse adj list
 
 def alienOrder(self, words: List[str]) -> str:
 
     # Step 0: Put all unique letters into the adj list.
-    reverse_adj_list = {c : [] for word in words for c in word}
+    self.adj_list = {c : [] for word in words for c in word}
 
-    # Step 1: Find all edges and put them in reverse_adj_list.
+    # Step 1: Find all edges and put them in adj_list.
     for first_word, second_word in zip(words, words[1:]):
         # Check that second word isn't a prefix of first word.
         if second_word == first_word[:len(second_word)] and len(second_word) < len(first_word):
                 return ""
         for c, d in zip(first_word, second_word):
             if c != d: 
-                reverse_adj_list[d].append(c)
+                self.adj_list[c].append(d)
                 break
 
     # Step 2: Depth-first search.
-    seen = {} # False = grey, True = black.
-    output = []
-    def visit(node):  # Return True iff there are no cycles.
-        if node in seen:
-            return seen[node] # If this node was grey (False), a cycle was detected.
-        seen[node] = False # Mark node as grey.
-        for next_node in reverse_adj_list[node]:
-            result = visit(next_node)
-            if not result: 
-                return False # Cycle was detected lower down.
-        seen[node] = True # Mark node as black.
-        output.append(node)
-        return True
+    self.output = []
+    self.color = {c:0 for word in words for c in word}}
+    self.has_cycle = False    
+        for vertex in range(len(self.color)):
+            if self.color[vertex] == 0:
+                self.dfs(vertex)
+            if self.has_cycle:
+                break
 
-    if not all(visit(node) for node in reverse_adj_list):
+    if self.has_cycle:
         return ""
 
-    return "".join(output)
+    return "".join(output[::-1])
+
+    def dfs(self, node):
+        # Don't recurse further if we found a cycle already
+        if self.has_cycle:
+            return
+
+        # Start the recursion
+        self.color[node] = 1
+
+        # Traverse on neighboring vertices
+        if node in self.adj_list: # node may not in adj list
+            for neighbor in self.adj_list[node]:
+                if self.color[neighbor] == 0:
+                    self.dfs(neighbor)
+                elif self.color[neighbor] == 1: # this node is visited again in the same loop
+                    self.has_cycle = True
+                    return
+
+        # Recursion ends. We mark it as black
+        self.color[node] = 2
+        self.output.append(node)
