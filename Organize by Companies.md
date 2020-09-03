@@ -1,6 +1,5 @@
 ## Amazon
-1. [Two Sum](AllSolutions/Two%Sum.py
-)
+1. [Two Sum](AllSolutions/Two%20Sum.py)
 2. Longest Palindromic Substring
 3. 3Sum
 4. Merge Two Sorted Lists
