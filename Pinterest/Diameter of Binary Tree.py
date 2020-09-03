@@ -1,8 +1,9 @@
 """
 Diameter of Binary Tree
 
-Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary tree is
-the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
+Given a binary tree, you need to compute the length of the diameter of the tree. The diameter of a binary 
+tree is the length of the longest path between any two nodes in a tree. This path may or may not pass 
+through the root.
 
 Example:
 Given a binary tree
@@ -27,11 +28,9 @@ Note: The length of path between two nodes is represented by the number of edges
 #         self.right = right
 class Solution:
     def diameterOfBinaryTree(self, root: TreeNode) -> int:
-        if not root:
-            return 0
-        self.maxnodes = 0
+        self.maxnodes = 0 # pay attention to the different definition of maxnodes and maxdiameter
         _ = self.diameterHelper(root)
-        return self.maxnodes - 1 # pay attention to the different definition of maxnodes and maxdiameter
+        return max(0, self.maxnodes - 1) # in case it's negative 
                                
     def diameterHelper(self, node):
         # return max # nodes between node-left child and node-right child
@@ -39,6 +38,6 @@ class Solution:
             return 0
         l = self.diameterHelper(node.left)
         r = self.diameterHelper(node.right)
-        self.maxnodes = max(self.maxnodes, l+r+1)
+        self.maxnodes = max(self.maxnodes, l+r+1) # not l+r+1, to avoid confusion, we can count # of nodes 
                                
-        return max(l,r) + 1
+        return max(l,r) + 1 # not max(l, r)

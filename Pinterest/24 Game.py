@@ -21,6 +21,11 @@ Note:
     You cannot concatenate numbers together. For example, if the input is [1, 2, 1, 2], we cannot write this as 12 + 12.
 
 """
+"""
+Analysis:
+Three aspects for permutation: 1) numbers --- A4-4 = 4*3*2 = 24 2) operations A4--3 = 24
+3) parenthesis --- easiest one, A3-3 = 6 but actually only 5 since two can be combined.
+"""
 
 # method 1
 class Solution:
@@ -47,7 +52,7 @@ class Solution(object):
         """
         def div(a, b):
             if b == 0:
-                return 0 # 
+                return sys.maxsize
             return a/float(b)
         Ops = list(itertools.product([add,sub,mul,div], repeat=3))
         for ns in set(itertools.permutations(nums)):
@@ -65,7 +70,14 @@ class Solution(object):
                 result = ops[2](result, ns[3])
                 if 23.99 < result < 24.01:
                     return True
-
+                
+                # (W op (X op Y op Z))
+                result = ops[1](ns[1], ns[2])
+                result = ops[2](result, ns[3])
+                result = ops[0](ns[0], result)
+                if 23.99 < result < 24.01:
+                    return True
+                
                 # ((W op X) op (Y op Z))
                 result1 = ops[0](ns[0], ns[1])
                 result2 = ops[2](ns[2], ns[3])

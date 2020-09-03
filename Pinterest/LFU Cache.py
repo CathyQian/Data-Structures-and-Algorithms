@@ -1,19 +1,21 @@
 """
 LFU Cache
 
-Design and implement a data structure for Least Frequently Used (LFU) cache. It should support the following operations: get and put.
+Design and implement a data structure for Least Frequently Used (LFU) cache. It should support the 
+following operations: get and put.
 
-get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise return -1.
-put(key, value) - Set or insert the value if the key is not already present. When the cache reaches its capacity, it should invalidate the least frequently used item before inserting a new item. For the purpose of this problem, when there is a tie (i.e., two or more keys that have the same frequency), the least recently used key would be evicted.
+get(key) - Get the value (will always be positive) of the key if the key exists in the cache, otherwise
+return -1.
+put(key, value) - Set or insert the value if the key is not already present. When the cache reaches its 
+capacity, it should invalidate the least frequently used item before inserting a new item. For the 
+purpose of this problem, when there is a tie (i.e., two or more keys that have the same frequency), the 
+least recently used key would be evicted.
 
-Note that the number of times an item is used is the number of calls to the get and put functions for that item since it was inserted. This number is set to zero when the item is removed.
-
- 
+Note that the number of times an item is used is the number of calls to the get and put functions for 
+that item since it was inserted. This number is set to zero when the item is removed. 
 
 Follow up:
 Could you do both operations in O(1) time complexity?
-
- 
 
 Example:
 
@@ -31,8 +33,13 @@ cache.get(3);       // returns 3
 cache.get(4);       // returns 4
 
  
-
 """
+
+# both LFU and LRU mentioned recency, so what data structure can record recency --- deque and OrderedDict
+# difference: LFU also needs to record count, so hashmap to record key-value pair is not enough
+# needs key-value-count instead, create a node class to make things easier, then use hashmap key-node to allow easy
+# access of keys, use count: {key: node} to find node with minimum count
+
 # LFUCache: quite hard
 from collections import defaultdict
 from collections import OrderedDict
@@ -49,7 +56,7 @@ class LFUCache(object):
         :type capacity: int
         """
         self.space = capacity
-        self.key2node = {} # key:node
+        self.key2node = {} # key:node(key, val, count)
         self.count2node = defaultdict(OrderedDict) #{count: {key: node}}
         self.minCount = None
         
@@ -71,10 +78,9 @@ class LFUCache(object):
         node.count += 1
         self.count2node[node.count][key] = node
         
-        # NOTICE check minCount!!!
+        # NOTICE check minCount!!! the deleted count in count2node was mincount
         if not self.count2node[self.minCount]:
-            self.minCount += 1
-            
+            self.minCount += 1           
             
         return node.val
         
@@ -84,7 +90,7 @@ class LFUCache(object):
         :type value: int
         :rtype: void
         """
-        if self.space == 0 and not self.key2node:
+        if self.space == 0 and not self.key2node: # Cache capacity is 0
             return 
         
         if key in self.key2node:
@@ -110,24 +116,22 @@ import collections
 class LRUCache:
 
     def __init__(self, capacity: int):
-        self.keys = collections.deque()
-        self.ele = {}
+        self.keys = collections.deque() # order keys via recency
+        self.ele = {} # key: val pair
         self.maxlength = capacity
         
     def get(self, key: int) -> int:
         if key in self.ele:
-            self.put(key, self.ele[key])
+            self.put(key, self.ele[key]) # update recently reviewed position
             return self.ele[key]
         return -1
     
     def put(self, key: int, value: int) -> None:
-
         if key in self.ele:
             self.ele[key] = value
             self.keys.remove(key)
             self.keys.append(key)
         else:
-            
             if len(self.keys) == self.maxlength:
                 out = self.keys.popleft()
                 del self.ele[out]

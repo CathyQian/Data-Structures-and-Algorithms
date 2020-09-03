@@ -1,9 +1,12 @@
 """
 Priority Queue
 
-输⼊入是⼀堆pin和一个col数，将这些pin放⼊入col个list中返回，填充 ⻚页⾯面，
-规则是每次填⼀一个pin的时候找当前像素数最少的那⼀一列列填
+输入是⼀堆pin和一个col数，将这些pin放⼊入col个list中返回，填充页面，
+规则是每次填一个pin的时候找当前像素数最少的那⼀列填
 """
+# use heap, each element is (height, col_name, list of pins in that column), order by height, if indistinguishable,
+# then order by col_name
+
 import heapq
 class Solution:     
     def arrange_pins(self, pins, n_col):    
@@ -11,9 +14,10 @@ class Solution:
         for i in range(n_col):         
             heapq.heappush(position, (0, 'Col_{}'.format(i), [])) # initialize each column, order depends on ranking rule    
             for pin, name in pins:         
-                height, name_col, lst = heapq.heappop(position)         
+                height, name_col, lst = heapq.heappop(position) # pop out shortest column        
                 heapq.heappush(position, (height+pin, name_col, lst+[name]))    
-        return position # what to output??
+        return position
+    
 Pinterest主⻚页上有N个column，给⼀一个set of pins，pins有score和 length，每次把score最⾼高的pin贴到最短的
 column上，return List<List<pins>> 表示每个column⾥里里的pins。⽤用priority queue做，写完之 后follow up：
 ⽤用户的⼿手机屏幕只有M⻓长，如果屏幕的顶点距离主⻚页顶点距离 为K，求出能显示出的pins。思路路是⽤用数组存⼀一个

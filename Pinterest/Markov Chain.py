@@ -5,9 +5,10 @@ four" 那以"two" 开头的概率是2/3 "one" 开头的概率是1/3 那我们先
 按照这样的模式直到结束。
 """
 
+# separate the first word and other word; if words can't be found in the existing dictionary, break
+
 import random 
 import collections
-
 
 class Solution:
     def sentenceMarkovGenerator(self, sentence_lst, N):     
@@ -42,7 +43,7 @@ class Solution:
         total = 0     
         for key, value in wordict.items():         
             total += value 
-        randindex = random.randint(0, total) # inclusive [0, total]   
+        randindex = random.randint(1, total) # [0, total] or [1, total]
         for key, value in wordict.items():  # output is random       
             randindex -= value         
             if randindex <= 0:             

@@ -60,12 +60,11 @@ class Solution:
         if curr == target:   
             return self.dfs(0, 0, k-1, nums, target)
 
-        for i in range(start, len(nums)):
-            if self.visited[i]: # this node can't be used in the following dfs
-                continue
-            self.visited[i] = True
-            if self.dfs(i+1, curr + nums[i], k, nums, target):
-                return True
-            self.visited[i] = False
+        for i in range(start, len(nums)): # exhaustive search
+            if not self.visited[i]: # this node can't be used in the following dfs
+                self.visited[i] = True
+                if self.dfs(i+1, curr + nums[i], k, nums, target): #only need one True to return True
+                    return True
+                self.visited[i] = False # didn't find a path, reuse this node to try another route
             
         return False

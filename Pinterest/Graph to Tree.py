@@ -1,18 +1,22 @@
 """
 Graph to Tree
 
-给你⼀一个graph，问他能不不能成为⼀一个tree
+给你⼀一个undirectional graph，问他能不不能成为⼀一个tree
 """
+
 """
-undirectional graph (= 2 directional graph with cycle) to tree --- nodes all connected, no cycle, dfs (adj_list), can't use template for directional graph
-directional graph to tree --- nodes all connected, no cycle, no nodes has more than one ancestor, bfs (ajd_list + in_degree)
+Attention: not binary tree
+undirectional graph (= 2 directional graph with cycle) to tree --- 1) nodes all connected 2) no cycle, dfs (adj_list), can't use template for directional graph
+
+directional graph to tree --- 1) nodes all connected, 2) no cycle, 3) no nodes has more than one ancestor, bfs (ajd_list + in_degree)
 """
+
 # ref: https://www.geeksforgeeks.org/detect-cycle-undirected-graph/
 
 from collections import defaultdict  
 class Graph():      
     def __init__(self, V):          
-        self.V = V # number of vertixes, from 0 to V-1         
+        self.V = V # number of vertices, from 0 to V-1         
         self.graph  = defaultdict(list) # adjacency list
 
     def addEdge(self, v, w): # undirectional graph  

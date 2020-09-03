@@ -46,20 +46,20 @@ Graph from input:
 class Trie:
     def __init__(self):
         self.root = collections.defaultdict(int)
-        self.root['#'] = 0
+        self.root['#'] = 0 # empty trie detection symbol
 class Solution:
     def build_log_system(self, logs)：
-        user_id, time_stamp, action = zip(*logs)
-        user_id = sorted(list(set(user_id)))
+        id_actions = collections.defaultdict(list)
+        for (user_id, time_stamp, action) in zip(*logs):
+            id_actions[user_id].append(action)
 
         # construct a trie
         root = Trie()
-        for uid in user_id:
+        for uid, actions in id_actions.items():
             t = root
-            for log in logs:
-                if log[0] == uid:
-                    t[log[2]] += 1
-                    t = t[log[2]]
+            for action in actions:
+                t[action] += 1
+                t = t[action]
             t['#'] = 0 # end of each path
         
         # traversal

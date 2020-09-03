@@ -39,7 +39,6 @@ Return 3. The paths that sum to 8 are:
 
 class Solution:
     def pathSum(self, root, sum):
-
         # divide and conquer
         if not root:
             return 0
