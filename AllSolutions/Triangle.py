@@ -29,6 +29,7 @@ class Solution:
         :type triangle: List[List[int]]
         :rtype: int
         """
+        
         n = len(triangle)
         dp = triangle[-1]
         for i in range(n-2,-1,-1):
