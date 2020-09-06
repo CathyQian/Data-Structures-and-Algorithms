@@ -105,7 +105,7 @@ class Solution:
                 i += 1
             else:
                 if j != 0:
-                    j = lps[j-1]
+                    j = lps[j-1] # instead of starting from 0 (brutal force)
                 else:
                     lps[i] = 0
                     i += 1
