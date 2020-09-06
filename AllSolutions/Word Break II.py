@@ -50,12 +50,12 @@ class Solution(object):
         return self.dfs(s, 0, wordDict, dict())
     
     def dfs(self, s, start, wordDict, memo):
-        """return breaking combination of s[start:] in memo[start] (equivalent to res)
+        """return breaking combination of s[start:] in memo[start]
         """
         if start == len(s): # test edge case
             return [""]
         if start not in memo:
-            res = [] # needed to record path along the recursion process, the main difference from Word Break
+            res = [] # needed to record path, the main difference from Word Break
             for word in wordDict:
                 if start + len(word) <= len(s) and s[start:start+len(word)] == word:
                     for r in self.dfs(s, start+len(word), wordDict, memo):
