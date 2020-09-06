@@ -1,5 +1,33 @@
 """
-[139. Word Break](https://leetcode.com/problems/word-break/)
+Word Break
+
+Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, determine if s can be segmented into
+a space-separated sequence of one or more dictionary words.
+
+Note:
+
+    The same word in the dictionary may be reused multiple times in the segmentation.
+    You may assume the dictionary does not contain duplicate words.
+
+Example 1:
+
+Input: s = "leetcode", wordDict = ["leet", "code"]
+Output: true
+Explanation: Return true because "leetcode" can be segmented as "leet code".
+
+Example 2:
+
+Input: s = "applepenapple", wordDict = ["apple", "pen"]
+Output: true
+Explanation: Return true because "applepenapple" can be segmented as "apple pen apple".
+             Note that you are allowed to reuse a dictionary word.
+
+Example 3:
+
+Input: s = "catsandog", wordDict = ["cats", "dog", "sand", "and", "cat"]
+Output: false
+
+
 """
 
 # method 1, brutal force using recursion, works, but too slow
@@ -28,7 +56,7 @@ class Solution(object):
         return self.canBreak(s, 0, memo, set(wordDict))
     
     def canBreak(self, s, start, m, wordDict):
-        # m[start] true or false or s[start:]
+        # m[start]: bool, indicate if s[start:] can be broken as desired or not
         if start not in m:
             m[start] = False # initialize!
             if s[start:] in wordDict: 
@@ -53,63 +81,3 @@ class Solution:
         return dp[-1]
 """
 
-
-# [132. Palindrome Partitioning II](https://leetcode.com/problems/palindrome-partitioning-ii/)
-
-# dp + dfs (with memorization)
-class Solution:
-
-    def minCut(self, s: str) -> int:
-        dp = [[False]*len(s) for i in range(len(s))]
-        # for i in range(len(s)-1, -1, -1):
-        #    for j in range(i, len(s)):
-        #        if i == j:
-        #            dp[i][j] = True
-        #        elif i < j:
-        #            if s[i] == s[j]:
-        #                dp[i][j] = (j-i==1) or dp[i+1][j-1]
-                     
-        for j in range(len(s)): # i <= j
-            for i in range(j+1)[::-1]:
-                if i == j:
-                    dp[i][j] = True
-                else:
-                    if s[i] == s[j]:
-                        dp[i][j] = (j-i == 1) or dp[i+1][j-1]
-        self.memo = {}
-        self.memo[len(s)] = -1
-        return self.dfs(0, s, dp)
-    
-    def dfs(self, start, s, dp):
-        if start not in self.memo:
-            ans = len(s) - start
-            for i in range(start,len(s)):
-                if dp[start][i] == True:
-                    ans = min(ans, self.dfs(i+1, s, dp) + 1)
-            self.memo[start] = ans
-        return self.memo[start]
-# dp + dp
-"""
-#Method 1: Top-Down dp + dp
-class Solution:
-    def minCut(self, s: str) -> int:
-        dp1 = [[False]*len(s) for i in range(len(s))]
-        for i in range(len(s)-1, -1, -1):
-            for j in range(i,len(s)):
-                if i == j:
-                    dp1[i][j]=True
-                elif i < j:
-                    if s[i] == s[j]:
-                        dp1[i][j] = (j-i)==1 or dp1[i+1][j-1]
-                    
-                    
-        dp2 = [i for i in range(len(s))]
-        for i in range(1, len(s)):
-            for j in range(i+1):
-                if dp1[j][i]:
-                    if j==0:
-                        dp2[i]=0
-                    else:
-                        dp2[i] = min(dp2[j-1]+1, dp2[i])
-        
-        return dp2[-1]
