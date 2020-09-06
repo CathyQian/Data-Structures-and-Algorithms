@@ -37,6 +37,11 @@ class Solution:
         return self.dfs(nums, S, 0, memo)
         
     def dfs(self, nums, s, start, memo):
+        """
+        return number of combinations with sum equal to s, starting from nums[start]
+        memo is populated with increasing start in the recursion process
+        why use memo --- nums[start:] -- sum is s will be used many times in the dfs , need to keep record to avoid duplicated calculation
+        """
         if (start, s) not in memo:
             result = 0
             if start == len(nums):
