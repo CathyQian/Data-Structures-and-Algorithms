@@ -51,7 +51,7 @@ class Solution:
     def uniquePathsIII(self, grid):
         self.grid = grid
         self.row, self.col = len(grid), len(grid[0])
-        todo = 0
+        todo = 0 # count total number of non-obstacle squares ( = total number of steps to do)
         for i in range(self.row):
             for j in range(self.col):
                 if grid[i][j] != -1:
@@ -73,40 +73,5 @@ class Solution:
             for r, c in [(row-1, col),(row+1, col),(row, col-1),(row, col+1)]:
                 if 0 <= r < self.row and 0 <= c < self.col and self.grid[r][c]!= -1:
                     ans += self.dfs(r, c, todo-1)
-            self.grid[row][col] = 0
+            self.grid[row][col] = 0 # need to recover after each dfs path
             return ans
-
-# DFS + Memoization + Bit manipulation(express the visited as an integer)
-class Solution:
-    def uniquePathsIII(self, grid):
-        self.grid = grid
-        self.row, self.col = len(grid), len(grid[0])
-        self.memo = {}
-        path = 0
-        for i in range(self.row):
-            for j in range(self.col):
-                if grid[i][j] %2 == 0:
-                    path |= self.bitCode(i,j)
-                if grid[i][j] == 1:
-                    start_row = i
-                    start_col = j
-                if grid[i][j] == 2:
-                    self.end_row = i
-                    self.end_col = j
-        return self.dfs(start_row, start_col, path)
-    
-    def bitCode(self, row, col):
-        return 1 << (row*self.col + col)
-    
-    def dfs(self, row, col, path):
-        if (row, col, path) not in self.memo:
-            ans = 0
-            if row == self.end_row and col == self.end_col:
-                if path == 0:
-                    ans += 1
-            else:
-                for r, c in [(row-1, col),(row+1, col),(row, col-1),(row, col+1)]:
-                    if 0 <= r < self.row and 0 <= c < self.col and path&self.bitCode(r, c):
-                            ans += self.dfs(r, c, path^self.bitCode(r, c))
-            self.memo[(row,col,path)] = ans
-        return self.memo[(row,col,path)]
