@@ -8,6 +8,5 @@ Recursion + memo is used if some operations have to be repeated again and again,
 6. [Combination Sum IV](AllSolutions/Combination%20Sum%20IV.py)
 7. [Palindrome Partitioning](AllSolutions/Palindrome%20Partitioning.py)
 8. [Palindrome Partitioning II](AllSolutions/Palindrome%20Partitioning%20II.py)
-9. [Triangle](AllSolutions/Triangle.py)
-10. [Unique Paths III](AllSolutions/Unique%20Paths%20III.py)
-11. [k sum (lintcode)](AllSolutions/k%20sum.py)
+9. [Unique Paths III](AllSolutions/Unique%20Paths%20III.py)
+10. [k sum (lintcode)](AllSolutions/k%20sum.py)
