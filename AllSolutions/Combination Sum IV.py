@@ -57,7 +57,7 @@ results: dp[target]
 # DFS 
 class Solution:
     def combinationSum4(self, nums: List[int], target: int) -> int:
-        nums.sort()
+        nums.sort() # needed to terminate for loop earlier
         self.memo ={}
         return self.dfs(nums, target)
     
@@ -67,12 +67,10 @@ class Solution:
             if target == num:
                 ans = ans+1
             elif target > num:
-                if target-num in self.memo:
-                    ans += self.memo[target-num]
-                else:
-                    subans= self.dfs(nums, target-num)
-                    self.memo[target-num] = subans
-                    ans += subans
-            else:
+                if target-num not in self.memo:
+                   subans = self.dfs(nums, target-num)
+                   self.memo[target-num] = subans
+                ans += self.memo[target-num]
+            else:# target < num
                 return ans
         return ans
