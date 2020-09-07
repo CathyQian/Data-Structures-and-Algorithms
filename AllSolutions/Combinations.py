@@ -14,16 +14,15 @@ Output:
   [1,4],
 ]
 """
-def combine(n,k):
-    result = []
-    combineDFS(n, 0, [], k, result)
-    return result
+class Solution:
+    def combine(self, n,k):
+        result = []
+        self.combineDFS(n, 0, [], k, result)
+        return result
 
-def combineDFS(n, start, intermediate, k, result):
-    if k == 0:
-        result.append(intermediate[:])
-        return
-    for i in range(start, n):
-        intermediate.append(i+1)
-        combinedDFS(n, i+1, intermediate, k-1, result)
-        intermediate.pop()
+    def combineDFS(self, n, start, path, k, result):
+        if k == 0:
+            result.append(path)
+            return
+        for i in range(start, n):
+            self.combineDFS(n, i+1, path+[i+1], k-1, result)
