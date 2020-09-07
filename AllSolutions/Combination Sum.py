@@ -33,6 +33,7 @@ A solution set is:
   [3,5]
 ]
 """
+# dfs
 class Solution(object):
     def combinationSum(self, candidates, target):
         """
@@ -41,14 +42,16 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         result = []
-        self.combinationSumRecu(sorted(candidates), result, 0, [], target)
+        self.dfs(sorted(candidates), result, 0, [], target)
         return result
 
-    def combinationSumRecu(self, candidates, result, start, intermediate, target):
-        if target == 0:
-            result.append(list(intermediate))
-        while start < len(candidates) and candidates[start] <= target:
-            intermediate.append(candidates[start])
-            self.combinationSumRecu(candidates, result, start, intermediate, target - candidates[start])
-            intermediate.pop()
-            start += 1
+    def dfs(self, candidates, result, start, path, target):
+        if target == 0 and path:
+            result.append(path)
+        else:
+            for i in range(start, len(candidates)):
+                if candidates[i] > target:
+                    break
+                else:
+                    self.dfs(candidates, result, i, path + [candidates[i]], target - candidates[i])
+
