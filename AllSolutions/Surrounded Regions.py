@@ -34,7 +34,7 @@ class Solution:
         Do not return anything, modify board in-place instead.
         """
         
-        if board is None or len(board) < 3 or len(board[0]) < 3:
+        if not board or not board[0]:
             return
         m, n = len(board), len(board[0])
         
@@ -65,17 +65,6 @@ class Solution:
         
         board[i][j] = 'y'
         m, n = len(board), len(board[0])
-        
-        if i - 1 >= 0 and board[i-1][j] == 'O':
-            self.dfs(board, i-1, j)
-        
-        if i + 1 <= m-1 and board[i+1][j] == 'O':
-            self.dfs(board, i+1, j)
-        
-        if j - 1 >= 0 and board[i][j-1] == 'O':
-            self.dfs(board, i, j-1)
-        
-        if j + 1 <= n-1 and board[i][j+1] == 'O':
-            self.dfs(board, i, j+1)
-        
-        return
+        for x, y in [(i+1, j), (i-1, j), (i, j+1), (i, j-1)]:
+            if 0 <= x < m and 0 <= y < n and board[x][y] == 'O':
+                self.dfs(board, x, y)
