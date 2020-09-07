@@ -45,7 +45,7 @@ class Solution:
             
         
             
-# dfs
+# dfs, retrieval order is different from previous two methods: [], [1], [1,2], [1,2,3], [2], [2,3]
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         res = []
