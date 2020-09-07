@@ -25,3 +25,39 @@ Note:
     sx, sy, tx, ty will all be integers in the range [1, 10^9].
 
 """
+
+# method 1: work forward (dfs + memo),  will result in time exceed limit
+class Solution:
+    def reachingPoints(self, sx: int, sy: int, tx: int, ty: int) -> bool:
+        self.memo = {}
+        return self.reachingPointsHelper(sx, sy, tx, ty)
+    
+    def reachingPointsHelper(self, sx, sy, tx, ty):
+        if (sx, sy) not in self.memo:
+            if sx == tx and sy == ty:
+                self.memo[(sx, sy)] = True
+            elif sx > tx or sy > ty: # not put in memo
+                return False
+            else:
+                if self.reachingPointsHelper(sx+sy, sy, tx, ty) or self.reachingPointsHelper(sx, sx+sy, tx, ty):
+                    self.memo[(sx, sy)] = True
+        return self.memo[(sx, xy)]
+
+# method 2: work backword, no memo needed because there's only one path
+class Solution(object):
+    def reachingPoints(self, sx, sy, tx, ty):
+        while tx >= sx and ty >= sy:
+            if tx == ty:
+                break
+            elif tx > ty:
+                if ty > sy:
+                    tx %= ty
+                else: # ty == sy
+                    return (tx - sx) % ty == 0
+            else:
+                if tx > sx:
+                    ty %= tx
+                else: # tx == sx
+                    return (ty - sy) % tx == 0
+        return tx == sx and ty == sy
+     
