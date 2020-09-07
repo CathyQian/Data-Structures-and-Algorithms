@@ -43,7 +43,7 @@ Here I use a "map" which we will eliminate the duplicate strings, so that the nu
 Please check the C++ code below for more details.
 """
 
-
+# bfs, preferred for min path
 class Solution:
     def removeInvalidParentheses(self, s: str) -> List[str]:
         res = []
