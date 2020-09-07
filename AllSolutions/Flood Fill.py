@@ -5,7 +5,9 @@ An image is represented by a 2-D array of integers, each integer representing th
 
 Given a coordinate (sr, sc) representing the starting pixel (row and column) of the flood fill, and a pixel value newColor, "flood fill" the image.
 
-To perform a "flood fill", consider the starting pixel, plus any pixels connected 4-directionally to the starting pixel of the same color as the starting pixel, plus any pixels connected 4-directionally to those pixels (also with the same color as the starting pixel), and so on. Replace the color of all of the aforementioned pixels with the newColor.
+To perform a "flood fill", consider the starting pixel, plus any pixels connected 4-directionally to the starting pixel of the same color as the starting pixel, 
+plus any pixels connected 4-directionally to those pixels (also with the same color as the starting pixel), and so on. Replace the color of all of the aforementioned
+pixels with the newColor.
 
 At the end, return the modified image.
 
@@ -38,6 +40,6 @@ class Solution:
     def dfs(self, image, i, j):
         image[i][j] = self.newColor
         m, n = len(image), len(image[0])
-        for x, y in [(1,0), (-1,0), (0,1), (0,-1)]:
-            if i+x>=0 and i+x<m and j+y>=0 and j+y<n and image[i+x][j+y] == self.oldColor:
-                self.dfs(image, i+x, j+y)
+        for x, y in [(i+1,j), (i-1,j), (i,j+1), (i,j-1)]:
+            if 0<=x<m and 0<=y<n and image[x][y] == self.oldColor:
+                self.dfs(image, x, y)
