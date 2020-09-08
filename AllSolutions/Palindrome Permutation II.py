@@ -35,19 +35,16 @@ class Solution:
                 if odd_count > 1:
                     return []
         self.result = set()
-        self.permute(even_chars, mid_char, 0)
+        self.permute(even_chars, mid_char, [])
         return list(self.result)
     
-    def permute(self, s, m, start):
-        if start == len(s):
+    def permute(self, s, m, path):
+        if not s: # end of the dfs
             if m:
-                self.result.add(''.join(s) + m + ''.join(s[::-1]))
+                self.result.add(''.join(path) + m + ''.join(path[::-1]))
             else:
-                self.result.add(''.join(s) + ''.join(s[::-1]))
+                self.result.add(''.join(path) + ''.join(path[::-1]))
         else:
-            for i in range(start, len(s)):
-                if s[start] != s[i] or start == i:
-                    s[start], s[i] = s[i], s[start] 
-                    self.permute(s, m, start+1)
-                    s[start], s[i] = s[i], s[start]
-                    
+            for i in range(len(s)):
+                if i == 0 or s[i] != s[i-1]:
+                     self.permute(s[:i]+s[i+1:], m, path + [s[i]])
