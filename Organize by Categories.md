@@ -59,7 +59,7 @@
 - [Number of Islands II](AllSolutions/Number%20of%20Islands%20II.py)
 - [Number of Islands](AllSolutions/Number%20of%20Islands.py)
 - [Palindrome Permutation](AllSolutions/Palindrome%20Permutation.py)
-- [Palindrome Permutation II](AllSolutions/Palindrome%20Permutation%20II.py) (tricky permutaion to avoid duplicates)
+- [Palindrome Permutation II](AllSolutions/Palindrome%20Permutation%20II.py)
 - [Partition to K Equal Sum Subsets](AllSolutions/Partition%20to%20K%20Equal%20Sum%20Subsets.py)
 - **[Remove Invalid Parenthesis](AllSolutions/Remove%20Invalid%20Parenthesis.py)
 - [Subsets](AllSolutions/Subsets.py)
@@ -73,8 +73,23 @@
 - [Word Search II](AllSolutions/Word%20Search%20II.py)
 - [k sum](AllSolutions/k%20sum.py)
 
+### 4. Combination & Permutation
+- [24 Game](AllSolutions/24%20Game.py)
+- [2Sum](AllSolutions/2Sum.py)
+- [3 Sum](AllSolutions/3Sum.py)
+- [3 Sum Closest](AllSolutions/3sum%20closest.py)
+- [4 Sum](AllSolutions/4Sum.py)
+- [Combinations](AllSolutions/Combinations.py)
+- [Combination Sum](AllSolutions/Combination%20Sum.py)
+- [Combination Sum II](AllSolutions/Combination%20Sum%20II.py)
+- [Combination Sum III](AllSolutions/Combination%20Sum%20III.py)
+- [Combination Sum IV](AllSolutions/Combination%20Sum%20IV.py)
+- [Factor Combinations](AllSolutions/Factor%20Combinations.py)
+- [Letter Combinations of a Phone Number](AllSolutions/Letter%20Combinations%20of%20a%20Phone%20Number.py)
+- [Permutations](AllSolutions/Permutations.py)
+- [Permutations II](AllSolutions/Permutations%20II.py)
 
-### 4. String Operations
+### 5. String Operations
 - [Excel Sheet Column Number](AllSolutions/Excel%20Sheet%20Column%20Number.py)
 - [Find Duplicate File in System](AllSolutions/Find%20Duplicate%20File%20in%20System.py)
 - [Integer to English Words](AllSolutions/Integer%20to%20English%20Words.py)
@@ -124,7 +139,6 @@
 - [Count of Smaller Numbers After Self](AllSolutions/Count%20of%20Smaller%20Numbers%20After%20Self.py)
 - **[MinStack](AllSolutions/MinStack.py)
 
-
 #### Graph
 - [Clone Graph](AllSolutions/Clone%20Graph.py)
 - [Alien Dictionary](AllSolutions/Alien%20Dictionary.py)
@@ -134,7 +148,6 @@
 - [Friend Circles](AllSolutions/Friend%20Circles.py)
 - [Graph to Tree](AllSolutions/Graph%20to%20Tree.py)
 - **[Minimum Height Trees](AllSolutions/Minimum%20Height%20Trees.py)
-
 
 #### Hashmap
 - [Add and Search Word - Data structure design](AllSolutions/Add%20and%20Search%20Word%20-%20Data%20structure%20design.py)
@@ -146,24 +159,7 @@
 - [Subdomain Visit Count](AllSolutions/Subdomain%20Visit%20Count.py)
 
 
-### 7. Combination & Permutation
-- [24 Game](AllSolutions/24%20Game.py)
-- [2Sum](AllSolutions/2Sum.py)
-- [3 Sum](AllSolutions/3Sum.py)
-- [3 Sum Closest](AllSolutions/3sum%20closest.py)
-- [4 Sum](AllSolutions/4Sum.py)
-- [Combinations](AllSolutions/Combinations.py)
-- [Combination Sum](AllSolutions/Combination%20Sum.py)
-- [Combination Sum II](AllSolutions/Combination%20Sum%20II.py)
-- [Combination Sum III](AllSolutions/Combination%20Sum%20III.py)
-- [Combination Sum IV](AllSolutions/Combination%20Sum%20IV.py)
-- [Factor Combinations](AllSolutions/Factor%20Combinations.py)
-- [Letter Combinations of a Phone Number](AllSolutions/Letter%20Combinations%20of%20a%20Phone%20Number.py)
-- [Permutations](AllSolutions/Permutations.py)
-- [Permutations II](AllSolutions/Permutations%20II.py)
-
-
-### 8. Dynamic Programming
+### 7. Dynamic Programming
 - [Edit Distance](AllSolutions/Edit%20Distance.py)
 - [Jump Game](AllSolutions/Jump%20game.py)
 - [Jump Game II](AllSolutions/Jump%20Game%20II.py)
@@ -184,7 +180,7 @@
 - [backPack II](AllSolutions/backPack%20II.py)
 
 
-### 9. Linked List
+### 8. Linked List
 - [Add Two Numbers II](AllSolutions/Add%20Two%20Numbers%20II.py)
 - [Add Two Numbers](AllSolutions/Add%20Two%20Numbers.py)
 - **[Copy List with Random Pointer](AllSolutions/Copy%20List%20with%20Random%20Pointer.py)
@@ -195,7 +191,7 @@
 - [Reverse Linked List](AllSolutions/Reverse%20Linked%20List.py)
 
 
-### 10. Array
+### 9. Array
 - [Best Time to Buy and Sell Stock](AllSolutions/Best%20Time%20to%20Buy%20and%20Sell%20Stock.py)
 - [Best Time to Buy and Sell Stock II](AllSolutions/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II.py)
 - [Best Time to Buy and Sell Stock III](AllSolutions/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20III.py)
@@ -241,7 +237,7 @@
 - [Trapping Rain Water](AllSolutions/Trapping%20Rain%20Water.py)
 
 
-### 11. Others
+### 10. Others
 - [Factorial Trailing Zeroes](AllSolutions/Factorial%20Trailing%20Zeroes.py)
 - [Pow(x, n)](AllSolutions/Pow(x%2C%20n).py)
 - [Power of Two](AllSolutions/Power%20of%20Two.py)
