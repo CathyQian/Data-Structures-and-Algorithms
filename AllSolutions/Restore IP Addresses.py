@@ -20,8 +20,7 @@ class Solution:
     
         elif parts <= len(s) - start and 3*parts >= len(s) - start:
             for i in range(1,4):
-                if int(s[start:start + i]) <= 255:
+                if int(s[start:start + i]) <= 255 and (i > 1 and int(s[start]) != 0 or i == 1):
                     self.dfs(s, start + i, path + s[start:start + i] + '.', parts - 1, res)
-                    if int(s[start]) == 0: # if the first element is 0, OK; but stop the loop here
-                        break
+
           
