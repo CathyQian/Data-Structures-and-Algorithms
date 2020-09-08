@@ -55,20 +55,15 @@ Output:
 
 class Solution:
     def getFactors(self, n):        
-        result = []        
-        factors = []        
-        self.getResult(n, result, factors)        
+        result = []         
+        self.getResult(n, result, [])        
         return result    
 
     def getResult(self, n, result, factors):        
         i = 2 if not factors else factors[-1] # returning elements in increasing order      
         while i <= n / i:            
-            if n % i == 0:                
-                factors.append(i)                
-                factors.append(n // i)                
-                result.append(factors)
-                factors.pop() # pop out n//i 
-                self.getResult(n // i, result, factors)
-                factors.pop() # pop out i, factors unchanged after each loop         
+            if n % i == 0:                      
+                result.append(factors + [i, n//i])
+                self.getResult(n // i, result, factors + [i])        
             i += 1
         
