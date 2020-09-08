@@ -30,16 +30,14 @@ Space complexity: O(n)
 dp中第i个iteration对应加入A[i-1]。对于每个数A[i]，调整后的结果有100种，用dp[j]表示数字A[i]调整为j的最小代价。
 对于每个dp[j]，A[i-1]调整到k的代价加上A[i]调整到j的最小代价即为dp[j]的代价。而k又有100种选择，对于j，
 当|j-k|的绝对值不大于target时，代价最小，rec[j]保留所有可能代价中的最小代价。iteration完了返回min(rec[j]).
+start from 2D dp
+dp[i][v]: the value of the ith element in A is modified to v, the min cost
+i range from 0 to len(A) -1, V range from 0 to 100
+2D dp can be replaced by 1D dp using pre and post array
 """
 
 class Solution:
-    """
-    @param: A: An integer array
-    @param: target: An integer
-    @return: An integer
-    """
     def MinAdjustmentCost(self, A, target):
-        # write your code here
         maxNum = 100
         pre_dp = [0]*(maxNum+1)
         
