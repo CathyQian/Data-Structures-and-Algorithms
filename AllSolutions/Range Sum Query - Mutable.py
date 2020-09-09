@@ -22,3 +22,20 @@ Constraints:
     0 <= i <= j <= nums.length - 1
 
 """
+
+class NumArray:
+    def __init__(self, nums: List[int]):
+        self.arr = nums
+     
+    def update(self, i: int, val: int) -> None:
+        self.arr[i] = val
+
+    def sumRange(self, i: int, j: int) -> int:
+        if i >= 0 and j < len(self.arr) and i <= j:
+            return sum(self.arr[i:j+1])
+        return -1
+
+# Your NumArray object will be instantiated and called as such:
+# obj = NumArray(nums)
+# obj.update(i,val)
+# param_2 = obj.sumRange(i,j)
