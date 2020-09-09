@@ -33,7 +33,7 @@ class Solution:
         :rtype: bool
         """
         # be careful with extreme cases
-        if len(matrix) < 1 or len(matrix[0]) < 1:
+        if not matrix or not matrix[0]:
             return False
 
         row, col = len(matrix), len(matrix[0])
@@ -51,10 +51,11 @@ class Solution:
 # Solution 2: divide and conquer, O(nlogn) time
 # This is a smart binary search. Very easy to make mistakes though.
 # ref:https://www.geeksforgeeks.org/search-in-a-row-wise-and-column-wise-sorted-2d-array-using-divide-and-conquer-algorithm/
-# the following code have some bug in the index 
+# the following code have some bugs in the index
+
 class Solution:
     def searchMatrix(self, matrix, target):
-        if len(matrix) < 1 or len(matrix[0]) < 1:
+        if not matrix or not matrix[0]:
             return False
         row, col = len(matrix), len(matrix[0])
         start_row, end_row = 0, row - 1
