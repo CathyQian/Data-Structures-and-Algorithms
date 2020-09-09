@@ -18,51 +18,48 @@ You may assume k is always valid, 1 ≤ k ≤ array's length.
 Similar problem:kth smallest element in an unsorted array
 """
 
-# solution 1: sort and then output, O(nlogn) time
+# Solution 1: sort and then output, O(nlogn) time, O(1) space
 class Solution:
     def findKthLargest(self, nums, k):
-        """
-        :type nums: List[int]
-        :type k: int
-        :rtype: int
-        """
-        nums = sorted(nums, reverse = True)
+        nums.sort(reverse = True)
         return nums[k-1]
 
-# solution 2: use minHeap or maxHeap
-
-class Solution:
-    def sift(self, nums, low, high):
-        i, j = low, 2 * low  # nums[j] 是 nums[i]的左孩子
-        tmp = nums[i]
-        while j <= high:
-            if j < high and nums[j] < nums[j + 1]:  # 若右孩子较大，把 j 指向右孩子
-                j += 1
-            if tmp < nums[j]:
-                nums[i] = nums[j]  # 将 nums[j] 调整到双亲节点的位置上
-                i = j  # 修改 i 和 j 值，以便继续向下筛选
-                j = 2 * i
-            else: break  # 筛选结束
-        nums[i] = tmp  # 被筛选节点的值放入最终位置
- 
-    def findKthLargest(self, nums, k):
-        n = len(nums)
-        for i in range(n//2, -1, -1):  # 循环建立初始堆
-            self.sift(nums, i, n-1)
-        for i in range(n-1, n-1-k, -1):  # 进行排序，每一趟堆排序的元素个数减1
-            nums[i], nums[0] = nums[0], nums[i]  # 将最后一个元素同当前区间内 nums[0] 对换
-            self.sift(nums, 0, i - 1)
-        return nums[i]
-
+# Solution 2: use minHeap to keep the k largest elements
+# Time complexity: O(Nlogk)
+# Space complexity: O(k) to store the heap elements 
 import heapq
-  
 class Solution:
     def findKthLargest(self, nums, k):
         return heapq.nlargest(k, nums)[-1]
- 
- 
-if __name__ == '__main__':
-    nums, k = [3, 2, 3, 1, 2, 4, 5, 5, 6], 4
-    solu = Solution()
-    print(solu.findKthLargest(nums, k))
-      
+
+# Solution 3: quick select (similar to quicksort)
+# Time complexity: O(N) in the average case, O(N2) in the worst case.
+# Space complexity: O(1).
+
+class Solution:
+    def findKthLargest(self, nums, k):
+        left, right = 0, len(nums)-1
+        while left <= right:    
+            pos = self.partition(nums, left, right)
+            print(pos, nums)
+            if pos == k-1:
+                return nums[pos]
+            elif pos > k-1:
+                right = pos -1
+            else:
+                left = pos + 1
+    
+    def partition(self, nums, left, right):
+        # similar to quick sort
+        pivot = nums[left]
+        i, j = left+1, left + 1
+        while j < len(nums):
+            if nums[j] > pivot:# there is duplicated elements, ignore equal elements, think about [5,5,6] you want to get [6,5,5]
+                nums[i], nums[j] = nums[j], nums[i]
+                i += 1
+                j += 1
+            else:
+                j +=1
+        nums[left], nums[i-1] = nums[i-1], nums[left]
+        return i-1
+        

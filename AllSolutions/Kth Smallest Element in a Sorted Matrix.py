@@ -35,14 +35,16 @@ Kth largest/smallest --> maxheap or minheap (Python default)
 
 class Solution:
     def kthSmallest(self, matrix, k):
-        N = len(matrix)
+        if not matrix or not matrix[0]:
+         return None
+        n = len(matrix)
         l, r = matrix[0][0], matrix[-1][-1]
         
         while l <= r:
-            mid = (l + r)>>1
-            high = N - 1
+            mid = (l + r)//2
+            high = n - 1
             count = 0
-            for row in range(N):
+            for row in range(n):
                 while high > -1 and matrix[row][high] > mid:
                     high -= 1
                 count += high + 1
@@ -52,39 +54,51 @@ class Solution:
             else:
                 l = mid + 1
         return l
-
+# binary search, slightly different way of writting the code   
+class Solution:
+    def kthSmallest(self, matrix, k):
+        if not matrix or not matrix[0]:
+            return None
+        left, right = matrix[0][0], matrix[-1][-1]
+        while left < right:
+            mid = left + (right - left)//2
+            cnt = self.search_less_equal(matrix, mid)
+            if cnt < k:
+                left = mid + 1
+            else:
+                right = mid
+        return left
+        
+    def search_less_equal(self, matrix, target):
+        n = len(matrix)
+        i, j, res = n - 1, 0, 0
+        while i >= 0 and j < n:
+            if matrix[i][j] <= target:
+                res += i + 1;
+                j += 1;
+            else:
+                i -= 1
+        return res
 
 # Solution 2: use heap. Don't need to put all elements in the heap. Instead, put the smallest element in
 # the heap first, pop it, then put the next possible targets into the heap; pop min element again. Repeat
-# k times. The kth element is the targeted kth smallest element.
+# k times. The kth element is the targeted kth smallest elements
 
-# keep in note that element in the first column reach both its right and bottom element;
-# other elements reach only its right elements.
-
-# 1) Build a min heap which takes O(n) time (worst case)
-# 2) Heapify k times which takes O(kLogn) time.(worst case)
-# Therefore, overall time complexity is O(n + kLogn) time.
+# time complexity: O(klogk), space: O(k)
 
 class Solution:
     def kthSmallest(self, matrix, k):
-        """
-        :type matrix: List[List[int]]
-        :type k: int
-        :rtype: int
-        """
-        if len(matrix) < 1 or len(matrix[0]) < 1:
+        if not matrix or not matrix[0]:
             return None
-
         m, n = len(matrix), len(matrix[0])
-
         q = [(matrix[0][0], 0, 0)]
+        visited = {(0,0)} # needed to avoid putting the same elements into the heap multiple times
         for _ in range(k):
-            ans, i, j = heapq.heappop(q)
-
-            # add its right and below elements into the heap, they are the next smallest elements
-            if j == 0 and i + 1 < m:
-                heapq.heappush(q, (matrix[i+1][j], i + 1, j))
-            if j + 1 < n:
+            ans, i, j = heapq.heappop(q) # O(1)
+            if i + 1 < m and (i+1, j) not in visited:
+                heapq.heappush(q, (matrix[i+1][j], i + 1, j)) # O(logk)
+                visited.add((i+1, j))
+            if j + 1 < n and (i, j+1) not in visited:
                 heapq.heappush(q, (matrix[i][j+1], i, j + 1))
-
+                visited.add((i, j+1))
         return ans

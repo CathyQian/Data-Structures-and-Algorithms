@@ -11,7 +11,8 @@ initialization:f = [0 for _ in range(m)]
 return f[m-1]
 
 """
-def backPack(self, m, A):
+class Solution:
+    def backPack(self, m, A):
         pre = [0 for _ in range(m+1)]
         n = len(A)
         for i in range(n):
@@ -20,4 +21,4 @@ def backPack(self, m, A):
                 if j >= A[i]:
                     post[j] = max(pre[j], pre[j-A[i]] + A[i])
             pre = post
-        return f[m]
+        return pre[-1]
