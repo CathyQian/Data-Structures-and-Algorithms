@@ -54,7 +54,6 @@ class Solution:
         pivot = nums[left]
         i, j = left+1, left + 1
         while j < len(nums):
-            print(nums[j], pivot)
             if nums[j] > pivot:# there is duplicated elements, ignore equal elements, think about [5,5,6] you want to get [6,5,5]
                 nums[i], nums[j] = nums[j], nums[i]
                 i += 1
