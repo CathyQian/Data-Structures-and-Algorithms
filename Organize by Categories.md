@@ -1,14 +1,19 @@
 ## Organize by Categories
 
+
 ### 1. Binary Search
+#### matrix
+- [Search a 2D Matrix II](AllSolutions/Search%20a%202D%20Matrix%20II.py)
+- [Search a 2D Matrix](AllSolutions/Search%20a%202D%20Matrix.py)
+- **[Kth Smallest Element in a Sorted Matrix](AllSolutions/Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix.py)(binary search too slow??)
+#### array
 - [Find Minimum in Rotated Sorted Array I, II](AllSolutions/Find%20Minimum%20in%20Rotated%20Sorted%20Array%20I%2C%20II.py)
 - [Find Peak Element](AllSolutions/Find%20Peak%20Element.py)
 - [Insert Intervals](AllSolutions/Insert%20Intervals.py)
-- [Search a 2D Matrix II](AllSolutions/Search%20a%202D%20Matrix%20II.py)
-- [Search a 2D Matrix](AllSolutions/Search%20a%202D%20Matrix.py)
 - [Search in Rotated Sorted Array](AllSolutions/Search%20in%20Rotated%20Sorted%20Array.py)
+#### tree
 - [Search in a Binary Search Tree](AllSolutions/Search%20in%20a%20Binary%20Search%20Tree.py)
-- **[Kth Smallest Element in a Sorted Matrix](AllSolutions/Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix.py)(binary search too slow??)
+
 
 ### 2. Binary Tree
 - [Balanced Binary Tree](AllSolutions/Balanced%20Binary%20Tree.py)
@@ -43,7 +48,6 @@
 - [Serialize and Deserialize BST](AllSolutions/Serialize%20and%20Deserialize%20BST.py)
 - [Serialize and Deserialize Binary Tree](AllSolutions/Serialize%20and%20Deserialize%20Binary%20Tree.py)
 - [Shortest Path between Two nodes in the tree](AllSolutions/Shortest%20Path%20between%20Two%20nodes%20in%20the%20tree.py)
-
 - [Sum Root to Leaf Numbers](AllSolutions/Sum%20Root%20to%20Leaf%20Numbers.py)
 - [Symmetric Tree](AllSolutions/Symmetric%20Tree.py)
 - [Validate Binary Search Tree](AllSolutions/Validate%20Binary%20Search%20Tree.py)
