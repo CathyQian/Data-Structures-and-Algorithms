@@ -27,11 +27,6 @@ Output: false
 # binary search, treat 2D array as 1D array
 class Solution:
     def searchMatrix(self, matrix, target):
-        """
-        :type matrix: List[List[int]]
-        :type target: int
-        :rtype: bool
-        """
         if not matrix or target is None:
             return False
         m = len(matrix)
