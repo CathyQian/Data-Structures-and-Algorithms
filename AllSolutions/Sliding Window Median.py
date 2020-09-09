@@ -32,6 +32,8 @@ about the two heap (heap may be the best option here given that is involves freq
 problem: need to find which element to delete each time
 
 """
+# insertion sort
+# time complexity: O((n-k+1)*logk), space complexity: O(k)
 
 class Solution:
   def medianSlidingWindow(self, nums, k):
