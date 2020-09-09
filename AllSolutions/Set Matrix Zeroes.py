@@ -31,17 +31,13 @@ A straight forward solution using O(mn) space is probably a bad idea.
 A simple improvement uses O(m + n) space, but still not the best solution.
 Could you devise a constant space solution?
 """
-# O(1) space complexity, O(mn) time complexity
+# method 1: O(1) space complexity, O(mn) time complexity
 # time and space, you can only save one.
 class Solution:
     def setZeroes(self, matrix):
-        """
-        :type matrix: List[List[int]]
-        :rtype: void Do not return anything, modify matrix in-place instead.
-        """
-        height = len(matrix)
-        if(height ==0): return
-        width = len(matrix[0])
+        if not matrix or not matrix[0]:
+          return
+        height, width = len(matrix), len(matrix[0])
         for i in range(height):
             for j in range(width):
                 if matrix[i][j] == 0:
@@ -55,4 +51,21 @@ class Solution:
         for i in range(height):
             for j in range(width):
                 if matrix[i][j] == 'a':
+                    matrix[i][j] = 0
+
+# method 2: 
+class Solution(object):
+    def setZeroes(self, matrix):
+        m, n = len(matrix), len(matrix[0])
+        rows, cols = set(), set()
+
+        for i in range(m):
+            for j in range(n):
+                if matrix[i][j] == 0:
+                    rows.add(i)
+                    cols.add(j)
+                    
+        for i in range(m):
+            for j in range(n):
+                if i in rows or j in cols:
                     matrix[i][j] = 0
