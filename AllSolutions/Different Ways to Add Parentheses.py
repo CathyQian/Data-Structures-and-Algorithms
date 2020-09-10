@@ -32,6 +32,8 @@ class Solution(object):
         :type input: str
         :rtype: List[int]
         """
+        if input.isdigit():
+            return [eval(input)]
         res = []
         for i, char in enumerate(input):
             if char in "+-*":
@@ -39,6 +41,4 @@ class Solution(object):
                 part2 = self.diffWaysToCompute(input[i + 1:])
                 for x in part1:
                     res += [eval(str(x) + char + str(y)) for y in part2]
-        if len(res) == 0:
-            res.append(eval(input))
         return res
