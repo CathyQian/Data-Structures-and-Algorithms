@@ -16,12 +16,7 @@ Do it in-place and without extra memory.
 
 """
 
-# method 2
 class Solution:
-    """
-    @param: A: An integer array.
-    @return: nothing
-    """
     def rerange(self, A):
         # write your code here
         count = 0
@@ -29,12 +24,10 @@ class Solution:
             if A[i] < 0:
                 A[i], A[count] = A[count], A[i]
                 count += 1
+        # options: if len(A) is even, count = len(A)/2, if len(A) is odd, count = (len(A)+1)/2 or (len(A)-1)/2
         if count > len(A) - count:
-            A[len(A)-count:], A[:len(A)-count] =  A[:count], A[count:]
-            half = len(A) - count
-        else:
-            half = count
-        l, r = 0, half*2 - 1 
+            l, r = 1, count*2-2
+        l, r = 0, count*2 - 1 
         while l < r:
             A[l], A[r] = A[r], A[l]
             l += 2
