@@ -53,3 +53,30 @@ Constraints:
     0 <= ranges[i] <= 100
 
 """
+
+# brutal force: sort the intervals first, then iterate one by one, find the max end, if max end = end, return ans; if idx==n and end < n, return -1
+# time complexity: O(nlogn) (mainly for intervals sort)
+# similar to jump game II
+
+class Solution:
+    def minTaps(self, n: int, ranges: List[int]) -> int:
+        if n < 2:
+            return -1
+        intervals = []
+        for i, r in enumerate(ranges):
+            intervals.append((max(0, i-r), min(i+r, n)))
+        intervals.sort()
+        
+        ans, i, l, e = 0, 0, 0, 0
+        while e < n: # break when e >= n
+            while i <= n and intervals[i][0] <= l: # <=
+                e = max(e, intervals[i][1])
+                i += 1
+            if l == e:
+                return -1
+            l = e
+            ans += 1
+
+        return ans
+                
+                

@@ -28,10 +28,8 @@ Explanation:
 
 class Solution(object):
     def diffWaysToCompute(self, input):
-        """
-        :type input: str
-        :rtype: List[int]
-        """
+        if input.isdigit():
+            return [eval(input)]
         res = []
         for i, char in enumerate(input):
             if char in "+-*":
@@ -39,6 +37,24 @@ class Solution(object):
                 part2 = self.diffWaysToCompute(input[i + 1:])
                 for x in part1:
                     res += [eval(str(x) + char + str(y)) for y in part2]
-        if len(res) == 0:
-            res.append(eval(input))
         return res
+
+    
+# add memo to make the solution faster
+
+class Solution(object):
+    global memo # declare global parameter in a Python class
+    memo = {}
+    def diffWaysToCompute(self, input):
+        if input.isdigit():
+            return [eval(input)]
+        if input not in memo:
+            res = []
+            for i, char in enumerate(input):
+                if char in "+-*":
+                    part1 = self.diffWaysToCompute(input[:i])
+                    part2 = self.diffWaysToCompute(input[i + 1:])
+                    for x in part1:
+                        res += [eval(str(x) + char + str(y)) for y in part2]
+            memo[input] = res
+        return memo[input]

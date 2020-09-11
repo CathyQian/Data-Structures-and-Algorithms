@@ -16,7 +16,7 @@ Explanation: The length of longest continuous increasing subsequence is 1, and t
 Note: Length of the given array will be not exceed 2000 and the answer is guaranteed to be fit in 32-bit signed int. 
 """
 # DP solution ref: https://www.cnblogs.com/grandyang/p/7603903.html
-
+# len[i] 表示以 nums[i] 为结尾的递推序列的长度，用 cnt[i] 表示以 nums[i] 为结尾的max length递推序列的个数，初始化都赋值为1，只要有数字，那么至少都是1
 class Solution:
     def findNumberOfLIS(self, nums: List[int]) -> int:
         length, cnt = [1]*len(nums), [1]*len(nums)

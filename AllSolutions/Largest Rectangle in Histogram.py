@@ -1,24 +1,12 @@
 """
-Given n non-negative integers representing the histogram's bar height where the width of each bar is 1, find the area of largest rectangle in the histogram.
-
- 
-
-
+Given n non-negative integers representing the histogram's bar height where the width of each bar is 1, find the area of 
+largest rectangle in the histogram.
 Above is a histogram where width of each bar is 1, given height = [2,1,5,6,2,3].
-
- 
-
-
 The largest rectangle is shown in the shaded area, which has area = 10 unit.
 
- 
-
 Example:
-
 Input: [2,1,5,6,2,3]
 Output: 10
-
-
 """
 
 class Solution:
@@ -29,7 +17,7 @@ class Solution:
         for i in range(len(heights)):
             while stack and heights[i] < heights[stack[-1]]:
                 height = heights[stack.pop()]
-                width = i - stack[-1] - 1
+                width = i - stack[-1] - 1 # not width = i - stack[-1] as the last element has already popped out
                 max_area = max(max_area, height*width)
             stack.append(i)
         return max_area

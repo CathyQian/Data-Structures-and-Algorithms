@@ -1,7 +1,8 @@
 """
 K-diff Pairs in an Array
 
-Given an array of integers and an integer k, you need to find the number of unique k-diff pairs in the array. Here a k-diff pair is defined as an integer pair (i, j), where i and j are both numbers in the array and their absolute difference is k.
+Given an array of integers and an integer k, you need to find the number of unique k-diff pairs in the array. Here a k-diff pair is defined as an integer pair (i, j), where
+i and j are both numbers in the array and their absolute difference is k.
 
 Example 1:
 
@@ -36,7 +37,10 @@ class Solution:
         count = 0
         for num in nums:
             if num not in visited:
-                if (k == 0 and nums.count(num) > 1) or (k != 0 and num+k in nums):
+                if k == 0 and nums.count(num) > 1:
+                    count += nums.count(num)//2
+                    visited.add(num)
+                elif k != 0 and num+k in nums:
                     count += 1
                     visited.add(num)
         return count
