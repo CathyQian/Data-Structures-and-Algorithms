@@ -1,39 +1,38 @@
-
 ## array
 - quick sort: note only put elements bigger or smaller in front of the pivot, if there is elements equal to pivot, put it behind the pivot (see notes below).
+The major difference between quick sort and merge sort is that for quick sort, you can quickly find the position of the kth elements without ordering the elements bigger or smaller than it. So it is a good choice to find the kth largest/smallest elements in an array.
+Quick sort: time complexity -- worst O(n2), best/average O(nlogn)
 ```Python
 # Kth Largest Element in an Array
 class Solution:
     def findKthLargest(self, nums, k):
         left, right = 0, len(nums)-1
-        while left <= right:    
-            pos = self.partition(nums, left, right)
-            print(pos, nums)
+        while left <= right: # similar logic as binary search
+            pos = self.partition(nums, left, right) # after partition, nums[:pos] and nums[pos+1:] are already sorted
             if pos == k-1:
                 return nums[pos]
             elif pos > k-1:
-                right = pos -1
+                right = pos -1 # sort nums[:pos]
             else:
-                left = pos + 1
+                left = pos + 1 # sort nums[pos+1:]
     
-    def partition(self, nums, left, right):
-        # similar to quick sort
+    def partition(self, nums, left, right): # use the whole nums so that returning index is relative to the whole string
+        # quick sort
         pivot = nums[left]
-        i, j = left+1, left + 1
+        i, j = left+1, left + 1 # pay attention to the index
         while j < len(nums):
-            print(nums[j], pivot)
-            if nums[j] > pivot:# there is duplicated elements, ignore equal elements
+            if nums[j] > pivot:# if there is duplicated elements, ignore equal elements; otherwise, some later bigger elements won't be able to swap, think about [5,5,6]
                 nums[i], nums[j] = nums[j], nums[i]
                 i += 1
                 j += 1
             else:
                 j +=1
-        nums[left], nums[i-1] = nums[i-1], nums[left]
+        nums[left], nums[i-1] = nums[i-1], nums[left] # pay attention to the index
         return i-1
 ```
-- binary search to find target elements/order in sorted array or matrix (see binary search section)
+- binary search to find target elements/order in sorted or rotated array or matrix (see binary search section)
 
-- sum combinations, usually use hashmap to record cursum or cursum frequency
+- sum combinations, usually do a one-pass scan and use hashmap to record cursum or cursum frequency
 
 Example 1: Subarray Sum Equals K (hashmap to store residual)
 ```Python
@@ -86,25 +85,26 @@ class Solution:
 ```
 
 Example 3: insertion sort
+
 ```Python
 # Sliding Window Median
+# time complexity: O((n-k+1)*logn)
 class Solution:
   def medianSlidingWindow(self, nums, k):
     if k == 0: return []
     ans = []
-    window = sorted(nums[0:k])
+    window = sorted(nums[0:k]) # maintain a sorted window
     for i in range(k, len(nums)):
       ans.append((window[k // 2] + window[(k - 1) // 2]) / 2.0) # concise!
-      index = bisect.bisect_left(window, nums[i - k])
+      index = bisect.bisect_left(window, nums[i - k]) # log(n)
       window.pop(index)      
-      bisect.insort_left(window, nums[i])
+      bisect.insort_left(window, nums[i]) # log(n)
     return ans
 ```
 
 Example 4: search for pairs in array
 ```Python
-# K-diff Pairs in an Array
-
+# K-diff Pairs in an Array (unique pair)
 class Solution:
     def findPairs(self, nums: List[int], k: int) -> int:
         visited = set()
@@ -112,7 +112,7 @@ class Solution:
         for num in nums:
             if num not in visited:
                 if k == 0 and nums.count(num) > 1:
-                    count += nums.count(num)//2
+                    count += 1 # if not unique pair, count += nums.count(num)//2
                     visited.add(num)
                 elif k != 0 and num+k in nums:
                     count += 1
@@ -226,6 +226,8 @@ class Solution:
         return stack
 ```
 
+- min steps to reach a point
+
 ```Python
 # Minimum Number of Taps to Open to Water a Garden
 # change into an interval problem, sort first, then iterate one by one to find max end
@@ -337,3 +339,5 @@ class Solution:
             for j in range(i+1, n):
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 ```
+
+- binary search in matrix (see binary search section)

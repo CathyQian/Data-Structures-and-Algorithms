@@ -1,7 +1,7 @@
-一是只要遇到字符串的子序列或配准问题首先考虑动态规划DP (shortest path --- bfs or dp)，二是只要遇到需要求出所有可能情况首先考虑用递归dfs (for combination or for permutation)
+Cheatsheet of time complexity for different algorithms: https://www.bigocheatsheet.com/
 
 ## bfs
-bfs and dfs are top solutions for finding all path/permutations/combinations. Besides, bfs is also a good option to find shortest path by building the tree layer by layer. If visited elements won't appear in the tree again, the first time the target is achieved is always the shortest path.
+bfs and dfs are top solutions for finding all path/permutations/combinations. Besides, bfs is also a good option to find shortest path by building the tree layer by layer; dfs can also be used to find count (similar to dynamic programming). If visited elements won't appear in the tree again, the first time the target is achieved is always the shortest path.
 
 - [Perfect Squares](AllSolutions/Perfect%20Squares.py) (BFS for shortest path)
 - [Word Search](AllSolutions/Word%20Search.py)
@@ -76,16 +76,15 @@ Easy to create too many duplicates if the original string or array has too many 
 To avoid this, use the following method to get all permutations:
 
 ```Python
-def permute(self, s: str, start: int, result: list):
-    if start == len(s):
-        result.add(''.join(s))
+
+def permute(self, path: str, s: list, result: list):
+    # assuming s is sorted
+    if not s:
+        result.add(path)
     else:
-        for i in range(start, len(s)):
-            if s[start] != s[i] or start == i: # s is sorted first, avoid duplicates
-                s[start], s[i] = s[i], s[start] 
-                self.permute(s, m, start+1) 
-                # make sure to recover the array for the next iteration
-                s[start], s[i] = s[i], s[start]
+        for idx in range(len(s)):
+            if idx == 0 or s[idx] != s[idx-1]:
+                self.dfs(path+s[idx], s[:idx]+s[idx+1:], result)
                     
 ```
 
@@ -121,7 +120,7 @@ class Solution(object):
         self.dfs(sorted(candidates), result, 0, [], target)
         return result
 
-    def dfs(self, candidates, result, start, path, target):
+    def dfs(self, candidates, result, start, path, target): # remember these five params
         if target == 0 and path:
             result.append(path)
         else:
@@ -208,7 +207,7 @@ class Solution:
 
     def getResult(self, n, result, factors):        
         i = 2 if not factors else factors[-1] # returning elements in increasing order      
-        while i <= n / i:            
+        while i <= n // i:            
             if n % i == 0:                      
                 result.append(factors + [i, n//i])
                 self.getResult(n // i, result, factors + [i])        
@@ -251,15 +250,6 @@ class Solution:
 ```
 
 - [Palindrome Permutation II](AllSolutions/Palindrome%20Permutation%20II.py) (tricky permutaion to avoid duplicates)
-
-
-## others
-- matrix operation, the first thing is to check for empty matrix
-```Python
-if not mtx or not mtx[0]:
-    return None
-```
-- array operation, sort and skip elements if it is the same as the one before it to avoid duplicates in permutation and combination
 
 ## string operations
 Common problems include searching for the longest substring/subsequence/palindrome substring/palindrome subsequence. Note substring needs to be consecutive while subsequence not. Common methods involves dp, dfs and basic string operations. Search can start from the beginning, move towards right, or vice versa; or start from both ends, move towards the middle, or vice versa (- [Longest Palindromic Substring](AllSolutions/Longest%20Palindromic%20Substring.py)).
@@ -342,7 +332,7 @@ class Solution:
     def longestPalindromeSubseq(self, s: str) -> int:
         n = len(s)
         dp = [[0 for _ in range(n)] for _ in range(n)]
-        for i in range(n)[::-1]:
+        for i in range(n)[::-1]: # or i from 1 to n, j from i-1 to 0
             dp[i][i] = 1
             for j in range(i+1, n):
                 if s[i] == s[j]:
@@ -396,7 +386,7 @@ Four components of dp solution:
 - result (where's the ending point?)
 
 Sometimes it's hard to think of dp solution directly. A common strategy is to start with brutal force and then think about how to reduce redundant steps. A good reference can be found here: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/solution/
-
+**Alternatively, try to convert the problem into a 2D (or 3D matrix) problem, fill in status gradually.**
 - Classical problem 1: backpack problem. Use 2D dp matrix can easily solve the problem given two parameters. Alternatively, 2D dp matrix can be replaced by two 1D array pre and post which are updated interwavingly. 
 
 ```Python
@@ -417,7 +407,7 @@ return f[m-1]
 # Space O(m*n) or O(m)
 class Solution:
     def backPack(self, m, A):
-        pre = [0 for _ in range(m+1)]
+        pre = [0 for _ in range(m+1)] # 2D or 1D, n increment gradually
         n = len(A)
         for i in range(n):
             post = pre.copy() # important
@@ -466,11 +456,6 @@ class Solution:
 
 class Solution:
     def minimumTotal(self, triangle):
-        """
-        :type triangle: List[List[int]]
-        :rtype: int
-        """
-        
         n = len(triangle)
         dp = triangle[-1]
         for i in range(n-2,-1,-1):
@@ -548,7 +533,7 @@ class Solution:
         while start+1 < end: # two elements left when out of while loop
             mid = start + (end - start)//2
             # notice there are only three conditions: (1) start & mid & end in one branch; (2) start & mid in one branch, end in the other; (3) mid & end in one branch, start in the other
-            if nums[mid] > nums[start] and nums[mid] < nums[end]: # (1)
+            if nums[mid] > nums[start] and nums[mid] < nums[end]: # (1), min element found
                 return nums[start]
             elif nums[mid] > nums[start] and nums[start] > nums[end]: # (2)
                 start = mid # not start = mid + 1, no skipping elements
@@ -627,7 +612,7 @@ class Solution:
 ```
 
 ```Python
-# type 2: can not be stretched to an ordered 1D array directly (each row is sorted in ascending order, first element of the next row is not necessarily larger than last element of the previous row), Search a 2D Matrix II
+# Type 2: can not be stretched to an ordered 1D array directly (each row is sorted in ascending order, first element of the next row is not necessarily larger than last element of the previous row), Search a 2D Matrix II
 # Solution 1: efficient search, this is different from binary search though. O(m + n)
 # This is a classical way to search in partially ordered matrix. You can start
 # from matrix[m-1][n-1] or matrix[m-1][0] or matrix[0][n-1] or matrix[0][0]. 
