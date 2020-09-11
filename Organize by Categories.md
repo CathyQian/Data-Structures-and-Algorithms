@@ -3,16 +3,14 @@
 
 ### 1. Binary Search
 #### matrix
-- [Search a 2D Matrix II](AllSolutions/Search%20a%202D%20Matrix%20II.py)
 - [Search a 2D Matrix](AllSolutions/Search%20a%202D%20Matrix.py)
+- [Search a 2D Matrix II](AllSolutions/Search%20a%202D%20Matrix%20II.py)
 - **[Kth Smallest Element in a Sorted Matrix](AllSolutions/Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix.py)(binary search too slow??)
 #### array
 - [Find Minimum in Rotated Sorted Array I, II](AllSolutions/Find%20Minimum%20in%20Rotated%20Sorted%20Array%20I%2C%20II.py)
 - [Find Peak Element](AllSolutions/Find%20Peak%20Element.py)
 - [Insert Intervals](AllSolutions/Insert%20Intervals.py)
 - [Search in Rotated Sorted Array](AllSolutions/Search%20in%20Rotated%20Sorted%20Array.py)
-#### tree
-- [Search in a Binary Search Tree](AllSolutions/Search%20in%20a%20Binary%20Search%20Tree.py)
 
 
 ### 2. Binary Tree
@@ -52,6 +50,8 @@
 - [Symmetric Tree](AllSolutions/Symmetric%20Tree.py)
 - [Validate Binary Search Tree](AllSolutions/Validate%20Binary%20Search%20Tree.py)
 - [Reaching Points](AllSolutions/Reaching%20Points.py)
+- [Search in a Binary Search Tree](AllSolutions/Search%20in%20a%20Binary%20Search%20Tree.py)
+
 
 ### 3. Bread-First Search and Depth-First Search
 - [Perfect Squares](AllSolutions/Perfect%20Squares.py) (BFS for shortest path)
@@ -173,7 +173,6 @@
 - [Edit Distance](AllSolutions/Edit%20Distance.py)
 - [Jump Game](AllSolutions/Jump%20game.py)
 - [Jump Game II](AllSolutions/Jump%20Game%20II.py)
-
 - [Maximum Length of Repeated Subarray](AllSolutions/Maximum%20Length%20of%20Repeated%20Subarray.py)
 - [Minimum Adjustment Cost](AllSolutions/Minimum%20Adjustment%20Cost.py) (backpack problem)
 - [Paint House](AllSolutions/Paint%20House.py)
@@ -183,7 +182,7 @@
 - [Triangle](AllSolutions/Triangle.py)
 - [backPack](AllSolutions/backPack.py)
 - [backPack II](AllSolutions/backPack%20II.py)
-
+- [Number of Longest Increasing Subsequence](AllSolutions/Number%20of%20Longest%20Increasing%20Subsequence.py) (**)
 
 ### 8. Linked List
 - [Add Two Numbers II](AllSolutions/Add%20Two%20Numbers%20II.py)
@@ -200,39 +199,38 @@
 - [Best Time to Buy and Sell Stock](AllSolutions/Best%20Time%20to%20Buy%20and%20Sell%20Stock.py)
 - [Best Time to Buy and Sell Stock II](AllSolutions/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20II.py)
 - [Best Time to Buy and Sell Stock III](AllSolutions/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20III.py)
-- [Best Time to Buy and Sell Stock IV.py](AllSolutions/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV.py)
+- [Best Time to Buy and Sell Stock IV.py](AllSolutions/Best%20Time%20to%20Buy%20and%20Sell%20Stock%20IV.py) (**, dp, need to revisit)
 - [Continuous Subarray Sum](AllSolutions/Continuous%20Subarray%20Sum.py)
-- **[Different Ways to Add Parentheses](AllSolutions/Different%20Ways%20to%20Add%20Parentheses.py)
+- **[Different Ways to Add Parentheses](AllSolutions/Different%20Ways%20to%20Add%20Parentheses.py) (divide and conquer)
 - [Interleaving Positive and Negative Number](AllSolutions/Interleaving%20Positive%20and%20Negative%20Number.py)
 - [Interval List Intersections](AllSolutions/Interval%20List%20Intersections.py)
-- [K-diff Pairs in an Array](AllSolutions/K-diff%20Pairs%20in%20an%20Array.py)
+- [K-diff Pairs in an Array](AllSolutions/K-diff%20Pairs%20in%20an%20Array.py) (**)
 - [Kth Largest Element in an Array](AllSolutions/Kth%20Largest%20Element%20in%20an%20Array.py)
-- [Largest Rectangle in Histogram](AllSolutions/Largest%20Rectangle%20in%20Histogram.py)
+- [Largest Rectangle in Histogram](AllSolutions/Largest%20Rectangle%20in%20Histogram.py) (**, hard)
 - [Longest Consecutive Sequence](AllSolutions/Longest%20Consecutive%20Sequence.py)
-- [Longest Increasing Path in a Matrix](AllSolutions/Longest%20Increasing%20Path%20in%20a%20Matrix.py)
-- [Longest Increasing Subsequence](AllSolutions/Longest%20Increasing%20Subsequence.py)
+- [Longest Increasing Path in a Matrix](AllSolutions/Longest%20Increasing%20Path%20in%20a%20Matrix.py) (dfs)
+- [Longest Increasing Subsequence](AllSolutions/Longest%20Increasing%20Subsequence.py) (binary search)
 - [Majority Element](AllSolutions/Majority%20Element.py)
 - [Majority Element II](AllSolutions/Majority%20Element%20II.py)
-- [Median of Two Sorted Arrays](AllSolutions/Median%20of%20Two%20Sorted%20Arrays.py)
+- [Median of Two Sorted Arrays](AllSolutions/Median%20of%20Two%20Sorted%20Arrays.py) (** remember the template)
 - [Maximum subarray](AllSolutions/Maximum%20subarray.py)
-- [Meeting Rooms II](AllSolutions/Meeting%20Rooms%20II.py)
-- [Meeting Rooms](AllSolutions/Meeting%20Rooms.py)
+- [Meeting Rooms II](AllSolutions/Meeting%20Rooms%20II.py) (high frequency)
+- [Meeting Rooms](AllSolutions/Meeting%20Rooms.py) (high frequency)
 - [Merge Intervals](AllSolutions/Merge%20Intervals.py)
 - [Merge Sorted Array](AllSolutions/Merge%20Sorted%20Array.py)
 - [Merge Two Sorted Lists](AllSolutions/Merge%20Two%20Sorted%20Lists.py)
 - **[Minimum Increment to Make Array Unique](AllSolutions/Minimum%20Increment%20to%20Make%20Array%20Unique.py) (no solution yet)
-- **[Minimum Number of Taps to Open to Water a Garden](AllSolutions/Minimum%20Number%20of%20Taps%20to%20Open%20to%20Water%20a%20Garden.py) (no solution yet)
+- **[Minimum Number of Taps to Open to Water a Garden](AllSolutions/Minimum%20Number%20of%20Taps%20to%20Open%20to%20Water%20a%20Garden.py) (similar to Jump Game II)
 - [Next Permutation](AllSolutions/Next%20Permutation.py)
-- [Number of Longest Increasing Subsequence](AllSolutions/Number%20of%20Longest%20Increasing%20Subsequence.py)
 - [Partition Array](AllSolutions/Partition20%Array.py)
 - [Random Pick with Blacklist](AllSolutions/Random%20Pick%20with%20Blacklist.py)
 - [Random Pick with Weight](AllSolutions/Random%20Pick%20with%20Weight.py)
 - **[Range Sum Query Mutable](AllSolutions/Range%20Sum%20Query%20-%20Mutable.py)
 - [Remove Duplicates from Sorted Array](AllSolutions/Remove%20Duplicates%20from%20Sorted%20Array.py)
 - [Rotate Image](AllSolutions/Rotate%20Image.py)
-- [Set Matrix Zeroes](AllSolutions/Set%20Matrix%20Zeroes.py)
+- [Set Matrix Zeroes](AllSolutions/Set%20Matrix%20Zeroes.py)(why simple replacement solution doesn't work?)
 - [Single Number](AllSolutions/Single%20Number.py)
-- [Sliding Window Median](AllSolutions/Sliding%20Window%20Median.py)
+- [Sliding Window Median](AllSolutions/Sliding%20Window%20Median.py)(** multiset??)
 - [Sort Colors](AllSolutions/Sort%20Colors.py)
 - [Spiral Matrix](AllSolutions/Spiral%20Matrix.py)
 - [Spiral Matrix II](AllSolutions/Spiral%20Matrix%20II.py)

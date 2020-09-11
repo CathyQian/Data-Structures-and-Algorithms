@@ -90,6 +90,55 @@ class Solution:
 ```
 
 3. Moore voting algorithm -- Majority Element I, II
+```Python
+# Majority Element
+"""
+Boyer-Moore Majority Voting Algorithm (or Moore Voting)
+
+The idea is that we use two additional variables:
+
+    candidate: to keep track of the potential candidate at each step.
+    counter: the number of appearance of the candidate at that step.
+
+Initially, the current candidate is None and the counter is 0. As we iterate the array over an element e, we will do the following check:
+
+    If the counter is 0, we set the current element e as the new candidate.
+    If the counter is not 0, we will check:
+    If the current element e is the same as the candidate, we increment the counter by 1
+    Else we decrement the counter by 1
+"""
+# both can be replaced by hashmap
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        V = [None, 0]
+        for num in nums:
+            if V[1] == 0:
+                V = [num, 1]
+            elif num == V[0]:
+                V[1] += 1
+            else:
+                V[1] -= 1
+        return V[0] 
+
+# Majority element II
+class Solution(object):
+    def majorityElement(self, nums):
+        v1 = [None, 0]
+        v2 = [None, 0]
+        for num in nums:
+            if v1[1] == 0:
+                v1 = [num, 1]
+            elif v2[1] == 0:
+                v2 = [num, 1]
+            elif num == v1[0]:
+                v1[1] += 1
+            elif num == v2[0]:
+                v2[1] += 1
+            else:
+                v1[1] -= 1
+                v2[1] -= 1
+        return [v for v in (v1[0], v2[0]) if nums.count(v) > len(nums)//3]
+```
 4. KMP algorithm (pattern search) -- longest happy prefix
 Time complexity of naive pattern searching algorithm is O(m(n-m+1)). It doesn’t work well in cases where we see many matching characters followed by a mismatching character. The time complexity of KMP algorithm is O(n) in the worst case.
 
@@ -111,5 +160,22 @@ class Solution:
                     i += 1
         return t[:lps[-1]]
 ```
-5. Check my algorithm notes
+5. State machine (hard to understand, do not use, can be replaced with dynamic programming)
+State machine: https://www.youtube.com/watch?v=vwJT2njv6rM
+
+```Python
+# Best Time to Buy and Sell Stock III
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        buy1 = -sys.maxsize
+        sell1 = 0
+        buy2 = -sys.maxsize
+        sell2 = 0
+        for price in prices:
+            buy1 = max(buy1, -price)
+            sell1 = max(sell1, buy1 + price)
+            buy2 = max(buy2, sell1-price)
+            sell2 = max(sell2, buy2 + price)
+        return sell2
+```
 

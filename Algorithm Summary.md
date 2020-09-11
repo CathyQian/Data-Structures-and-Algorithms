@@ -395,6 +395,8 @@ Four components of dp solution:
 - initialization (where's the starting point?)
 - result (where's the ending point?)
 
+Sometimes it's hard to think of dp solution directly. A common strategy is to start with brutal force and then think about how to reduce redundant steps. A good reference can be found here: https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/solution/
+
 - Classical problem 1: backpack problem. Use 2D dp matrix can easily solve the problem given two parameters. Alternatively, 2D dp matrix can be replaced by two 1D array pre and post which are updated interwavingly. 
 
 ```Python
@@ -527,42 +529,157 @@ class Solution:
 ```
 
 ## binary search (array and matrix)
-- array is relatively easy
-- matrix has some tricks
+- array is relatively easy while rotated array is a little tricky; things get more complicated if there is duplicates in the array
+Common steps involved are 
+- 1) find the mid element 
+- 2) tell if mid is in the same branch as start or end using if/else 
+- 3) tell target is between start and mid or between mid and end, take next step. If duplicates is found, move start one step forward, update mid again.
 
-```
-
-```
-## array and matrix
-- quick sort: note only put elements bigger or smaller in front of the pivot, if there is elements equal to pivot, put it behind the pivot (see notes below).
 ```Python
-# Kth Largest Element in an Array
+# Find Minimum in Rotated Sorted Array I
+# no duplicates in the array
 class Solution:
-    def findKthLargest(self, nums, k):
-        left, right = 0, len(nums)-1
-        while left <= right:    
-            pos = self.partition(nums, left, right)
-            print(pos, nums)
-            if pos == k-1:
-                return nums[pos]
-            elif pos > k-1:
-                right = pos -1
+    def findMin(self, nums: List[int]) -> int:
+        if not nums:
+            return None
+        if len(nums) == 1:
+            return nums[0]
+        start, end = 0, len(nums) - 1
+        while start+1 < end: # two elements left when out of while loop
+            mid = start + (end - start)//2
+            # notice there are only three conditions: (1) start & mid & end in one branch; (2) start & mid in one branch, end in the other; (3) mid & end in one branch, start in the other
+            if nums[mid] > nums[start] and nums[mid] < nums[end]: # (1)
+                return nums[start]
+            elif nums[mid] > nums[start] and nums[start] > nums[end]: # (2)
+                start = mid # not start = mid + 1, no skipping elements
+            else: # (3)
+                end = mid # not end = mid - 1, no skipping elements
+        return min(nums[start], nums[end])
+
+# Find Minimum in Rotated Sorted Array II
+# There is duplicates in the array
+class Solution:
+    def findMin(self, nums: List[int]) -> int:
+        if not nums:
+            return None
+        if len(nums) == 1:
+            return nums[0]
+        start, end = 0, len(nums) - 1
+        while start+1 < end: 
+            mid = start + (end - start)//2
+            if nums[mid] == nums[start]: # add when duplicates allowed
+                start += 1
+            elif nums[mid] > nums[start] and nums[mid] <= nums[end]:
+                return nums[start]
+            elif nums[mid] > nums[start] and nums[start] >= nums[end]:
+                start = mid
             else:
-                left = pos + 1
-    
-    def partition(self, nums, left, right):
-        # similar to quick sort
-        pivot = nums[left]
-        i, j = left+1, left + 1
-        while j < len(nums):
-            print(nums[j], pivot)
-            if nums[j] > pivot:# there is duplicated elements, ignore equal elements
-                nums[i], nums[j] = nums[j], nums[i]
-                i += 1
-                j += 1
-            else:
-                j +=1
-        nums[left], nums[i-1] = nums[i-1], nums[left]
-        return i-1
+                end = mid
+        return min(nums[start], nums[end])
 ```
-- binary search to find target elements/order in sorted array or matrix
+
+```Python
+# Search in Rotated Sorted Array
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        start, end = 0, len(nums) - 1
+        while start <= end:
+            mid = start + (end - start)//2
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] >= nums[start]: # tell if mid and start are in the same branch, only one senario
+                if target >= nums[start] and target < nums[mid]:
+                    end = mid - 1
+                else:
+                    start = mid + 1
+            else: # nums[mid] < nums[start]:
+                if target <= nums[end] and nums[mid] < target:
+                    start = mid + 1
+                else:
+                    end = mid - 1
+        return -1
+
+
+
+```
+- matrix has some tricks
+There are a couple of types of matrix and different binary search methods are used:
+
+```Python
+# type 1: can be stretched to an ordered 1D array directly (each row is sorted in ascending order, first element of the next row is larger than last element of the previous row) Search a 2D Matrix
+class Solution:
+    def searchMatrix(self, matrix, target):
+        if not matrix or target is None:
+            return False
+        m = len(matrix)
+        n = len(matrix[0])
+        l, r = 0, m * n - 1
+        while l <= r:
+            mid = l + (r-l)//2
+            row, col = mid // n , mid % n
+            if matrix[row][col] == target:
+                return True
+            if matrix[row][col] < target:
+                l = mid + 1
+            else:
+                r = mid - 1
+        return False
+```
+
+```Python
+# type 2: can not be stretched to an ordered 1D array directly (each row is sorted in ascending order, first element of the next row is not necessarily larger than last element of the previous row), Search a 2D Matrix II
+# Solution 1: efficient search, this is different from binary search though. O(m + n)
+# This is a classical way to search in partially ordered matrix. You can start
+# from matrix[m-1][n-1] or matrix[m-1][0] or matrix[0][n-1] or matrix[0][0]. 
+# Be adaptive to the problem. Don't always stick to binary search. Indeed, binary
+# search won't work well here since it will over-filter elements.
+class Solution:
+    def searchMatrix(self, matrix, target):
+        if not matrix or not matrix[0]:
+            return False
+
+        row, col = len(matrix), len(matrix[0])
+        cr, cc = 0, col - 1
+        while cr < row and cc >= 0:
+            if matrix[cr][cc] == target:
+                return True
+            elif matrix[cr][cc] > target:
+                cc -= 1
+            else:
+                cr += 1
+
+        return False
+        
+# Solution 2: divide and conquer, O(nlogn) time
+# This is a smart binary search. Very easy to make mistakes though.
+# ref:https://www.geeksforgeeks.org/search-in-a-row-wise-and-column-wise-sorted-2d-array-using-divide-and-conquer-algorithm/
+# It's easy to make mistakes on index using this method
+```
+- binary search for intervals operation, be careful with the index
+```Python
+class Solution:
+    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]: 
+        bounds = []
+        for i in range(len(newInterval)):
+            left, right = 0, len(intervals)-1
+            while left <= right:
+                mid = left+(right-left)//2
+                if intervals[mid][0] <= newInterval[i]: # find left and right bound for newInterval
+                    left = mid + 1
+                else:
+                    right = mid - 1
+            bounds.append([left, right])
+            
+        left_bound, right_bound = bounds[0][1], bounds[1][0]
+        
+        result = intervals[:left_bound+1]
+        if not result or result[-1][1]<newInterval[0]:
+            result.append(newInterval)
+        else:
+            result[-1][1]= max(result[-1][1], newInterval[1])
+            
+        for idx in range(left_bound+1, right_bound):
+                result[-1][1]= max(result[-1][1], intervals[idx][1])
+        return result + intervals[right_bound:]
+```
+
