@@ -37,9 +37,10 @@ Return 3. The paths that sum to 8 are:
 #         self.left = None
 #         self.right = None
 
+# divide and conquer
+
 class Solution:
     def pathSum(self, root, sum):
-        # divide and conquer
         if not root:
             return 0
         cnt = self.pathSumHelper(root, sum) # make sure in pathSumHelper the path includes the current node 
@@ -48,6 +49,7 @@ class Solution:
         return cnt + left + right
 
     def pathSumHelper(self, node, total):
+        # return number of paths include node and sums up to total
         if not node:
             return 0
         count = 0
@@ -59,35 +61,32 @@ class Solution:
             count += self.pathSumHelper(node.right, total - node.val)
         return count
 
-# binary tree to n-ary tree
-import collections
+# binary tree to n-ary tree (cannot use if else anymore since there are too many children, can use for loop instead or dfs) 
 class nArryTreeNode(object):
     def __init__(self, x):
         self.val = x
         self.children = []
 
 class Solution:
-    def pathSum(self, root, target):
+    def pathSum(self, root, sum):
         if not root:
             return 0
-        self.result = 0
-        self.memo = collections.defaultdict(int)
-        self.memo[0] = 1
-        self.dfs(root, 0, target)
-        return self.result
-    
-    def dfs(self, root, cursum, target):
-        if root:
-            cursum += root.val
-            residual = cursum - target
-            self.result += self.memo[residual]
-            # do dfs starting from the path include root
-            self.memo[cursum] += 1
-            for node in root.children: # change these into left chile or right child, can be applied to binary tree case
-                self.dfs(node, cursum, target)
-            # finish dfs starting from root, remove the cursum ending in this root
-            # since we can't use them in other path
-            self.memo[cursum] -= 1 # critical
+        cnt = self.pathSumHelper(root, sum) # this path includes the current node 
+        for child in root.children:
+            cnt += self.pathSum(child, sum)
+        return cnt
+
+    def pathSumHelper(self, node, total):
+        # return number of paths include node and sums up to total
+        if not node:
+            return 0
+        count = 0
+        if total == node.val:
+            count += 1 # not count = 1 as there may be other path as well
+        for child in node.children:
+            if child:
+                count += self.pathSumHelper(node.left, total - node.val)
+        return count
 
 leaf1 = nArryTreeNode(3)
 leaf2 = nArryTreeNode(8)
