@@ -37,25 +37,6 @@ Explanation: The root node's value is 5 but its right child's value is 4.
 #         self.right = None
 
 class Solution:
-    """ incorrect, but easy to make mistake
-    def isValidBST(self, root: TreeNode) -> bool:
-        if root is None:
-            return True
-        
-        if root.left:
-            if root.left.val < root.val and self.isValidBST(root.left):
-                pass
-            else:
-                return False
-        
-        if root.right:
-            if root.right.val > root.val and self.isValidBST(root.right):
-                pass
-            else:
-                return False
-        
-        return True
-    """
     def isValidBST(self, root: TreeNode) -> bool:
         return self.isValidBSTRecu(root, float("-inf"), float("inf"))
   
