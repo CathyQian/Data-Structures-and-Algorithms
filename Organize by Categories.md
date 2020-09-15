@@ -49,7 +49,7 @@
 - [Sum Root to Leaf Numbers](AllSolutions/Sum%20Root%20to%20Leaf%20Numbers.py)
 - **[Symmetric Tree](AllSolutions/Symmetric%20Tree.py)
 - [Validate Binary Search Tree](AllSolutions/Validate%20Binary%20Search%20Tree.py)
-- [Reaching Points](AllSolutions/Reaching%20Points.py)
+- **[Reaching Points](AllSolutions/Reaching%20Points.py)(research bottom to top)
 - [Search in a Binary Search Tree](AllSolutions/Search%20in%20a%20Binary%20Search%20Tree.py)
 
 
