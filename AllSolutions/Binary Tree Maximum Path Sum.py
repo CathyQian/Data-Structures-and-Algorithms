@@ -37,9 +37,9 @@ Output: 42
 
 
 class Solution:
-    globalmax = - float('inf')
+
     def maxPathSum(self, root: TreeNode) -> int:
-        
+        self.globalmax = - float('inf')
         _ = self.maxPathSumHelper(root)
         return self.globalmax
     
