@@ -34,25 +34,27 @@ https://zhuanlan.zhihu.com/p/65238455
 http://bookshadow.com/weblog/2015/05/07/leetcode-course-schedule/  -- topological sort
 """
 
+# bfs, adjacency_list + in_degree list
 class Solution(object):
-     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-         graph = collections.defaultdict(list)
-         indegrees = collections.defaultdict(int)
-         for u, v in prerequisites:
-             graph[v].append(u)
-             indegrees[u] += 1
-         for i in range(N):
-             zeroDegree = False
-             for j in range(N):
-                 if indegrees[j] == 0:
-                     zeroDegree = True
-                     break
-             if not zeroDegree: 
-                 return False
-             indegrees[j] = -1
-             for node in graph[j]:
-                 indegrees[node] -= 1
-        return True  
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        graph = collections.defaultdict(list)
+        in_degree = {num : 0 for num in range(numCourses)} # required
+        for u, v in prerequisites:
+            graph[v].append(u)
+            in_degree[u] += 1
+            
+        queue = deque([c for c in in_degree if in_degree[c] == 0])
+        count = 0
+        while queue:
+            c = queue.popleft()
+            count += 1
+            for d in graph[c]:
+                in_degree[d] -= 1
+                if in_degree[d] == 0:
+                    queue.append(d)
+        if count < numCourses:# peeled all the onion
+            return False
+        return True   
 
 # DFS + recusion stack
 from collections import defaultdict
@@ -60,7 +62,7 @@ class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         self.dependencies = defaultdict(list)
         for pre in prerequisites:
-            self.dependencies[pre[0]].append(pre[1])
+            self.dependencies[pre[0]].append(pre[1]) # opposite from bfs
         
         visited, stacked = [False]*numCourses, [False]*numCourses
         for course in range(numCourses):
