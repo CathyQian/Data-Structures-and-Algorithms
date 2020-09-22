@@ -31,7 +31,7 @@ Note:
 
 
 """
-
+# bfs solution is similar to Alien Dictionary (topological sort)
 # dfs following topological sort alogrithm in Geeks&Geeks, can also use bfs
 # Main difference is to use different label of a node before and after recursion to detect cycle (!!!!)
 
