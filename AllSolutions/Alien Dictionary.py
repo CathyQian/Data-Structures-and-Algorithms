@@ -17,6 +17,7 @@ it's time to put a node in the output list
 """
 
 # bfs
+
 from collections import defaultdict, deque
 class Solution:
     def alienOrder(self, words: List[str]) -> str:
@@ -79,12 +80,13 @@ def alienOrder(self, words: List[str]) -> str:
     # Step 2: Depth-first search.
     self.output = []
     self.color = {c:0 for word in words for c in word}}
-    self.has_cycle = False    
-        for vertex in range(len(self.color)):
-            if self.color[vertex] == 0:
-                self.dfs(vertex)
-            if self.has_cycle:
-                break
+    self.has_cycle = False
+    
+    for vertex in range(len(self.color)):
+        if self.color[vertex] == 0:
+            self.dfs(vertex)
+        if self.has_cycle:
+            break
 
     if self.has_cycle:
         return ""
