@@ -41,14 +41,14 @@ class Solution:
 
         # Step 2: We need to repeatedly pick off nodes with an indegree of 0.
         output = []
-        queue = deque([c for c in in_degree if in_degree[c] == 0])
+        d = deque([c for c in in_degree if in_degree[c] == 0])
         while queue:
-            c = queue.popleft()
+            c = d.popleft()
             output.append(c)
-            for d in adj_list[c]:
-                in_degree[d] -= 1
-                if in_degree[d] == 0:
-                    queue.append(d)
+            for v in adj_list[c]:
+                in_degree[v] -= 1
+                if in_degree[v] == 0:
+                    d.append(v)
 
         # If not all letters are in output, that means there was a cycle and so
         # no valid ordering. Return "" as per the problem description.
