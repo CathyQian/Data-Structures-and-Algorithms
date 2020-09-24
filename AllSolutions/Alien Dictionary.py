@@ -79,7 +79,7 @@ def alienOrder(self, words: List[str]) -> str:
 
     # Step 2: Depth-first search.
     self.output = []
-    self.color = {c:0 for word in words for c in word}}
+    self.color = {c:0 for word in words for c in word}
     self.has_cycle = False
     
     for vertex in range(len(self.color)):
@@ -115,10 +115,7 @@ def alienOrder(self, words: List[str]) -> str:
         self.output.append(node)
 
  """
- advantage of bfs:
- can output may (not all) possible topological order by permuting elements in each layer
- 
- advantage of dfs:
+ get all possible order: use dfs, permute vertex in line 85
  can tell if all nodes in the graph is connected or not (starting from one node, see if all nodes can be visited or not) in undirectional graph
- different order of dfs(vertx) will result in different topological sort order
+ 
  """
