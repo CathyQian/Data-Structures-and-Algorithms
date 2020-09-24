@@ -116,8 +116,9 @@ def alienOrder(self, words: List[str]) -> str:
 
  """
  advantage of bfs:
- can output all possible topological order by permuting elements in each layer
+ can output may (not all) possible topological order by permuting elements in each layer
  
  advantage of dfs:
  can tell if all nodes in the graph is connected or not (starting from one node, see if all nodes can be visited or not) in undirectional graph
+ different order of dfs(vertx) will result in different topological sort order
  """
