@@ -113,3 +113,11 @@ def alienOrder(self, words: List[str]) -> str:
         # Recursion ends. We mark it as black
         self.color[node] = 2
         self.output.append(node)
+
+ """
+ advantage of bfs:
+ can output all possible topological order by permuting elements in each layer
+ 
+ advantage of dfs:
+ can tell if all nodes in the graph is connected or not (starting from one node, see if all nodes can be visited or not) in undirectional graph
+ """
