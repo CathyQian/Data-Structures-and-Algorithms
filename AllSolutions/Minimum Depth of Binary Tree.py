@@ -61,8 +61,8 @@ class Solution:
         if root is None:
             return 0
         
-        elif root.left is None and root.right is None:
-            return 1
+        # elif root.left is None and root.right is None:
+        #    return 1
         
         elif root.left is not None and root.right is None:
             left = self.minDepth(root.left)

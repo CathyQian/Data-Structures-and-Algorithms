@@ -38,8 +38,8 @@
 - [Path Sum](AllSolutions/Path%20Sum.py)
 - [Path Sum II](AllSolutions/Path%20Sum%20II.py)
 - [Path Sum III](AllSolutions/Path%20Sum%20III.py)
-- [Populating Next Right Pointers in Each Node II](AllSolutions/Populating%20Next%20Right%20Pointers%20in%20Each%20Node%20II.py)
-- [Populating Next Right Pointers in Each Node](AllSolutions/Populating%20Next%20Right%20Pointers%20in%20Each%20Node.py)
+- **[Populating Next Right Pointers in Each Node II](AllSolutions/Populating%20Next%20Right%20Pointers%20in%20Each%20Node%20II.py)
+- **[Populating Next Right Pointers in Each Node](AllSolutions/Populating%20Next%20Right%20Pointers%20in%20Each%20Node.py)
 - [Recover Binary Search Tree](AllSolutions/Recover%20Binary%20Search%20Tree.py)
 - [Same Tree](AllSolutions/Same%20Tree.py)
 - [Search Range in Binary Search Tree](AllSolutions/Search%20Range%20in%20Binary%20Search%20Tree.py)
@@ -47,9 +47,9 @@
 - [Serialize and Deserialize Binary Tree](AllSolutions/Serialize%20and%20Deserialize%20Binary%20Tree.py)
 - [Shortest Path between Two nodes in the tree](AllSolutions/Shortest%20Path%20between%20Two%20nodes%20in%20the%20tree.py)
 - [Sum Root to Leaf Numbers](AllSolutions/Sum%20Root%20to%20Leaf%20Numbers.py)
-- [Symmetric Tree](AllSolutions/Symmetric%20Tree.py)
+- **[Symmetric Tree](AllSolutions/Symmetric%20Tree.py)
 - [Validate Binary Search Tree](AllSolutions/Validate%20Binary%20Search%20Tree.py)
-- [Reaching Points](AllSolutions/Reaching%20Points.py)
+- **[Reaching Points](AllSolutions/Reaching%20Points.py)(research bottom to top)
 - [Search in a Binary Search Tree](AllSolutions/Search%20in%20a%20Binary%20Search%20Tree.py)
 
 
@@ -189,7 +189,7 @@
 
 
 ### 8. Linked List
-- [Add Two Numbers II](AllSolutions/Add%20Two%20Numbers%20II.py)
+- **[Add Two Numbers II](AllSolutions/Add%20Two%20Numbers%20II.py)
 - [Add Two Numbers](AllSolutions/Add%20Two%20Numbers.py)
 - **[Copy List with Random Pointer](AllSolutions/Copy%20List%20with%20Random%20Pointer.py)
 - [Intersection of Two Linked Lists](AllSolutions/Intersection%20of%20Two%20Linked%20Lists.py)

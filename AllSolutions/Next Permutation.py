@@ -15,7 +15,7 @@ Here are some examples. Inputs are in the left-hand column and its corresponding
 
 """
 
-
+# https://www.nayuki.io/page/next-lexicographical-permutation-algorithm
 class Solution:
     def nextPermutation(self, nums: List[int]) -> None:
         """

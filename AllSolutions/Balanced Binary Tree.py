@@ -44,16 +44,8 @@ class Solution:
     def isBalanced(self, root: TreeNode) -> bool:
         if root is None:
             return True
-        else:
-            height_diff = abs(self.height(root.left) - self.height(root.right))
-            if height_diff <= 1 and self.isBalanced(root.left) and self.isBalanced(root.right):
-                return True
-            else:
-                return False
-        
+        return abs(self.height(root.left) - self.height(root.right)) <= 1 and self.isBalanced(root.left) and self.isBalanced(root.right)
+
         
     def height(self, root):
-        if root is None:
-            return 0
-        else:
-            return max(self.height(root.left), self.height(root.right)) + 1
+        return 0 if not root else max(self.height(root.left), self.height(root.right)) + 1

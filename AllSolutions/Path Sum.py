@@ -35,7 +35,5 @@ class Solution:
         elif root.left is None and root.right is None:
             if root.val == sum:
                 return True
-            else: # add this line makes code easier to understand
-                return False
                 
         return self.hasPathSum(root.left, sum - root.val) or self.hasPathSum(root.right, sum - root.val)

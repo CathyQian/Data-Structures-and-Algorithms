@@ -38,7 +38,6 @@ Constraints:
 
 """
 
-
 class Solution:
     def connect(self, root: 'Node') -> 'Node':
         head = root

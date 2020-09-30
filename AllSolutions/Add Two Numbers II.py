@@ -1,7 +1,8 @@
 """
 Add Two Numbers II
 
-You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+You are given two non-empty linked lists representing two non-negative integers. The most significant digit comes first and each of their nodes contain a single digit. Add the 
+two numbers and return it as a linked list.
 
 You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 
@@ -54,7 +55,7 @@ class Solution:
         return pre
 
 
-# follow up, not modify the linked list, use stack instead
+# follow up, not modify the linked list, use stack instead (preferred)
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         stack1, stack2 = [], []
@@ -78,7 +79,7 @@ class Solution:
             newnode = ListNode(total%10, cur) # build a linked list reversely
             cur = newnode
             residual = total//10
-        if residual > 0:
+        if residual > 0: #
             newnode = ListNode(residual, cur)
             cur = newnode
 

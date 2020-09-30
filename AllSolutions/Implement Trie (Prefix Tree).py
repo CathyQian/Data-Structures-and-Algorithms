@@ -25,6 +25,7 @@ Note:
 
 # 1)This problem have multiple solutions, see Google Colab
 # If prefix = word, return True
+
 class Trie:
 
     def __init__(self):

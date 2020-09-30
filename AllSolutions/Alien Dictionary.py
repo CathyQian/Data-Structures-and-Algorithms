@@ -17,6 +17,7 @@ it's time to put a node in the output list
 """
 
 # bfs
+
 from collections import defaultdict, deque
 class Solution:
     def alienOrder(self, words: List[str]) -> str:
@@ -41,14 +42,14 @@ class Solution:
 
         # Step 2: We need to repeatedly pick off nodes with an indegree of 0.
         output = []
-        queue = deque([c for c in in_degree if in_degree[c] == 0])
+        d = deque([c for c in in_degree if in_degree[c] == 0])
         while queue:
-            c = queue.popleft()
+            c = d.popleft()
             output.append(c)
-            for d in adj_list[c]:
-                in_degree[d] -= 1
-                if in_degree[d] == 0:
-                    queue.append(d)
+            for v in adj_list[c]:
+                in_degree[v] -= 1
+                if in_degree[v] == 0:
+                    d.append(v)
 
         # If not all letters are in output, that means there was a cycle and so
         # no valid ordering. Return "" as per the problem description.
@@ -78,13 +79,14 @@ def alienOrder(self, words: List[str]) -> str:
 
     # Step 2: Depth-first search.
     self.output = []
-    self.color = {c:0 for word in words for c in word}}
-    self.has_cycle = False    
-        for vertex in range(len(self.color)):
-            if self.color[vertex] == 0:
-                self.dfs(vertex)
-            if self.has_cycle:
-                break
+    self.color = {c:0 for word in words for c in word}
+    self.has_cycle = False
+    
+    for vertex in range(len(self.color)):
+        if self.color[vertex] == 0:
+            self.dfs(vertex)
+        if self.has_cycle:
+            break
 
     if self.has_cycle:
         return ""
@@ -111,3 +113,9 @@ def alienOrder(self, words: List[str]) -> str:
         # Recursion ends. We mark it as black
         self.color[node] = 2
         self.output.append(node)
+
+ """
+ get all possible order: use dfs, permute vertex in line 85
+ can tell if all nodes in the graph is connected or not (starting from one node, see if all nodes can be visited or not) in undirectional graph
+ 
+ """
