@@ -45,3 +45,33 @@ class Solution:
                 
         return sum(stack)
         
+# easier to understand solution, time O(n)
+
+class Solution:
+    def calculate(self, s: str) -> int:
+        stack = []
+        ops = '+'
+        i = 0 
+        while i < len(s):
+            if s[i].isnumeric():
+                num = 0
+                while i < len(s) and s[i].isnumeric():
+                    num = 10 * num + int(s[i])
+                    i += 1
+                if ops == '*':
+                    stack[-1] *= num
+                elif ops == '/': # a bit tricky here
+                    if stack[-1] < 0:
+                        stack[-1] = -(-stack[-1]//num)
+                    else:
+                        stack[-1] = stack[-1]//num
+                elif ops == '+':
+                    stack.append(num)
+                elif ops == '-':
+                    stack.append(-num)
+                i -= 1
+            elif s[i] in ['*', '/', '+', '-']:
+                ops = s[i]    
+            i += 1
+        return sum(stack)
+        

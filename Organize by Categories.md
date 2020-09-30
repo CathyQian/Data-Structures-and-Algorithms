@@ -105,7 +105,7 @@
 - [Excel Sheet Column Number](AllSolutions/Excel%20Sheet%20Column%20Number.py)
 - [Find Duplicate File in System](AllSolutions/Find%20Duplicate%20File%20in%20System.py)
 - [Integer to English Words](AllSolutions/Integer%20to%20English%20Words.py)
-- [Interleaving String](AllSolutions/Interleaving%20String.py) (dp)
+- **[Interleaving String](AllSolutions/Interleaving%20String.py) (dp)
 - [Is Subsequence](AllSolutions/Is%20Subsequence.py) (binary search)
 - [Longest Common Prefix](AllSolutions/Longest%20Common%20Prefix.py)
 - [Longest Common Subsequence](AllSolutions/Longest%20Common%20Subsequence.py) (dp)
@@ -145,15 +145,15 @@
 
 #### Stack
 - [Basic Calculator II](AllSolutions/Basic%20Calculator%20II.py)
-- [Binary Search Tree Iterator](AllSolutions/Binary%20Search%20Tree%20Iterator.py)
+- **[Binary Search Tree Iterator](AllSolutions/Binary%20Search%20Tree%20Iterator.py)
 - [Count of Smaller Numbers After Self](AllSolutions/Count%20of%20Smaller%20Numbers%20After%20Self.py)
 - **[MinStack](AllSolutions/MinStack.py)
 
 #### Graph
-- [Clone Graph](AllSolutions/Clone%20Graph.py)
+- **[Clone Graph](AllSolutions/Clone%20Graph.py)
 - [Alien Dictionary](AllSolutions/Alien%20Dictionary.py)
-- [Course Schedule](AllSolutions/Course%20Schedule.py)
-- [Course Schedule II](AllSolutions/Course%20Schedule%20II.py)
+- **[Course Schedule](AllSolutions/Course%20Schedule.py)
+- **[Course Schedule II](AllSolutions/Course%20Schedule%20II.py)
 - [Find the Celebrity](AllSolutions/Find%20the%20Celebrity.py)
 - [Friend Circles](AllSolutions/Friend%20Circles.py)
 - [Graph to Tree](AllSolutions/Graph%20to%20Tree.py)
@@ -174,7 +174,7 @@
 - [Jump Game](AllSolutions/Jump%20game.py)
 - [Jump Game II](AllSolutions/Jump%20Game%20II.py)
 - [Maximum Length of Repeated Subarray](AllSolutions/Maximum%20Length%20of%20Repeated%20Subarray.py)
-- [Minimum Adjustment Cost](AllSolutions/Minimum%20Adjustment%20Cost.py) (backpack problem)
+- **[Minimum Adjustment Cost](AllSolutions/Minimum%20Adjustment%20Cost.py) (backpack problem)
 - [Paint House](AllSolutions/Paint%20House.py)
 - [Paint House II](AllSolutions/Paint%20House%20II.py) (**)
 - [Paint House III](AllSolutions/Paint%20House%20III.py) (**)
@@ -182,7 +182,11 @@
 - [Triangle](AllSolutions/Triangle.py)
 - [backPack](AllSolutions/backPack.py)
 - [backPack II](AllSolutions/backPack%20II.py)
-- [Number of Longest Increasing Subsequence](AllSolutions/Number%20of%20Longest%20Increasing%20Subsequence.py) (**)
+- **[Number of Longest Increasing Subsequence](AllSolutions/Number%20of%20Longest%20Increasing%20Subsequence.py)
+
+-**[Distinct Subsequences](AllSolutions/Distinct%20Subsequences.py) (hard)
+-**[Distinct Subsequences II](AllSolutions/Distinct%20Subsequences%20II.py) (hard)
+
 
 ### 8. Linked List
 - [Add Two Numbers II](AllSolutions/Add%20Two%20Numbers%20II.py)
@@ -207,9 +211,9 @@
 - [K-diff Pairs in an Array](AllSolutions/K-diff%20Pairs%20in%20an%20Array.py) (**)
 - [Kth Largest Element in an Array](AllSolutions/Kth%20Largest%20Element%20in%20an%20Array.py)
 - [Largest Rectangle in Histogram](AllSolutions/Largest%20Rectangle%20in%20Histogram.py) (**, hard)
-- [Longest Consecutive Sequence](AllSolutions/Longest%20Consecutive%20Sequence.py)
+- **[Longest Consecutive Sequence](AllSolutions/Longest%20Consecutive%20Sequence.py)
 - [Longest Increasing Path in a Matrix](AllSolutions/Longest%20Increasing%20Path%20in%20a%20Matrix.py) (dfs)
-- [Longest Increasing Subsequence](AllSolutions/Longest%20Increasing%20Subsequence.py) (binary search)
+- **[Longest Increasing Subsequence](AllSolutions/Longest%20Increasing%20Subsequence.py) (binary search)
 - [Majority Element](AllSolutions/Majority%20Element.py)
 - [Majority Element II](AllSolutions/Majority%20Element%20II.py)
 - [Median of Two Sorted Arrays](AllSolutions/Median%20of%20Two%20Sorted%20Arrays.py) (** remember the template)

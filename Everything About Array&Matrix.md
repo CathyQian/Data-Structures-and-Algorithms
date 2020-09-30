@@ -90,16 +90,16 @@ Example 3: insertion sort
 # Sliding Window Median
 # time complexity: O((n-k+1)*logn)
 class Solution:
-  def medianSlidingWindow(self, nums, k):
-    if k == 0: return []
-    ans = []
-    window = sorted(nums[0:k]) # maintain a sorted window
-    for i in range(k, len(nums)):
-      ans.append((window[k // 2] + window[(k - 1) // 2]) / 2.0) # concise!
-      index = bisect.bisect_left(window, nums[i - k]) # log(n)
-      window.pop(index)      
-      bisect.insort_left(window, nums[i]) # log(n)
-    return ans
+    def medianSlidingWindow(self, nums, k):
+        if k == 0: return []
+        ans = []
+        window = sorted(nums[0:k]) # maintain a sorted window
+        for i in range(k, len(nums)):
+            ans.append((window[k // 2] + window[(k - 1) // 2]) / 2.0) # concise!
+            index = bisect.bisect_left(window, nums[i - k]) # log(n)
+            window.pop(index)      
+            bisect.insort_left(window, nums[i]) # log(n)
+        return ans
 ```
 
 Example 4: search for pairs in array
@@ -173,6 +173,8 @@ class Solution:
 ```
 
 Example 2: Different Ways to Add Parentheses
+Note: different from **Expression Add Operators** which cannot use parentheses, so the combination is more difficult.
+
 ```Python
 # Different Ways to Add Parentheses
 class Solution(object):

@@ -1,4 +1,4 @@
-## Amazon
+## A
 
 1. [Two Sum](AllSolutions/Two%20Sum.py)
 2. [Longest Palindromic Substring](AllSolutions/Longest%20Palindromic%20Substring.py)
@@ -25,7 +25,7 @@
 23. [Most Common Word](AllSolutions/Most%20Common%20Word.py)
 24. [Reorder Data in Log Files](AllSolutions/Reorder%20Data%20in%20Log%20Files.py)
 
-## Pinterest
+## P
 
 1. [24 Game](AllSolutions/24%20Game.py)
 2. [Alien Dictionary](AllSolutions/Alien%20Dictionary.py)
@@ -90,7 +90,7 @@
 61. [Word Search](AllSolutions/Word%20Search.py)
 
 
-## Microsoft
+## M
 
 1. [Add Two Numbers II](AllSolutions/Add%20Two%20Numbers%20II.py)
 2. [Add Two Numbers](AllSolutions/Add%20Two%20Numbers.py)
@@ -129,3 +129,6 @@
 35. [The Skyline Problem](AllSolutions/The%20Skyline%20Problem.py)
 36. [Wildcard Matching](AllSolutions/Wildcard%20Matching.py)
 37. [Word Search II](AllSolutions/Word%20Search%20II.py)
+
+
+C

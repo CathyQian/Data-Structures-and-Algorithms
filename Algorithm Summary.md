@@ -1,7 +1,7 @@
 Cheatsheet of time complexity for different algorithms: https://www.bigocheatsheet.com/
 
 ## bfs
-bfs and dfs are top solutions for finding all path/permutations/combinations. Besides, bfs is also a good option to find shortest path by building the tree layer by layer; dfs can also be used to find count (similar to dynamic programming). If visited elements won't appear in the tree again, the first time the target is achieved is always the shortest path.
+bfs and dfs are top solutions for finding all path/permutations/combinations. Besides, bfs is also a good option to find shortest path (i.e., string addition/removal/mutation, graph distance) by building the tree layer by layer -- if visited elements won't appear in the tree again, the first time the target is achieved is always the shortest path. dfs can also be used to find count (similar to dynamic programming). 
 
 - [Perfect Squares](AllSolutions/Perfect%20Squares.py) (BFS for shortest path)
 - [Word Search](AllSolutions/Word%20Search.py)
@@ -16,6 +16,7 @@ During dfs, you may change some elements which needs to be recovered after each 
 def dfs(self, arr, start, path, res):
     if len(path) == len(arr):
         res.append(path)
+        return
     for i in range(start, len(arr)):
         self.dfs(arr, start+1, path+arr[i], res)
 
@@ -23,6 +24,7 @@ def dfs(self, arr, start, path, res):
 def dfs(self, arr, path, res):
     if not arr:
         res.append(path)
+        return
     for i in range(len(arr)):
         self.dfs(arr[:i] + arr[i+1:], path + arr[i], res)
 ```
@@ -187,10 +189,10 @@ class Solution:
                 ans = ans+1
             elif target > num:
                 if target-num not in self.memo:
-                    subans = self.dfs(nums, target-num)
+                    subans = self.dfs(nums, target-num) # need to introduce index if it's combination instead of permutation
                     self.memo[target-num] = subans
                 ans += self.memo[target-num]
-            else:# target < num
+            else: # target < num, terminate for loop early
                 self.memo[target] = ans
                 return ans
         self.memo[target] = ans
@@ -206,7 +208,7 @@ class Solution:
         return result    
 
     def getResult(self, n, result, factors):        
-        i = 2 if not factors else factors[-1] # returning elements in increasing order      
+        i = 2 if not factors else factors[-1] # returning elements in increasing order, to avoid duplicates (combinations instead of permutations)   
         while i <= n // i:            
             if n % i == 0:                      
                 result.append(factors + [i, n//i])
@@ -231,6 +233,7 @@ class Solution:
         # combination: for i in range(start, len(nums)) --> dfs(nums, i+1, path, res)
         for i in range(len(nums)):
             self.dfs(nums[:i] + nums[i+1:], res, path + [nums[i]])
+            # self.dfs(nums, res, path + nums[i]) #if nums can be used many times
 
 # permutations II, nums contains duplicates
 class Solution:
@@ -252,14 +255,15 @@ class Solution:
 - [Palindrome Permutation II](AllSolutions/Palindrome%20Permutation%20II.py) (tricky permutaion to avoid duplicates)
 
 ## string operations
-Common problems include searching for the longest substring/subsequence/palindrome substring/palindrome subsequence. Note substring needs to be consecutive while subsequence not. Common methods involves dp, dfs and basic string operations. Search can start from the beginning, move towards right, or vice versa; or start from both ends, move towards the middle, or vice versa (- [Longest Palindromic Substring](AllSolutions/Longest%20Palindromic%20Substring.py)).
+Common problems include searching for the longest substring/subsequence/palindrome substring/palindrome subsequence. Note substring needs to be consecutive while subsequence not. Common methods involves dp, dfs, bfs(shortest path) and basic string operations. Search can start from the beginning, move towards right, or vice versa; or start from both ends, move towards the middle, or vice versa (- [Longest Palindromic Substring](AllSolutions/Longest%20Palindromic%20Substring.py)).
 
 Common knowledge:
 ```Python
 ord('A') == 65
 chr(65) == 'A'
 ord('a') == 97
-
+s = s.lower() # lowercase all characters in s
+s = s.upper() # uppercase all characters in s
 sorted(list(collections.Counter(newlist).items()), key=lambda x: x[1])[-1][0]
 paragraph = re.sub('[!@#$?:;\'\".,]', ' ', paragraph) # regular expression, equivalent to code below
 for c in "!?',;.":
@@ -343,7 +347,7 @@ class Solution:
 
 """   
 Idea:
-- This problem is quite similar to find longest Palindromic subsequence (iterate through each element, 
+- This problem is quite similar to find longest Palindromic substring (iterate through each element, 
 for each element, search both left and right for the same element). The difference here is that it's 
 looking for subsequence which the elements doesn't need to be adjacent to each other.
 
@@ -434,7 +438,7 @@ class Solution:
             pre = post
         return pre[-1]
 
-# minimum adjustment cost (2 parameters, hidden backpack problem)
+# minimum adjustment cost (2 parameters, hidden backpack problem) (similar problems: paint house)
 class Solution:
     def MinAdjustmentCost(self, A, target):
         maxNum = 100
@@ -668,3 +672,83 @@ class Solution:
         return result + intervals[right_bound:]
 ```
 
+## Linked list 
+Not hard, but need some templates to make coding faster
+
+Find mid point of a linked list using slow and fast pointer
+
+```Python
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+# It's very likely that the head of the linked list will be modified or even deleted, so add a Dummy node and define Dummy.next = head, then return Dummy.next
+
+```
+
+1. Reverse a linked list
+
+```Python
+def reverse(self, head):
+    if not head or not head.next:
+        return head
+    pre, cur = None, head
+    while cur:
+        post = cur.next
+        cur.next = pre
+        pre, cur = cur, post
+    return pre
+```
+
+2. Detect cycle
+
+```Python
+# test if there is cycle or not
+def hasCycle(self, head: ListNode) -> bool:
+    if not head or not head.next:
+        return False
+    slow, fast = head, head
+    while fast and fast.next: # can't be just fast.next
+        slow = slow.next
+        fast = fast.next.next
+        if slow == fast:
+            return True
+    return False
+
+# return position of the cycle
+
+class Solution:
+    def detectCycle(self, head: ListNode) -> ListNode:
+        slow, fast = head, head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                slow = head
+                while slow != fast:
+                    slow = slow.next
+                    fast = fast.next
+                return slow
+            
+        return None
+```
+
+3. Copy list with random pointer
+```Python
+import collections
+class Solution:
+    def copyRandomList(self, head: 'Node') -> 'Node':
+        dic = collections.defaultdict(lambda: Node(0)) # need lambda function here since default data type is only list or int or set
+        dic[None] = None
+        cur = head
+        while cur:
+            dic[cur].val = cur.val
+            dic[cur].next = dic[cur.next]
+            dic[cur].random = dic[cur.random]
+            cur = cur.next
+        return dic[head]
+
+```
+4. Insert/remove elements in linked list (refer to notebook)

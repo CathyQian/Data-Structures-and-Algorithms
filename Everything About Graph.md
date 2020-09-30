@@ -9,17 +9,17 @@ There are two most commonly used representation of graph:
     - Cons: Consumes more space O(V^2). Adding a vertex is O(V) time
 - adjacency list
     - use a list of arrays to represent the edges in the graph. The size of the array is equal to the number of vertices
-    - Pros: Saves space O(|V|+|E|) . In the worst case, there can be C(V, 2) number of edges in a graph thus consuming O(V^2) space. Adding a vertex takes O(1) time.
+    - Pros: Saves space O(|V|+|E|) (vertix list + edge adjacency list) . In the worst case, there can be C(V, 2) number of edges in a graph thus consuming O(V^2) space. Adding a vertex takes O(1) time.
     - Cons: Queries like whether there is an edge from vertex u to vertex v are not efficient and can be done O(V).
 
-- 
+
 ```Python
 # A simple representation of graph using adjacency matrix
 class Graph:
     def __init__(self, numvertex): # predefine space for the graph
         self.adjMatrix = [[-1]*numvertex for x in range(numvertex)]
         self.numvertex = numvertex # predefine maximum number of vertex
-        self.vertices = {} # vertix val to index map
+        self.vertices = {} # vertix val: index
         self.verticeslist = [0]*numvertex # host vertices by their index order
 
     def set_vertex(self, idx, vtx):
@@ -48,7 +48,7 @@ class Graph:
     def get_matrix(self):
         return self.adjMatrix
 
-G =Graph(6)
+G = Graph(6)
 G.set_vertex(0,'a')
 G.set_vertex(1,'b')
 G.set_vertex(2,'c')
@@ -71,6 +71,7 @@ print(G.get_matrix())
 
 ```Python
 # The adjacency list representation of the graph
+# no place to host the edge weight if they are not constant
 # A class to represent the adjacency list of the node 
 import collections
 class Graph():      
@@ -99,11 +100,11 @@ ref: https://www.geeksforgeeks.org/graph-and-its-representations/
 ```
 
 ## topological sort (include dfs or bfs node traversal)
-Topological sort is a linear ordering of vertices such that for every directed edge uv, vertex u comes before v
+Topological sort is a linear ordering of vertices such that for every directed edge u->v, vertex u comes before v
 in the ordering. It only works for directed acryclic graph (DAG). It is used to determine dependencies for events/programs/courses. 
 
 **Topological orders are not unique!**
-Topological sort can be achieved using either dfs or bfs. See Alien Dictionary for code.
+Topological sort can be achieved using either dfs or bfs. Using dfs can get all topological orders if starting from different points. See Alien Dictionary for code.
 
 ## topology algorithm
 It is all about dfs post-order, aming to identify structures, depths and connections of graphs.
@@ -114,60 +115,9 @@ Typical use scenarios include:
     
 Isomorphism: if two trees are exactly the same
 
-## graph to tree (inclde cycle detection)
+## directional graph to tree (include cycle detection)
 
-If an **undirectional graph** can be converted to a tree, it needs to meet the following two criteria:
-- all graph nodes are connected
-- there is no cycle in the graph
-
-** Any node can be the root of the tree.** This is a very important statement which allows the hasCycle function to work
-
-**Depth First Traversal can be used to detect a cycle in a Graph. DFS for a connected graph produces a tree. There is a cycle in a graph only if there is a back edge present in the graph. A back edge is an edge that is joining a node to itself (self-loop) or one of its ancestor in the tree produced by DFS.** Think in terms of a tree when doing dfs. Alternatively, you can also use the generic template below to tell if a graph has cycle or not.
-
-```Python
-import collections
-
-# represent a graph using adjacency matrix
-class Graph():      
-    def __init__(self, V):          
-        self.V = V # number of vertices, from 0 to V-1         
-        self.graph = collections.defaultdict(list) # adjacency list
-
-    def addEdge(self, v, w): # undirectional graph  
-        self.graph[v].append(w)           
-        self.graph[w].append(v)   
-
-class Solution:
-    def isTree(self, graph):   # can be separate function or 
-        visited = [False] * graph.V  
-        if self.hasCycle(graph, 0, visited, -1): # assume 0 is the tree root
-            return False 
-        for i in range(graph.V): # even if there is no cycle, the graph may not be all connected              
-            if not visited[i]:                  
-                return False            
-        return True 
-
-    def hasCycle(self, graph, v, visited, parent):
-        # dfs
-        # detect cycle in undirected graph        
-        visited[v] = True         
-        for i in graph.graph[v]:              
-            if not visited[i]:                 
-                if self.hasCycle(graph, i, visited, v):                      
-                    return True             
-            elif visited[i] and i != parent: # This condition is true for the tree structure                
-                return True         
-        return False       
-
-g1 = Graph(5)  
-g1.addEdge(1, 0)  
-g1.addEdge(0, 2) 
-g1.addEdge(0, 4) 
-g1.addEdge(0, 3)  
-g1.addEdge(3, 4)  
-test = Solution()
-print("Graph is a Tree" if test.isTree(g1) else "Graph is a not a Tree")
-```
+**Both DFS and BFS can be used to detect a cycle in a Graph. DFS for a connected graph produces a tree. There is a cycle in a graph only if there is a back edge present in the graph. A back edge is an edge that is joining a node to itself (self-loop) or one of its ancestor in the tree produced by DFS.** Think in terms of a tree when doing dfs. Alternatively, you can also use the generic template below to tell if a graph has cycle or not.
 
 If a **directed graph** can be converted to tree, it needs to meet the following criteria:
 - all graph nodes are connected
@@ -182,18 +132,18 @@ class Graph():
     def __init__(self, V):          
         self.V = V # number of vertices, from 0 to V-1         
         self.graph = collections.defaultdict(list) # adjacency list
-        self.cld_pnt = collections.defaultdict(list)
-    def addEdge(self, v, w): # directional graph  v --> w
+        self.in_degree = collections.defaultdict(int)
+    def addEdge(self, v, w): # directional graph  v -> w
         self.graph[v].append(w)           
-        self.cld_pnt[w].append(v)
+        self.in_degree[w] += 1
 
 class Solution:
-    def isTree(self, graph):   # can be separate function or 
+    def isTree(self, graph):
         visited = [False] * graph.V 
 
         # find the root of the tree if it exist
         root = None
-        for child, num_parent in self.cld_pnt.items():
+        for node, num_parent in self.in_degree.items():
             if num_parent > 1:
                 return False
             if num_parent == 0 and not root:
@@ -219,7 +169,7 @@ class Solution:
             if not visited[i]:                 
                 if self.hasCycle(graph, i, visited, v):                      
                     return True             
-            elif visited[i] and i != parent: # This condition is true for the tree structure                
+            elif visited[i] and i != parent: # This node has more than one parent, cann't form a tree             
                 return True         
         return False      
 ```
@@ -254,9 +204,6 @@ class Graph():
                 elif self.color[neighbor] == 1: # this node is visited again in the same loop
                     self.has_cycle = True
                     return
-
-        # Recursion ends. We mark it as black
-        self.color[node] = 2
 
         # Recursion ends. We mark it as black
         self.color[node] = 2
