@@ -66,7 +66,8 @@ class Solution:
                 stack.append(-l[i+1])
                 i += 2
             elif l[i] == '+':
-                i += 1 
+                stack.append(l[i+1])
+                i += 2
             else:
                 stack.append(l[i])
                 i += 1
