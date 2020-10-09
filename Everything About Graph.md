@@ -242,8 +242,9 @@ class Solution:
 ```
 
 ## unionfind -- Number of Islands II
-
+- [Connecting Cities With Minimum Cost](AllSolutions/Connecting%20Cities%20With%20Minimum%20Cost.py)(**shortest path sum to connect all)
 https://leetcode.com/problems/number-of-islands-ii/
+
 
 ```Python
 class Solution:
@@ -286,3 +287,9 @@ class UnionFind:
             self.count -= 1
             
 ```
+
+## Dijktra's algorithm to find min distance from one point to all
+
+- [Network Delay Time](AllSolutions/Network%20Delay%20Time.py)
+
+
