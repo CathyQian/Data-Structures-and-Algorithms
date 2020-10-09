@@ -212,7 +212,7 @@ class Graph():
         # color: 0 --- unvisited, 1 --- currently visiting, 2 --- finished visiting
         self.color = [0]*self.V
         self.has_cycle = False    
-        for vertex in range(len(self.color)):
+        for vertex in range(self.V):
             if self.color[vertex] == 0:
                 self.dfs(vertex)
             if self.has_cycle:

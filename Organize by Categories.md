@@ -77,7 +77,7 @@
 - [Word Break II](AllSolutions/Word%20Break%20II.py)
 - [k sum](AllSolutions/k%20sum.py)
 - [Jump Game III](AllSolutions/Jump%20Game%20III.py) (bfs or dfs)
-
+- [Walls and Gates](/AllSolutions/Walls%20and%20Gates.py) (bfs or dfs)
 
 ### 4. Combination & Permutation
 - [24 Game](AllSolutions/24%20Game.py)
@@ -114,8 +114,11 @@
 - [Longest Palindromic Subsequence](AllSolutions/Longest%20Palindromic%20Subsequence.py)
 - [Longest Palindromic Substring](AllSolutions/Longest%20Palindromic%20Substring.py)
 - [Longest Valid Parentheses](AllSolutions/Longest%20Valid%20Parentheses.py) (stack)
+- [Valid Palindrome](AllSolutions/Valid%20Palindrome.py) (s.isalnum())
+- [Valid Palindrome II](AllSolutions/Valid%20Palindrome%20II.py) (s.isalnum())
 - [Markov Chain](AllSolutions/Markov%20Chain.py) (random generator)
 - [Minimum Window Substring](AllSolutions/Minimum%20Window%20Substring.py) (**)
+- [Minimum Window Subsequence](AllSolutions/Minimum%20Window%20Subsequence.py) (**)
 - [Most Common Word](AllSolutions/Most%20Common%20Word.py)
 - [Reorder Data in Log Files](AllSolutions/Reorder%20Data%20in%20Log%20Files.py)
 - [Reverse Words in a String](AllSolutions/Reverse%20Words%20in%20a%20String.py)
@@ -126,7 +129,7 @@
 - [Text Justification](AllSolutions/Text%20Justification.py)
 - [Wildcard Matching](AllSolutions/Wildcard%20Matching.py) (hard**)
 - [Regular Expression Matching](AllSolutions/Regular%20Expression%20Matching.py) (hard)
-
+- **[Expression Add Operators](AllSolutions/Expression%20Add%20Operators.py)
 
 ### 6. Heap, Trie, Stack, Graph, Hashmap
 - [Read N Characters Given Read4 II - Call multiple times](AllSolutions/Read%20N%20Characters%20Given%20Read4%20II%20-%20Call%20multiple%20times.py)
@@ -144,7 +147,10 @@
 - [Log System to Graph](AllSolutions/Log%20System%20to%20Graph.py)
 
 #### Stack
-- [Basic Calculator II](AllSolutions/Basic%20Calculator%20II.py)
+- [Basic Calculator I](AllSolutions/Basic%20Calculator.py) (**)
+- [Basic Calculator II](AllSolutions/Basic%20Calculator%20II.py) (**)
+- [Basic Calculator III](AllSolutions/Basic%20Calculator%20III.py) (**)
+- [Decode String](/AllSolutions/Decode%20String.py)
 - **[Binary Search Tree Iterator](AllSolutions/Binary%20Search%20Tree%20Iterator.py)
 - [Count of Smaller Numbers After Self](AllSolutions/Count%20of%20Smaller%20Numbers%20After%20Self.py)
 - **[MinStack](AllSolutions/MinStack.py)
@@ -158,6 +164,8 @@
 - [Friend Circles](AllSolutions/Friend%20Circles.py)
 - [Graph to Tree](AllSolutions/Graph%20to%20Tree.py)
 - **[Minimum Height Trees](AllSolutions/Minimum%20Height%20Trees.py)
+- **[Connecting Cities With Minimum Cost](AllSolutions/Connecting%20Cities%20With%20Minimum%20Cost.py)
+- **[Network Delay Time](AllSolutions/Network%20Delay%20Time.py) (Dijkstras's algorithm)
 
 #### Hashmap
 - [Add and Search Word - Data structure design](AllSolutions/Add%20and%20Search%20Word%20-%20Data%20structure%20design.py)
@@ -183,7 +191,7 @@
 - [backPack](AllSolutions/backPack.py)
 - [backPack II](AllSolutions/backPack%20II.py)
 - **[Number of Longest Increasing Subsequence](AllSolutions/Number%20of%20Longest%20Increasing%20Subsequence.py)
-
+- [Maximum Length of Repeated Subarray](AllSolutions/Maximum%20Length%20of%20Repeated%20Subarray.py)
 -**[Distinct Subsequences](AllSolutions/Distinct%20Subsequences.py) (hard)
 -**[Distinct Subsequences II](AllSolutions/Distinct%20Subsequences%20II.py) (hard)
 
