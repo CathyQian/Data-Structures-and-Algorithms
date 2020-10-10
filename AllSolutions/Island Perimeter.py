@@ -26,20 +26,16 @@ Explanation: The perimeter is the 16 yellow stripes in the image below:
 
 """
 
-
 class Solution:
     def islandPerimeter(self, grid: List[List[int]]) -> int:
         if not grid or not grid[0]:
             return 0
-        self.count = 0
-        for i in range(len(grid)):
-            for j in range(len(grid[0])):
+        count = 0
+        m, n = len(grid), len(grid[0])
+        for i in range(m):
+            for j in range(n):
                 if grid[i][j] == 1:
-                    self.perimeterHelper(grid, i, j)
-        return self.count
-    
-    def perimeterHelper(self, grid, i, j):
-        adjacent = [(i+1, j), (i-1, j), (i, j-1), (i, j+1)]
-        for x, y in adjacent:
-            if x < 0 or x >= len(grid) or y < 0 or y >= len(grid[0]) or grid[x][y] == 0:
-                self.count += 1
+                    for x, y in [(i+1, j), (i-1, j), (i, j-1), (i, j+1)]:
+                        if (0<=x<m and 0<=y<n and grid[x][y] == 0) or x < 0 or x >= m or y < 0 or y >= n:
+                            count += 1
+        return count
