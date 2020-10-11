@@ -145,4 +145,36 @@ class UnionFind:
             if self.rank[x] == self.rank[y]: # union by rank
                 self.rank[x] += 1
             self.count -= 1
-            
+# union find solution 3         
+class Solution:
+    def numIslands2(self, m: int, n: int, positions: List[List[int]]) -> List[int]:
+        self.parent, self.rank, self.count = {}, {}, 0 # self.rank makes the union find faster
+        res = []
+        for position in positions:
+            row, col = position[0], position[1]
+            x = (row, col)
+            if x not in self.parent:
+                self.count += 1
+                self.parent[x] = x
+                self.rank[x] = 0
+                for y in [(row+1, col), (row-1, col), (row, col+1), (row, col-1)]:
+                    if y in self.parent:
+                        self.union(x, y)
+            res.append(self.count)
+        return res
+        
+    def find(self, a):
+        if self.parent[a] != a:
+            return self.find(self.parent[a])
+        return self.parent[a]
+    
+    def union(self, a, b):
+        pa = self.find(a)
+        pb = self.find(b)
+        if pa != pb:
+            if self.rank[pa] < self.rank[pb]:
+                pa, pb = pb, pa
+            self.parent[pb] = pa
+            if self.rank[pa] == self.rank[pb]:
+                self.rank[pa] += 1
+            self.count -= 1
