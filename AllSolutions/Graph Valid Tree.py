@@ -1,5 +1,5 @@
 """
-Graph to Tree
+Graph Valid Tree
 
 给你⼀一个undirectional graph，问他能不不能成为⼀一个tree
 """
@@ -52,3 +52,36 @@ g1.addEdge(3, 4)
 test = Solution()
 print("Graph is a Tree" if test.isTree(g1) else "Graph is a not a Tree")
 
+# dfs solution, slight modification from topological sort template (I personally like this one better)
+class Solution:
+    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+        self.adj_list = collections.defaultdict(set)
+        for edge in edges:
+            self.adj_list[edge[0]].add(edge[1])
+            self.adj_list[edge[1]].add(edge[0])
+        
+        self.visited = {i: 0 for i in range(n)}
+        self.has_cycle = False
+       
+        self.dfs(0, -1) # start from any node, do one dfs
+        if self.has_cycle:
+            return False
+      
+        for i in range(n):
+            if self.visited[i] == 0:
+                return False
+        return True
+    
+    def dfs(self, i, parent):
+        self.visited[i] = 1
+        if i in self.adj_list:
+            for neighbor in self.adj_list[i]:
+                if self.visited[neighbor] == 1 and neighbor != parent: # make sure neighbor != parent as it's undirectional graph
+                    self.has_cycle = True
+                    return 
+                if self.visited[neighbor] == 0:
+                    self.dfs(neighbor, i)
+                    if self.has_cycle:
+                        return
+        self.visited[i] = 2
+        
