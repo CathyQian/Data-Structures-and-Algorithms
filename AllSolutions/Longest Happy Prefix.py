@@ -52,6 +52,18 @@ class Solution:
             j -= 1
         return res
     
+# brutal force, O(n2)
+class Solution:
+    def longestPrefix(self, s: str) -> str:
+        longest = ''
+        n = len(s)
+        for i in range(n-1):
+            if s[i] == s[n-1] and s[0] == s[n-1-i]:
+                print(i)
+                if s[:i+1] == s[n-1-i:]:
+                    longest = s[:i+1]
+        return longest
+            
 # method2: KMP algorithm: https://www.geeksforgeeks.org/kmp-algorithm-for-pattern-searching/
 class Solution:
     def longestPrefix(self, t: str) -> str:
