@@ -80,28 +80,26 @@ class Solution:
                     return True
         return dp[target]
 
- # dfs solution, find all combinations, time complexity O(n2)  --- why time exceed limit?
+# dfs solution, find all combinations, time complexity O(n!)  --- time exceed limit
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
-        if len(nums) == 1:
+        if sum(nums) % 2 != 0:
             return False
-        if sum(nums)%2 != 0:
+        self.visited = [False] * len(nums) # record which numbers has been used so far
+        target = sum(nums) // 2
+        return self.dfs(0, 0, nums, target)
+
+    def dfs(self, start, curr, nums, target):
+        if curr > target: 
             return False
-        nums.sort(reverse=True)
-        target = sum(nums)/2
-        visited = [False]*len(nums)
-        return self.dfs(nums, target, 0, 0, visited)
-    
-    def dfs(self, nums, target, start, cursum, visited):
-        if cursum == target:
+
+        if curr == target:   
             return True
-        if cursum > target: # all positive elements
-            return False
+
         for i in range(start, len(nums)):
-            if not visited[i]:
-                visited[i] = True
-                if self.dfs(nums, target, i+1, cursum + nums[i], visited):
+            if not self.visited[i]:
+                self.visited[i] = True
+                if self.dfs(i+1, curr + nums[i], nums, target):
                     return True
-                else:
-                    visited[i] = False
+                self.visited[i] = False
         return False
