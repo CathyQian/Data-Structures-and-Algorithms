@@ -79,3 +79,29 @@ class Solution:
                 if dp[target]:
                     return True
         return dp[target]
+
+ # dfs solution, find all combinations, time complexity O(n2)  --- why time exceed limit?
+class Solution:
+    def canPartition(self, nums: List[int]) -> bool:
+        if len(nums) == 1:
+            return False
+        if sum(nums)%2 != 0:
+            return False
+        nums.sort(reverse=True)
+        target = sum(nums)/2
+        visited = [False]*len(nums)
+        return self.dfs(nums, target, 0, 0, visited)
+    
+    def dfs(self, nums, target, start, cursum, visited):
+        if cursum == target:
+            return True
+        if cursum > target: # all positive elements
+            return False
+        for i in range(start, len(nums)):
+            if not visited[i]:
+                visited[i] = True
+                if self.dfs(nums, target, i+1, cursum + nums[i], visited):
+                    return True
+                else:
+                    visited[i] = False
+        return False
