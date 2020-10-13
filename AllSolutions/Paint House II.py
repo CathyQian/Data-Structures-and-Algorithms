@@ -22,6 +22,7 @@ Could you solve it in O(nk) runtime?
 
 """
 # dynamic programming, from top to bottom, O(nk^2) runtime, space: O(k)
+
 class Solution:
     def minCostII(self, costs: List[List[int]]) -> int:
         if not costs or not costs[0]:
@@ -36,6 +37,7 @@ class Solution:
         return min(dp[n-1])
 
 # similar, space O(k)    
+
 class Solution:
     def minCostII(self, costs: List[List[int]]) -> int:
         if not costs or not costs[0]:
@@ -52,6 +54,7 @@ class Solution:
         return min(pre)
 
 # method 3, DP, optimize based on the second solution, time O(nk), space O(k)
+
 class Solution:
     def minCostII(self, costs: List[List[int]]) -> int:
         if not costs or not costs[0]:
