@@ -42,7 +42,7 @@
 13. [Find Duplicate File in System](AllSolutions/Find%20Duplicate%20File%20in%20System.py)
 14. [Find Peak Element](AllSolutions/Find%20Peak%20Element.py) (binary search, compare arr[mid] and arr[mid+1])
 15. [Graph Valid Tree](AllSolutions/Graph%20Valid%20Tree.py)(undirectional: no cycle + all connected)
-16. [Implement min Heap](AllSolutions/Implement%20min%20Heap.py)
+16. [Implement min Heap](AllSolutions/Implement%20min%20Heap.py) (percolation up and percolation down, note parent and child index)
 17. [Insert Delete GetRandom O(1)](AllSolutions/Insert%20Delete%20GetRandom%20O(1).py)(cannot use set pop, use dic + list)
 18. [Interval List Intersections](AllSolutions/Interval%20List%20Intersections.py)
 19. [Is Subsequence](AllSolutions/Is%20Subsequence.py)
