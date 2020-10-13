@@ -52,7 +52,7 @@ class Solution:
         
         sum -= root.val
         
-        if sum == 0 and root.left is None and root.right == None:
+        if sum == 0 and root.left is None and root.right is None:
             curr.append(root.val)
             result.append(curr)
         

@@ -26,39 +26,35 @@ cache.get(3);       // returns 3
 cache.get(4);       // returns 4
 
 """
-# use deque to pop out and pop in
-# O(1) --> the only option is to use dictionary
 
+# use OrderedDict, O(1)
 import collections
 class LRUCache:
 
     def __init__(self, capacity: int):
-        self.keys = collections.deque()
-        self.ele = {}
-        self.maxlength = capacity
+        self.space = capacity
+        self.elements = collections.OrderedDict()
         
     def get(self, key: int) -> int:
-        if key in self.ele:
-            self.put(key, self.ele[key]) # elegant
-            return self.ele[key]
-        return -1
-    
-    def put(self, key: int, value: int) -> None:
-
-        if key in self.ele:
-            self.ele[key] = value
-            self.keys.remove(key)
-            self.keys.append(key)
+        if key in self.elements:
+            val = self.elements[key]
+            del self.elements[key]
+            self.elements[key] = val
+            return val
         else:
-            
-            if len(self.keys) == self.maxlength:
-                out = self.keys.popleft()
-                del self.ele[out]
-            self.keys.append(key)
-            self.ele[key] = value
-        
+            return -1
 
-
+    def put(self, key: int, value: int) -> None:
+        if key in self.elements:
+            _ = self.get(key)
+            self.elements[key] = value
+        else:
+            if self.space == 0 :
+                self.elements.popitem(last=False)
+                self.space += 1
+            self.elements[key] = value
+            self.space -= 1
+ 
 # Your LRUCache object will be instantiated and called as such:
 # obj = LRUCache(capacity)
 # param_1 = obj.get(key)

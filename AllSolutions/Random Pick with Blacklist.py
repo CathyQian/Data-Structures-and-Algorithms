@@ -76,3 +76,18 @@ class Solution:
     def pick(self) -> int:
         i = randrange(self.threshold)
         return self.dic.get(i,i)
+
+# brutal force, time exceed limit
+class Solution:
+
+    def __init__(self, N: int, blacklist: List[int]):
+        self.n = N
+        self.blacklist = set(blacklist)
+    
+    def pick(self) -> int:
+        self.candidate = []
+        for i in range(self.n):
+            if i not in self.blacklist:
+                self.candidate.append(i)
+        idx = random.randrange(0, len(self.candidate))
+        return self.candidate[idx]

@@ -36,20 +36,13 @@ Constraints:
 # only one s
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
-        if not s:
-            return True
-        if not t or len(t) < len(s):
-            return False
         i, j = 0, 0
-        while j < len(t):
-            if t[j] == s[i]:
-                if i == len(s) - 1:
-                    return True
-                else:
-                    i += 1
+        while i < len(s) and j < len(t):
+            if s[i] == t[j]:
+                i += 1
             j += 1
-        return False
-
+        return i == len(s)
+       
 # follow up, large influx of s
 import collections
 
@@ -61,24 +54,24 @@ class Solution:
             
         pre = -1
         for ss in s:
+            if ss not in t_dict:
+                return False
             if ss in t_dict.keys():
                 idx = self.binarySearch(pre, t_dict[ss])
-                if idx > pre:
-                    pre = idx
-                else:
+                if idx == -1:
                     return False
-            else:
-                return False
+                else:
+                    pre = idx
         return True
     
     def binarySearch(self, target, nums):
         # find the first element larger than target in nums
         # if cannot find, return -1
         start, end = 0, len(nums) - 1
-        while start <= end:
+        while start <= end: # break up condition start > end
             mid = start + (end - start)//2
             if nums[mid] <= target:
                 start = mid + 1
             else:
                 end = mid - 1
-        return nums[start] if start < len(nums) else -1
+        return nums[start] if start < len(nums) else -1 # edge case: index overflow

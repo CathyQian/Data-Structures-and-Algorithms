@@ -23,19 +23,19 @@ class Solution:
     def alienOrder(self, words: List[str]) -> str:
 
         # Step 0: create data structures + the in_degree of each unique letter to 0.
-        adj_list = defaultdict(set)
-        in_degree = {c : 0 for word in words for c in word} # dictionary comprehension
+        adj_list = defaultdict(set) # set not list
+        in_degree = {c : 0 for word in words for c in word} # required
 
         # bfs traversal of graph (layer determined by the in_degree)
         # Step 1: We need to populate adj_list and in_degree.
         # For each pair of adjacent words...
-        for first_word, second_word in zip(words, words[1:]): # use of zip
+        for w1, w2 in zip(words, words[1:]): # use of zip
             # Check that second word isn't a prefix of first word.
-           if second_word == first_word[:len(second_word)] and len(second_word) < len(first_word):
+           if w2 == w1[:len(w2)] and len(w2) < len(w1):
                 return ""
-            for c, d in zip(first_word, second_word):
+            for c, d in zip(w1, w2):
                 if c != d:
-                    if d not in adj_list[c]:
+                    if d not in adj_list[c]: # need to check to avoid duplicated input
                         adj_list[c].add(d)
                         in_degree[d] += 1
                     break
@@ -68,11 +68,11 @@ def alienOrder(self, words: List[str]) -> str:
     self.adj_list = {c : [] for word in words for c in word}
 
     # Step 1: Find all edges and put them in adj_list.
-    for first_word, second_word in zip(words, words[1:]):
+    for w1, w2 in zip(words, words[1:]):
         # Check that second word isn't a prefix of first word.
-        if second_word == first_word[:len(second_word)] and len(second_word) < len(first_word):
+        if w2 == w1[:len(w2)] and len(w2) < len(w1):
                 return ""
-        for c, d in zip(first_word, second_word):
+        for c, d in zip(w1, w2):
             if c != d: 
                 self.adj_list[c].append(d)
                 break

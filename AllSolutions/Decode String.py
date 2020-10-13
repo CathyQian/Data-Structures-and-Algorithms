@@ -27,6 +27,7 @@ special attention: there may be nested []
 so we can not scann the string from left to right and get the results directly
 """
 # recursion, easier, less prone to make mistakes
+
 class Solution:
     def decodeString(self, s: str) -> str:
         res, _ = self.decode(s, 0)

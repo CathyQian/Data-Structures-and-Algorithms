@@ -39,7 +39,7 @@ class Solution:
                     return True
         return False
 
-# method 2, I personally like this method best, since it considers all senarios
+# method 2, I personally like this method best, since it considers all senarios and faster if nums has duplicates
 # note method 1 and 2 permute in different ways, so method 1 doesn't need to consider brackets, but method 2 needs
 
 import itertools
@@ -53,7 +53,7 @@ class Solution(object):
         def div(a, b):
             if b == 0:
                 return sys.maxsize
-            return a/float(b)
+            return a/b
         Ops = list(itertools.product([add,sub,mul,div], repeat=3))
         for ns in set(itertools.permutations(nums)):
             for ops in Ops:

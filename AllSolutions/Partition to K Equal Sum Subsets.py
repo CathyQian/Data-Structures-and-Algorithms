@@ -55,7 +55,7 @@ class Solution:
 
         if k == 1: # k won't go to 0
             return True
-        if curr > target:
+        if curr > target: # only correct if all elements in nums are non-negative (Leetcode all test case yes!)
             return False
         if curr == target:   
             return self.dfs(0, 0, k-1, nums, target)

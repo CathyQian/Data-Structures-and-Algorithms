@@ -83,64 +83,28 @@ class LFUCache(object):
             self.minCount += 1           
             
         return node.val
-        
+       
     def put(self, key, value):
         """
         :type key: int
         :type value: int
         :rtype: void
-        """
-        if self.space == 0 and not self.key2node: # Cache capacity is 0
-            return 
-        
+        """  
+        if self.space == 0 and not self.key2node:
+            return
         if key in self.key2node:
             self.key2node[key].val = value
             self.get(key) # NOTICE, put makes count+1 too
-            return
-        
-        if self.space == 0:
-            # popitem(last=False) is FIFO, like queue
-            # it return key and value!!!
-            k, n = self.count2node[self.minCount].popitem(last=False) # the most important line of code
-            del self.key2node[k] 
-            self.space += 1
-        
-        self.count2node[1][key] = self.key2node[key] = Node(key, value, 1)
-        self.minCount = 1
-        self.space -= 1
+        else: 
+            if self.space == 0: # cache is not empty
+                # popitem(last=False) is FIFO, like queue
+                # it return key and value!!!
+                k, n = self.count2node[self.minCount].popitem(last=False) # the most important line of code
+                del self.key2node[k] 
+                self.space += 1
+            self.key2node[key] = Node(key, value, 1)
+            self.count2node[1][key] = self.key2node[key] 
+            self.minCount = 1
+            self.space -= 1
+       
         return
-
-# LRUCache: https://leetcode.com/problems/lru-cache/
-
-import collections
-class LRUCache:
-
-    def __init__(self, capacity: int):
-        self.keys = collections.deque() # order keys via recency
-        self.ele = {} # key: val pair
-        self.maxlength = capacity
-        
-    def get(self, key: int) -> int:
-        if key in self.ele:
-            self.put(key, self.ele[key]) # update recently reviewed position
-            return self.ele[key]
-        return -1
-    
-    def put(self, key: int, value: int) -> None:
-        if key in self.ele:
-            self.ele[key] = value
-            self.keys.remove(key)
-            self.keys.append(key)
-        else:
-            if len(self.keys) == self.maxlength:
-                out = self.keys.popleft()
-                del self.ele[out]
-            self.keys.append(key)
-            self.ele[key] = value
-        
-
-
-# Your LRUCache object will be instantiated and called as such:
-# obj = LRUCache(capacity)
-# param_1 = obj.get(key)
-# obj.put(key,value)
