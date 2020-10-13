@@ -114,7 +114,41 @@ Typical use scenarios include:
     - comparing of graph structures
     
 Isomorphism: if two trees are exactly the same
-
+## undirectional graph to tree
+```Python
+# dfs solution (slight modification of the topological sort template)
+class Solution:
+    def validTree(self, n: int, edges: List[List[int]]) -> bool:
+        self.adj_list = collections.defaultdict(set)
+        for edge in edges:
+            self.adj_list[edge[0]].add(edge[1])
+            self.adj_list[edge[1]].add(edge[0])
+        
+        self.visited = {i: 0 for i in range(n)}
+        self.has_cycle = False
+       
+        self.dfs(0, -1) # start from any node, do one dfs
+        if self.has_cycle:
+            return False
+      
+        for i in range(n):
+            if self.visited[i] == 0:
+                return False
+        return True
+    
+    def dfs(self, i, parent):
+        self.visited[i] = 1
+        if i in self.adj_list:
+            for neighbor in self.adj_list[i]:
+                if self.visited[neighbor] == 1 and neighbor != parent: # make sure neighbor != parent as it's undirectional graph
+                    self.has_cycle = True
+                    return 
+                if self.visited[neighbor] == 0:
+                    self.dfs(neighbor, i)
+                    if self.has_cycle:
+                        return
+        self.visited[i] = 2
+```
 ## directional graph to tree (include cycle detection)
 
 **Both DFS and BFS can be used to detect a cycle in a Graph. DFS for a connected graph produces a tree. There is a cycle in a graph only if there is a back edge present in the graph. A back edge is an edge that is joining a node to itself (self-loop) or one of its ancestor in the tree produced by DFS.** Think in terms of a tree when doing dfs. Alternatively, you can also use the generic template below to tell if a graph has cycle or not.
@@ -135,7 +169,7 @@ class Graph():
         self.in_degree = collections.defaultdict(int)
     def addEdge(self, v, w): # directional graph  v -> w
         self.graph[v].append(w)           
-        self.in_degree[w] += 1
+        self.in_degree[w] += 1 # assuming all added edges are unique (not True sometimes)
 
 class Solution:
     def isTree(self, graph):
