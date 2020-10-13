@@ -22,7 +22,7 @@ The root element will be at Arr[0]. For any ith node, i.e., Arr[i]:
 child node value <= parent node value
 """
 
-# Python3 implementation of Min Heap  
+# Python3 implementation of Min Heap 
 
 class MinHeap: 
 
@@ -31,51 +31,37 @@ class MinHeap:
         self.size = 0 # # of elements in heap, decide on the end of the heap (notice the extra numbers are not removed)
         self.Heap = [0]*(self.maxsize) # index starts from 0
 
-    def parent(self, pos): 
-        return (pos - 1) // 2
+    def heapifyHelper(self, pos):
+        # percolation down (from top to bottom), O(logn)
+        if 2*pos + 1 < self.size: # if it is not a leave (has at least one child)
+            smallest = pos
+            l_pos, r_pos = 2 * pos + 1, 2 * pos + 2
+            if l_pos < self.size and self.Heap[l_pos] < self.Heap[smallest] :
+                smallest = l_pos
+            if r_pos < self.size and self.Heap[r_pos] < self.Heap[smallest]:
+                smallest = r_pos
+            if smallest != pos:
+                self.Heap[smallest], self.Heap[pos] = self.Heap[smallest], self.Heap[pos]
+                    self.heapifyHeaper(smallest) 
 
-    def leftChild(self, pos): 
-        return 2 * pos + 1
-
-    def rightChild(self, pos): 
-        return (2 * pos) + 2
-
-    def isLeaf(self, pos): # no child, pos*2+1 >= self.size
-        if pos >= (self.size - 1) // 2 and pos < self.size: 
-            return True
-        return False
-
-    def minHeapify(self, pos): # pay attention that minHeapify and minHeap cannot be merged
-        # only place element in pos to the right position in the heap
-        # still need to scan all elements to heapify the queue
-        if not self.isLeaf(pos):
-            l_pos, r_pos = self.leftChild(pos), self.rightChild(pos)
-
-            if (self.Heap[pos] > self.Heap[l_pos] or self.Heap[pos] > self.Heap[r_pos]): 
-
-                if self.Heap[l_pos] < self.Heap[r_pos]: 
-                    self.Heap[pos], self.Heap[l_pos] = self.Heap[l_pos], self.Heap[pos]
-                    self.minHeapify(l_pos) 
-
-                else: 
-                    self.Heap[pos], self.Heap[r_pos] = self.Heap[r_pos], self.Heap[pos]
-                    self.minHeapify(r_pos) 
-
-    def minHeap(self): # from top to bottom 
-        for pos in range((self.size - 1) // 2): # don't consider leaves
-            self.minHeapify(pos) 
+    def heapify(self):
+        # transform an unsorted list to a minheap, O(n) --- why is it O(n)? worst case scenario
+        for pos in range((self.size - 1) // 2, -1, -1): # don't consider leaves
+            self.heapifyHelper(pos) 
             
     # Function to insert a node into the heap 
     def push(self, element):
+        # percolation up (bottom to up), O(logn)
         if self.size >= self.maxsize: 
             return
         self.Heap[self.size] = element # add as leave
         
-        current = self.size 
-        
-        while self.Heap[current] < self.Heap[self.parent(current)]: # swap with parent
-            self.Heap[current], self.Heap[self.parent(current)] = self.Heap[self.parent(current)], self.Heap[current] 
-            current = self.parent(current)
+        curr = self.size 
+        parent = (curr - 1) // 2
+        while self.Heap[curr] < self.Heap[(parent)]: # swap with parent
+            self.Heap[curr], self.Heap[parent] = self.Heap[parent], self.Heap[curr] 
+            curr = parent
+            parent = (curr-1)//2
         
         self.size += 1
 
@@ -83,8 +69,9 @@ class MinHeap:
         popped = self.Heap[0] # O(1)
         self.Heap[0] = self.Heap[self.size-1] 
         self.size -= 1
-        self.minHeapify(0) 
-        return popped 
+        self.heapifyHelper(0)
+        return popped  
+
     
     # Function to print the contents of the heap 
     def Print(self): 
