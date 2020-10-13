@@ -24,11 +24,11 @@ class Solution:
         if not root: 
             return 0
 
-        if root.data == value: 
+        if root.val == value: 
             return level + 1
 
-        left = findLevel(root.left, data, level + 1) 
-        right = findLevel(root.right, data, level + 1) 
+        left = findLevel(root.left, value, level + 1) 
+        right = findLevel(root.right, value, level + 1) 
 	return max(left, right)
 
     def LCA(self, root, n1, n2): 
