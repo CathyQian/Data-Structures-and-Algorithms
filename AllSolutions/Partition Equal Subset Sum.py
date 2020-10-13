@@ -80,7 +80,7 @@ class Solution:
                     return True
         return dp[target]
 
-# dfs solution, find all combinations, time complexity O(n!)  --- time exceed limit
+# dfs solution, find all combinations, time complexity O(n!)  --- time exceed limit; need memo
 class Solution:
     def canPartition(self, nums: List[int]) -> bool:
         if sum(nums) % 2 != 0:
