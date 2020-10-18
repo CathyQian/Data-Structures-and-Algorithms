@@ -130,4 +130,84 @@
 37. [Word Search II](AllSolutions/Word%20Search%20II.py)
 
 
-C
+F
+1. K Closest Points to Origin  (medium) (new)
+2. Clone Graph
+3. Merge Intervals
+4. Validate Binary Search Tree
+5. Verifying an Alien Dictionary (easy, new)
+6. Binary Tree Maximum Path Sum
+7. Binary Tree Vertical Order Traversal (medium, new)   
+8. Convert Binary Search Tree to Sorted Doubly Linked List  (medium, new)
+9. Continuous Subarray Sum (medium, **)
+10. Subarray Sum Equals K (medium, **)
+11. Task Scheduler
+12. Valid Palindrome II (easy, **)
+13. Lowest Common Ancestor of Deepest Leaves (medium, new)
+14. Divide Two Integers (medium, new)
+15. Next Permutation
+16. Find First and Last Position of Element in Sorted Array (medium, new)
+17. Add Binary (easy, new)
+18. Subsets (medium **)
+19. Kth Largest Element in an Array (medium **)
+20. Product of Array Except Self (medium, new)
+21. Integer to English Words
+22. First Bad Version (new)
+23. Serialize and Deserialize Binary Tree
+24. Intersection of Two Arrays (new)
+25. Merge Sorted Array (easy, new)
+26. Valid Palindrome
+27. Copy List with Random Pointer (medium **)
+28. Course Schedule
+29. Remove Invalid Parentheses (**)
+30. Longest Increasing Path in a Matrix (**)
+31. The Maze (medium. new)
+32. Random Pick with Weight
+33. Container with Most Water (medium, new)
+34. Merge Two Sorted Lists (easy, new)
+35. Longest Valid Parenthesis (**)
+36. Search in Rotated Sorted Array (**)
+37. Trapping rain water (hard, **)
+38. Permutations II (medium, **)
+39. Reorder List (medium, new)
+40. Read N Characters Given Read4
+41. Longest Substring with At Most Two Distinct Characters (medium, new)
+42. One Edit Distance (medium, new, corner cases)
+43. Binary Tree Right Side View
+44. Sliding Window Maximum (hard, new)
+45. Meeting Rooms II
+46. Inorder Successor in BST (medium, new)
+47. Walls and Gates
+48. Range Sum Query 2D - Immutable (medium, new)
+49. Nested List Weight Sum (easy, new)
+50. Longest Substring with At Most K Distinct Characters (hard, new)
+51. Moving Average from Data Stream (easy, new)
+52. Intersection of Two Arrays (easy, new)
+53. Minesweeper (medium, new)
+54. Exclusive Time of Functions (medium, new)
+56. Accounts Merge (medium, new)
+57. All Nodes Distance K in Binary Tree (medium, new)
+58. Add Two Numbers (medium, new)
+59. String to Integer (atoi) (medium, new)
+60. Remove Nth Node From End of List (medium, new)
+61. Find First and Last Position of Element in Sorted Array (medium, new)
+62. Wildcard Matching (hard **)
+63. Permutation
+64. Rotate List (medium, new)
+65. Valid Number (hard**)
+66. Sqrt(x)  
+67. Search a 2D Matrix
+68. Word Search
+69. Binary Tree Inorder Traversal   
+
+recent 6 month
+- minimum remove to make valid parentheses (not bfs**, count instead; ()() is also valid)
+- leftmost column with at least a one (binary search across corners)
+- product array except self
+- k closest points to origin
+- add strings
+- add binary
+- design add and search word data structure
+- continuous subarray sum (** k==0, mod[0] = [-1])
+- find all anagram in a string
+- 
