@@ -3,7 +3,7 @@ Minimum Remove to Make Valid Parentheses
 
 Given a string s of '(' , ')' and lowercase English characters. 
 
-Your task is to remove the minimum number of parentheses ( '(' or ')', in any positions ) so that the resulting parentheses string is valid and return any valid string.
+Your task is to remove the minimum number of parentheses ( '(' or ')', in any positions ) so that the resulting parentheses string is valid and return **any** (not all) valid string.
 
 Formally, a parentheses string is valid if and only if:
 
@@ -45,7 +45,7 @@ Constraints:
 """
 
 # My first thought is to use bfs to find minimum path. However, time exceed limit
-# bfs solution
+# bfs solution is good to find **all** path (see remove invalid parenthesis )
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
         if not s:

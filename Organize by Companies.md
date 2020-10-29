@@ -1,4 +1,4 @@
-## A
+## A2
 
 1. [Two Sum](AllSolutions/Two%20Sum.py)
 2. [Longest Palindromic Substring](AllSolutions/Longest%20Palindromic%20Substring.py)
@@ -25,7 +25,7 @@
 23. [Most Common Word](AllSolutions/Most%20Common%20Word.py)
 24. [Reorder Data in Log Files](AllSolutions/Reorder%20Data%20in%20Log%20Files.py)
 
-## P
+## P(Graph)
 
 1. [24 Game](AllSolutions/24%20Game.py)(itertools.product(iterator, repeat=k))
 2. [Alien Dictionary](AllSolutions/Alien%20Dictionary.py) (edge case, esp duplicated entries)
@@ -130,27 +130,27 @@
 37. [Word Search II](AllSolutions/Word%20Search%20II.py)
 
 
-F
-1. K Closest Points to Origin  (medium) (new)
+F (Tree & Graph) # focus on new first
+1. K Closest Points to Origin (heapq.nsmallest(k, iterator))
 2. Clone Graph
 3. Merge Intervals
 4. Validate Binary Search Tree
 5. Verifying an Alien Dictionary (easy, new)
 6. Binary Tree Maximum Path Sum
-7. Binary Tree Vertical Order Traversal (medium, new)   
-8. Convert Binary Search Tree to Sorted Doubly Linked List  (medium, new)
-9. Continuous Subarray Sum (medium, **)
-10. Subarray Sum Equals K (medium, **)
+7. Binary Tree Vertical Order Traversal (**dict + bfs (not dfs))   
+8. Convert Binary Search Tree to Sorted Doubly Linked List  (**iterative tree traversal)
+9. Continuous Subarray Sum (** k==0, mod[0] = [-1])
+10. Subarray Sum Equals K (**, cursum + dict)
 11. Task Scheduler
 12. Valid Palindrome II (easy, **)
-13. Lowest Common Ancestor of Deepest Leaves (medium, new)
-14. Divide Two Integers (medium, new)
+13. Lowest Common Ancestor of Deepest Leaves (example is misleading, return the lca node)
+14. Divide Two Integers (bit operation)
 15. Next Permutation
-16. Find First and Last Position of Element in Sorted Array (medium, new)
+16. Find First and Last Position of Element in Sorted Array (review binary search 4 template)
 17. Add Binary (easy, new)
-18. Subsets (medium **)
-19. Kth Largest Element in an Array (medium **)
-20. Product of Array Except Self (medium, new)
+18. Subsets (recursion or dfs)
+19. Kth Largest Element in an Array (quick sort)
+20. Product of Array Except Self (O(N))
 21. Integer to English Words
 22. First Bad Version (new)
 23. Serialize and Deserialize Binary Tree
@@ -159,22 +159,22 @@ F
 26. Valid Palindrome
 27. Copy List with Random Pointer (medium **)
 28. Course Schedule
-29. Remove Invalid Parentheses (**)
-30. Longest Increasing Path in a Matrix (**)
-31. The Maze (medium. new)
+29. Remove Invalid Parentheses (** bfs, pay attention to isvalid check -- use count is enough)
+30. Longest Increasing Path in a Matrix (** dfs + memo!!)
+31. The Maze (dfs + seen to avoid repeated dfs)
 32. Random Pick with Weight
 33. Container with Most Water (medium, new)
 34. Merge Two Sorted Lists (easy, new)
 35. Longest Valid Parenthesis (**)
-36. Search in Rotated Sorted Array (**)
-37. Trapping rain water (hard, **)
+36. Search in Rotated Sorted Array (**always narrow down scope between mid, start and end)
+37. Trapping rain water I (hard, **), Trapping rain water II
 38. Permutations II (medium, **)
 39. Reorder List (medium, new)
 40. Read N Characters Given Read4
 41. Longest Substring with At Most Two Distinct Characters (medium, new)
-42. One Edit Distance (medium, new, corner cases)
+42. One Edit Distance (medium, corner cases)
 43. Binary Tree Right Side View
-44. Sliding Window Maximum (hard, new)
+44. Sliding Window Maximum (hard, O(N, compare with Sliding Window Medium))
 45. Meeting Rooms II
 46. Inorder Successor in BST (medium, new)
 47. Walls and Gates
@@ -200,7 +200,7 @@ F
 68. Word Search
 69. Binary Tree Inorder Traversal   
 
-recent 6 month
+recent 6 month (done)
 - minimum remove to make valid parentheses (not bfs**, count instead; ()() is also valid)
 - leftmost column with at least a one (binary search across corners)
 - product array except self
@@ -211,3 +211,58 @@ recent 6 month
 - continuous subarray sum (** k==0, mod[0] = [-1])
 - find all anagram in a string
 - 
+
+
+T
+- Minimum Genetic Mutation
+- Design log storage system
+- flatten nested list iterator
+- reaching points
+- paint house
+- best meeting point
+- tree node
+- Design Twitter
+- Alien Dictionary
+- Validate IP address
+- Investments in 2016
+- palindromic substrings
+- valid parenthesis
+- masking personal information
+- text justification
+- friend cycle
+- range sum query-mutable
+- max points on a line
+- LRU Cache
+- One edit distance
+- Minimum increment to make array unique
+- minimum number of taps to open to water a garden
+- the skyline problem (*)
+- flatten 2D vector
+- permutation sequence
+- integer to Roman
+- Multiply strings
+- single element in a sorted array
+- happy number
+- reorganizing string
+- time based key-value store
+- binary tree pruning
+- k-diff pairs in an array
+- max stack
+- robot bounded in cycle
+- next greater element i
+- Number of Connected Components in an Undirected Graph
+- binary gap
+- design skiplist
+- rectangles area
+- minimum number of steps to make two strings anagram
+recent 6 month
+- Tweet Count Per Frequency
+- Insert Delete GetRandom O(1)
+- Design HashMap
+- Insert Interval
+- Find Median from Data Stream
+- frog jump
+- Range Sum Query 2D - Immutable  
+
+# A1
+- Peak Iterator

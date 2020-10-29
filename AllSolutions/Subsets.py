@@ -24,12 +24,8 @@ class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         if len(nums) == 1:
             return [[], [nums[0]]]
-        else:
-            re = self.subsets(nums[: -1])
-            re_add = []
-            for item in re:
-                re_add.append(item + [nums[-1]]) # cannot use item.append(nums[-1])
-            return re + re_add
+        res = self.subsets(nums[:-1])
+        return res + [i+[nums[-1]] for i in res]
                 
         
 # for loop

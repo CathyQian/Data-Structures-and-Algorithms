@@ -36,18 +36,12 @@ Note:
 
 """
 # time: O(n + Klogn)
-from heapq import heapify, heappop
+import heapq
 class Solution:
     def kClosest(self, points: List[List[int]], K: int) -> List[List[int]]:
-        h = []
-        for point in points:
-            dist = (point[0]**2 + point[1]**2)**(0.5)
-            h.append((dist, point[0], point[1]))
-        heapify(h)
-        res = []
-        for i in range(K):
-            dist, p0, p1 = heappop(h)
-            res.append([p0, p1])
-            
-        return res
-        
+        dis = []
+        for p in points:
+            d = math.sqrt(p[0] ** 2 + p[1] ** 2)
+            dis.append((d, p))
+        heapq.heapify(dis)
+        return [d[1] for d in heapq.nsmallest(K, dis)]

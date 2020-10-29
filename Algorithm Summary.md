@@ -3,6 +3,8 @@ Cheatsheet of time complexity for different algorithms: https://www.bigocheatshe
 ## bfs
 bfs and dfs are top solutions for finding all path/permutations/combinations. Besides, bfs is also a good option to find shortest path (i.e., string addition/removal/mutation, graph distance) by building the tree layer by layer -- if visited elements won't appear in the tree again, the first time the target is achieved is always the shortest path. dfs can also be used to find count (similar to dynamic programming). 
 
+We need a list to store elements in bfs. Alternatively, we can use two list to store the previous and the current layer and update them along the way. This strategy is especially useful if we want to get results from a specific layer (i.e., min path).
+
 - [Perfect Squares](AllSolutions/Perfect%20Squares.py) (BFS for shortest path)
 - [Word Search](AllSolutions/Word%20Search.py)
 - [Word Search II](AllSolutions/Word%20Search%20II.py)
