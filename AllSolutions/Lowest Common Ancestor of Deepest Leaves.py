@@ -52,12 +52,11 @@ Constraints:
 
 class Solution:
     def lcaDeepestLeaves(self, root: TreeNode) -> TreeNode:
-        if not root:
-            return None
         lca, _ = self.lcaDepth(root, 0)
         return lca
     
     def lcaDepth(self, root, depth):
+        # return lca of deepest leaves and the deepest depth
         if not root:
             return (None, -1)
         if not root.left and not root.right:
@@ -67,7 +66,7 @@ class Solution:
         r_lca, r_depth = self.lcaDepth(root.right, depth + 1)
             
         if l_depth == r_depth:
-            return root, l_depth
+            return root, l_depth # yes return l_depth
         elif l_depth > r_depth:
             return l_lca, l_depth
         else:

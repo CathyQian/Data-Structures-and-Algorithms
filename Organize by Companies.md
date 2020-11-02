@@ -131,19 +131,19 @@
 
 
 F (Tree & Graph) # focus on new first
-1. K Closest Points to Origin (heapq.nsmallest(k, iterator))
-2. Clone Graph
-3. Merge Intervals
-4. Validate Binary Search Tree
+1. [K Closest Points to Origin](AllSolutions/K%20Closest%20Points%20to%20Origin.py) (heap)
+2. [Clone Graph](AllSolutions/Clone%20Graph.py)
+3. [Merge Intervals](AllSolutions/Merge%20Intervals.py)
+4. [Validate Binary Search Tree](AllSolutions/Validate%20Binary%20Search%20Tree.py)
 5. Verifying an Alien Dictionary (easy, new)
-6. Binary Tree Maximum Path Sum
-7. Binary Tree Vertical Order Traversal (**dict + bfs (not dfs))   
-8. Convert Binary Search Tree to Sorted Doubly Linked List  (**iterative tree traversal)
-9. Continuous Subarray Sum (** k==0, mod[0] = [-1])
-10. Subarray Sum Equals K (**, cursum + dict)
-11. Task Scheduler
-12. Valid Palindrome II (easy, **)
-13. Lowest Common Ancestor of Deepest Leaves (example is misleading, return the lca node)
+6. [Binary Tree Maximum Path Sum](AllSolutions/Binary%20Tree%20Maximum%20Path%20Sum.py)
+7. [Binary Tree Vertical Order Traversal](AllSolutions/Binary%20Tree%20Vertical%20Order%20Traversal.py) (**dict + bfs (not dfs))   
+8. [Convert Binary Search Tree to Sorted Doubly Linked List](AllSolutions/Convert%20Binary%20Search%20Tree%20to%20Sorted%20Doubly%20Linked%20List.py)(**iterative tree traversal)
+9. [Continuous Subarray Sum](AllSolutions/Continuous%20Subarray%20Sum.py) (** k==0, mod[0] = [-1])
+10. [Subarray Sum Equals K](AllSolutions/Subarray%20Sum%20Equals%20K.py) (**, cursum + dict)
+11. [Task Scheduler](AllSolutions/Task%20Scheduler.py)
+12. [Valid Palindrome II](AllSolutions/Valid%20Palindrome%20II.py)
+13. [Lowest Common Ancestor of Deepest Leaves](AllSolutions/Lowest%20Common%20Ancestor%20of%20Deepest%20Leaves.py)(**)
 14. Divide Two Integers (bit operation)
 15. Next Permutation
 16. Find First and Last Position of Element in Sorted Array (review binary search 4 template)
@@ -200,15 +200,13 @@ F (Tree & Graph) # focus on new first
 68. Word Search
 69. Binary Tree Inorder Traversal   
 
-recent 6 month (done)
-- minimum remove to make valid parentheses (not bfs**, count instead; ()() is also valid)
+Recent 6 months
+- [Minimum Remove To Make Valid Parentheses](AllSolutions/Minimum%20Remove%20to%20Make%20Valid%20Parentheses.py)(not bfs**, count instead; ()() is also valid)(****)
 - [Leftmost Column With At Least A One]() (**)
 - Product Array Except Self
-- [K Closest Points to Origin](AllSolutions/K%20Closest%20Points%20to%20Origin.py) (heap)
 - [Add Strings](AllSolutions/Add%20Strings.py)(divmod)
 - [Add Binary](AllSolutions/Add%20Binary.py)
 - [Design Add and Search word data structure](AllSolutions/Design%20Add%20and%20Search%20Words%20Data%20Structure.py) (trie, add a helper function to allow for recusrion**)
-- [Continuous Subarray Sum](AllSolutions/Continuous%20Subarray%20Sum.py) (** k==0, mod[0] = [-1])
 - [Find All Anagram In a String](AllSolutions/Find%20All%20Anagrams%20in%20a%20String.py)
 
 

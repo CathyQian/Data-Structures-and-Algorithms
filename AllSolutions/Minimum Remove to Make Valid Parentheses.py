@@ -81,19 +81,19 @@ class Solution:
 # Time complexity: O(n), Space complexity: O(1)
 class Solution:
     def minRemoveToMakeValid(self, s: str) -> str:
-        close = s.count(')')
-        open = 0
+        close = s.count(')') #')' to be matched       
+        open = 0 # '(' to be matched
         ans = ''
         for c in s:
             if c == '(':
-                if open == close:
-                    continue
-                open += 1
+                if open < close:
+                    open += 1
+                    ans += c
             elif c == ')':
                 close -= 1
-                if open == 0:
-                    continue
-                open -= 1
-            
-            ans += c
+                if open > 0:
+                    open -= 1
+                    ans += c
+            else:
+                ans += c
         return ans
