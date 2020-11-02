@@ -10,7 +10,7 @@ We need a list to store elements in bfs. Alternatively, we can use two list to s
 - [Word Search II](AllSolutions/Word%20Search%20II.py)
 - **[Remove Invalid Parenthesis](AllSolutions/Remove%20Invalid%20Parenthesis.py)
 
-## dfs + backtracking
+## dfs or recursion + backtracking
 During dfs, you may change some elements which needs to be recovered after each dfs loop. Make sure to recover them after each dfs loop.
 
 ```Python
@@ -888,4 +888,82 @@ class Trie:
 # param_3 = obj.startsWith(prefix)
 """
 
+```
+
+
+# create new data structure if too many parameters to hold
+
+Example, LFU Cache
+```Python
+# both LFU and LRU mentioned recency, so what data structure can record recency --- deque and OrderedDict
+# difference: LFU also needs to record count, so hashmap to record key-value pair is not enough
+# needs key-value-count instead, create a node class to make things easier, then use hashmap key-node to allow easy
+# access of keys, use count: {key: node} to find node with minimum count
+
+# LFUCache: quite hard
+from collections import defaultdict
+from collections import OrderedDict
+
+class Node:
+    def __init__(self, key, val, count):
+        self.key = key
+        self.val = val
+        self.count = count
+
+class LFUCache(object):
+    def __init__(self, capacity):
+        """
+        :type capacity: int
+        """
+        self.space = capacity
+        self.key2node = {} # key:node(key, val, count)
+        self.count2node = defaultdict(OrderedDict) # {count: {key: node}}
+        self.minCount = None
+
+    def get(self, key):
+        """
+        :type key: int
+        :rtype: int
+        """
+        if key not in self.key2node:
+            return -1
+
+        node = self.key2node[key]
+        del self.count2node[node.count][key]
+        # clean memory
+        if not self.count2node[node.count]: # if empty, clean memory
+            del self.count2node[node.count]
+        node.count += 1
+        self.count2node[node.count][key] = node
+        # NOTICE check minCount!!! the deleted count in count2node was mincount
+        if not self.count2node[self.minCount]:
+            self.minCount += 1
+        return node.val
+
+    def put(self, key, value):
+        """
+        :type key: int
+        :type value: int
+        :rtype: void
+        """  
+
+        if self.space == 0 and not self.key2node:
+            return
+
+        if key in self.key2node:
+            self.key2node[key].val = value
+            self.get(key) # NOTICE, put makes count+1 too
+        else: 
+            if self.space == 0: # cache is not empty
+                # popitem(last=False) is FIFO, like queue
+                # it return key and value!!!
+                k, n = self.count2node[self.minCount].popitem(last=False) # the most important line of code
+                del self.key2node[k] 
+                self.space += 1
+            self.key2node[key] = Node(key, value, 1)
+            self.count2node[1][key] = self.key2node[key] 
+            self.minCount = 1
+            self.space -= 1
+
+        return
 ```

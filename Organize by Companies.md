@@ -266,3 +266,22 @@ recent 6 month
 
 # A1
 - Peak Iterator
+- Longest Substring Without Repeating Characters
+- Reverse Bits (bit operation, >>, <<, ^)
+- Moving Average from Data Steam (what if long array?)
+- Median of Two Sorted Arrays (hard, O(log(m+n)))
+- Group Anagrams (can't sort string directly, key = ''.join(sorted(s)))
+- Course Schedule
+- Course Schedule II
+- Product of Array Except Self (O(1) space and O(n)time)
+- Perfect Squares
+- Find Median from Data Stream (hard, one minheap + one max heap)
+- Insert Delete GetRandom O(1) (**)
+- Word Break
+- LRU Cache (**)
+- LFU Cache (**)
+- Find the next leaf: https://leetcode.com/discuss/interview-question/algorithms/124645/return-the-next-leaf-node-in-tree in-order tree traversal
+- 3 Sum
+- N Queens (backtracking)
+- Validate Binary Search Tree
+- Implement k-means clustering 

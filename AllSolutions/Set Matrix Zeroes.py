@@ -31,29 +31,32 @@ A straight forward solution using O(mn) space is probably a bad idea.
 A simple improvement uses O(m + n) space, but still not the best solution.
 Could you devise a constant space solution?
 """
-# method 1: O(1) space complexity, O(mn) time complexity
-# time and space, you can only save one.
+
+# method 1: O(mn) time complexity， O(1) space
 class Solution:
-    def setZeroes(self, matrix):
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
         if not matrix or not matrix[0]:
-          return
-        height, width = len(matrix), len(matrix[0])
-        for i in range(height):
-            for j in range(width):
-                if matrix[i][j] == 0:
-                    for tmp in range(height):
-                        if matrix[tmp][j] != 0:
-                            matrix[tmp][j] = 'a'
-                    for tmp in range(width):
-                        if matrix[i][tmp] != 0:
-                            matrix[i][tmp] = 'a'
+            return
+        m, n = len(matrix), len(matrix[0])
+        for r in range(m):
+            for c in range(n):
+                if matrix[r][c] == 0:
+                    for k in range(n):
+                        if matrix[r][k] != 0:
+                            matrix[r][k] = '#'
+                    for k in range(m):
+                        if matrix[k][c] != 0:
+                            matrix[k][c] = '#'
+        for r in range(m):
+            for c in range(n):
+                if matrix[r][c] == '#':
+                    matrix[r][c] = 0
+        
 
-        for i in range(height):
-            for j in range(width):
-                if matrix[i][j] == 'a':
-                    matrix[i][j] = 0
-
-# method 2: 
+# method 2: O(m+n) space,  O(mn) time
 class Solution(object):
     def setZeroes(self, matrix):
         m, n = len(matrix), len(matrix[0])
