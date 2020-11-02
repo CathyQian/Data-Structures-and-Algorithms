@@ -46,7 +46,9 @@ Constraints:
 
 
 """
+
 # binary search， time ~ O(mlogn), space ~ O(1)
+
 class Solution:
     def leftMostColumnWithOne(self, binaryMatrix: 'BinaryMatrix') -> int:
         di = binaryMatrix.dimensions()

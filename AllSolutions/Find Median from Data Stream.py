@@ -50,7 +50,7 @@ class MedianFinder:
             heappush(self.heap_max, -num)
         else:
             heappush(self.heap_min, num)
-            
+        # only exchange heap min elements
         if len(self.heap_max) - len(self.heap_min) > 1:
             heappush(self.heap_min, -heappop(self.heap_max))
         elif len(self.heap_min) - len(self.heap_max) > 0:

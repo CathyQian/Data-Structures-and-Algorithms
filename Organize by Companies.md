@@ -202,15 +202,14 @@ F (Tree & Graph) # focus on new first
 
 recent 6 month (done)
 - minimum remove to make valid parentheses (not bfs**, count instead; ()() is also valid)
-- leftmost column with at least a one (binary search across corners)
-- product array except self
-- k closest points to origin
-- add strings
-- add binary
-- design add and search word data structure
-- continuous subarray sum (** k==0, mod[0] = [-1])
-- find all anagram in a string
-- 
+- [Leftmost Column With At Least A One]() (**)
+- Product Array Except Self
+- [K Closest Points to Origin](AllSolutions/K%20Closest%20Points%20to%20Origin.py) (heap)
+- [Add Strings](AllSolutions/Add%20Strings.py)(divmod)
+- [Add Binary](AllSolutions/Add%20Binary.py)
+- [Design Add and Search word data structure](AllSolutions/Design%20Add%20and%20Search%20Words%20Data%20Structure.py) (trie, add a helper function to allow for recusrion**)
+- [Continuous Subarray Sum](AllSolutions/Continuous%20Subarray%20Sum.py) (** k==0, mod[0] = [-1])
+- [Find All Anagram In a String](AllSolutions/Find%20All%20Anagrams%20in%20a%20String.py)
 
 
 T
@@ -265,23 +264,24 @@ recent 6 month
 - Range Sum Query 2D - Immutable  
 
 # A1
-- Peak Iterator
-- Longest Substring Without Repeating Characters
-- Reverse Bits (bit operation, >>, <<, ^)
+- [Peaking Iterator](AllSolutions/Peeking%20Interator.py) (use cache)
 - Moving Average from Data Steam (what if long array?)
-- Median of Two Sorted Arrays (hard, O(log(m+n)))
-- Group Anagrams (can't sort string directly, key = ''.join(sorted(s)))
+- [Median of Two Sorted Arrays (**, O(log(m+n)))](AllSolutions/Median%20of%20Two%20Sorted%20Arrays.py)
+- [Longest Substring Without Repeating Characters](AllSolutions/Longest%20Substring%20Without%20Repeating%20Characters.py) (**)
+- [Group Anagrams](AllSolutions/Group%20Anagrams.py) (can't sort string directly, key = ''.join(sorted(s)))
+- Reverse Bits (bit operation, >>, <<, ^)
 - Course Schedule
 - Course Schedule II
 - Product of Array Except Self (O(1) space and O(n)time)
-- Perfect Squares
+- [Perfect Squares](AllSolutions/Perfect%20Squares.py)(BFS)
+- Set Matrix Zeros (O(m+n) space, or O(1) space)
 - Find Median from Data Stream (hard, one minheap + one max heap)
-- Insert Delete GetRandom O(1) (**)
+- [Insert Delete GetRandom O(1)](AllSolutions/Insert%20Delete%20GetRandom%20O(1).py)(**, random.choice)
 - Word Break
 - LRU Cache (**)
-- LFU Cache (**)
-- Find the next leaf: https://leetcode.com/discuss/interview-question/algorithms/124645/return-the-next-leaf-node-in-tree in-order tree traversal
-- 3 Sum
-- N Queens (backtracking)
+- [LFU Cache (**)](AllSolutions/LFU%20Cache.py)
+- [Find the next leaf](AllSolutions/Find%20the%20next%20leaf.py)[link](https://leetcode.com/discuss/interview-question/algorithms/124645/return-the-next-leaf-node-in-tree) (in-order tree traversal)
+- [3 Sum](AllSolutions/3Sum.py)
+- [N Queens](AllSolutions/N-Queens.py) (backtracking)
 - Validate Binary Search Tree
-- Implement k-means clustering 
+- [Implement k-means Clustering](AllSolutions/Implement%20k-means%20clustering%20algorithm.py)

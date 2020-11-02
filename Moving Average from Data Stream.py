@@ -26,7 +26,7 @@ class MovingAverage:
 
     def next(self, val: int) -> float:
         if self.curlen < self.maxsize:
-            #self.elements.append(val)
+            self.elements.append(val)
             self.avg = (self.avg * self.curlen + val)/(self.curlen + 1)
             self.curlen += 1
         else:
