@@ -48,28 +48,33 @@ class UnionFind:
 class Solution:       
     def accountsMerge(self, accounts: List[List[str]]) -> List[List[str]]:
         
-        mail2name = {} # mail: node, mail is unique, name is not unique
+        mail2name = {} # mail: name map, mail is unique, name is not unique
         for acc in accounts:
             name = acc[0]
             for mail in acc[1:]:
                 if mail not in mail2name:
                     mail2name[mail] = name
-                    
-        for acc in accounts:
-            mail1 = acc[1]
-            n1 = mail2node[mail1]
-            for mail2 in acc[2:]: # union all nodes
-                union(n1, mail2node[mail2])
-                
-        pnode2mail = collections.defaultdict(list) # parentnode: mail
         
-        for mail, node in mail2node.items():    
-            parent = find(node)
-            pnode2mail[parent].append(mail)  
+        uf = UnionFind()
+        for acc in accounts:
+            pre = None
+            for mail in acc[1:]:
+                if mail not in uf.parent:
+                    uf.parent[mail] = mail
+                    uf.rank[mail] = 0
+                if pre:
+                    uf.union(pre, mail)
+                pre = mail
+                
+        # uf.parent : mail: pmail       
+        pmail2mail = collections.defaultdict(list) # parentmail: mail
+        for mail in uf.parent:
+            pmail = uf.find(mail) # critical, make sure the pmail is updated    
+            pmail2mail[pmail].append(mail)  
         
         ans = []
-        for k,v in pnode2mail.items():
+        for k,v in pmail2mail.items():
             v.sort()
-            ans.append([k.name]+v)
+            ans.append([k[name]]+v)
             
         return ans

@@ -144,30 +144,30 @@ F (Tree & Graph) # focus on new first
 11. [Task Scheduler](AllSolutions/Task%20Scheduler.py)
 12. [Valid Palindrome II](AllSolutions/Valid%20Palindrome%20II.py)
 13. [Lowest Common Ancestor of Deepest Leaves](AllSolutions/Lowest%20Common%20Ancestor%20of%20Deepest%20Leaves.py)(**)
-14. Divide Two Integers (bit operation)
-15. Next Permutation
-16. Find First and Last Position of Element in Sorted Array (review binary search 4 template)
-17. Add Binary (easy, new)
-18. Subsets (recursion or dfs)
-19. Kth Largest Element in an Array (quick sort)
+14. [Divide Two Integers](AllSolutions/Divide%20Two%20Integers.py) (bit operation)
+15. [Next Permutation](AllSolutions/Next%20Permutation.py)
+16. [Find First and Last Position of Element in Sorted Array](AllSolutions/Find%20First%20and%20Last%20Position%20of%20Element%20in%20Sorted%20Array.py) (review binary search 4 template)
+17. [Add Binary](AllSolutions/Add%20Binary.py)
+18. [Subsets](AllSolutions/Subsets.py) (recursion or dfs)
+19. [Kth Largest Element in an Array](AllSolutions/Kth%20Largest%20Element%20in%20an%20Array.py)(**quick sort)
 20. Product of Array Except Self (O(N))
 21. Integer to English Words
-22. First Bad Version (new)
+22. [First Bad Version](AllSolutions/First%20Bad%20Version.py) (binary search)
 23. Serialize and Deserialize Binary Tree
-24. Intersection of Two Arrays (new)
-25. Merge Sorted Array (easy, new)
+24. [Intersection of Two Arrays](AllSolutions/Intersection%20of%20Two%20Arrays.py)
+25. [Merge Sorted Array](AllSolutions/Merge%20Sorted%20Array.py)
 26. Valid Palindrome
 27. Copy List with Random Pointer (medium **)
 28. Course Schedule
 29. Remove Invalid Parentheses (** bfs, pay attention to isvalid check -- use count is enough)
 30. Longest Increasing Path in a Matrix (** dfs + memo!!)
-31. The Maze (dfs + seen to avoid repeated dfs)
+31. The Maze (**dfs + seen to avoid repeated dfs)
 32. Random Pick with Weight
 33. Container with Most Water (medium, new)
 34. Merge Two Sorted Lists (easy, new)
 35. Longest Valid Parenthesis (**)
 36. Search in Rotated Sorted Array (**always narrow down scope between mid, start and end)
-37. Trapping rain water I (hard, **), Trapping rain water II
+37. Trapping rain water I (hard, **), Trapping rain water II (**)
 38. Permutations II (medium, **)
 39. Reorder List (medium, new)
 40. Read N Characters Given Read4
@@ -177,7 +177,7 @@ F (Tree & Graph) # focus on new first
 44. Sliding Window Maximum (hard, O(N, compare with Sliding Window Medium))
 45. Meeting Rooms II
 46. Inorder Successor in BST (medium, new)
-47. Walls and Gates
+47. Walls and Gates(** dfs or bfs)
 48. Range Sum Query 2D - Immutable (medium, new)
 49. Nested List Weight Sum (easy, new)
 50. Longest Substring with At Most K Distinct Characters (hard, new)
@@ -185,7 +185,9 @@ F (Tree & Graph) # focus on new first
 52. Intersection of Two Arrays (easy, new)
 53. Minesweeper (medium, new)
 54. Exclusive Time of Functions (medium, new)
-56. Accounts Merge (medium, new)
+56. [Accounts Merge (medium, ** union find)](AllSolutions/Accounts%20Merge.py)
+
+to-review
 57. All Nodes Distance K in Binary Tree (medium, new)
 58. Add Two Numbers (medium, new)
 59. String to Integer (atoi) (medium, new)
@@ -205,41 +207,51 @@ Recent 6 months
 - [Leftmost Column With At Least A One]() (**)
 - Product Array Except Self
 - [Add Strings](AllSolutions/Add%20Strings.py)(divmod)
-- [Add Binary](AllSolutions/Add%20Binary.py)
 - [Design Add and Search word data structure](AllSolutions/Design%20Add%20and%20Search%20Words%20Data%20Structure.py) (trie, add a helper function to allow for recusrion**)
 - [Find All Anagram In a String](AllSolutions/Find%20All%20Anagrams%20in%20a%20String.py)
 
 
 T
 - Minimum Genetic Mutation
+- Validate IP address
+- Alien Dictionary
+- friend cycle
+- text justification
+
+- LRU Cache
+- [One edit distance](AllSolutions/One%20Edit%20Distance.py) 
+
 - Design log storage system
 - flatten nested list iterator
 - reaching points
 - paint house
+
+
 - best meeting point
 - tree node
-- Design Twitter
-- Alien Dictionary
-- Validate IP address
+
+
 - Investments in 2016
 - palindromic substrings
 - valid parenthesis
 - masking personal information
-- text justification
-- friend cycle
+
 - range sum query-mutable
 - max points on a line
-- LRU Cache
-- One edit distance
+- rectangles area
+- minimum number of steps to make two strings anagram
+- permutation sequence
+- integer to Roman
+- happy number
+- Number of Connected Components in an Undirected Graph (union find)
 - Minimum increment to make array unique
 - minimum number of taps to open to water a garden
 - the skyline problem (*)
 - flatten 2D vector
-- permutation sequence
-- integer to Roman
+
 - Multiply strings
 - single element in a sorted array
-- happy number
+
 - reorganizing string
 - time based key-value store
 - binary tree pruning
@@ -247,19 +259,18 @@ T
 - max stack
 - robot bounded in cycle
 - next greater element i
-- Number of Connected Components in an Undirected Graph
+
 - binary gap
 - design skiplist
-- rectangles area
-- minimum number of steps to make two strings anagram
+
 recent 6 month
-- Tweet Count Per Frequency
+- Tweet Count Per Frequency (medium**)
 - Insert Delete GetRandom O(1)
-- Design HashMap
-- Insert Interval
-- Find Median from Data Stream
-- frog jump
-- Range Sum Query 2D - Immutable  
+- Design HashMap (easy, new)
+- Insert Interval (medium, **binary search)
+- Find Median from Data Stream (medium, minheap + maxheap)
+- Frog Jump (hard, **)
+- Range Sum Query 2D - Immutable (medium, **)
 
 # A1
 - [Peaking Iterator](AllSolutions/Peeking%20Interator.py) (use cache)

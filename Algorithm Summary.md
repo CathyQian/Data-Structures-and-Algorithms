@@ -967,3 +967,46 @@ class LFUCache(object):
 
         return
 ```
+
+# sliding window problem
+
+[Sliding Window Medium](AllSolutions/Sliding%20Window%20Median.py)
+```Python
+class Solution:
+    def medianSlidingWindow(self, nums, k):
+        if k == 0: return []
+        ans = []
+        window = sorted(nums[0:k])
+        for i in range(k, len(nums)):
+            ans.append((window[k // 2] + window[(k - 1) // 2]) / 2.0) # concise!
+            index = bisect.bisect_left(window, nums[i - k])
+            window.pop(index)      
+            bisect.insort_left(window, nums[i])
+        return ans
+```
+
+[Sliding Window Maximum](AllSolutions/Sliding%20Window%20Maximum.py)
+```Python
+# only  store elements bigger than the last element stored in the window
+from collections import deque
+class Solution:
+    def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]: 
+        res = []
+        q = deque()
+        for i in range(len(nums)):
+            if q and q[0] == i - k:
+                _ = q.popleft()
+            while q and nums[q[-1]] < nums[i]:
+                _ = q.pop()
+            q.append(i)
+            if i >= k - 1:
+                res.append(nums[q[0]])
+        return res
+```
+
+# union find
+Find cluster/subsets in graphs
+every subset only have one parent if nodes parents fully updated (use find function before parent in case**)
+
+# jump game
+try dfs or bfs or heuristic method, try to avoid dp
