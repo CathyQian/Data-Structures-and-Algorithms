@@ -37,8 +37,7 @@ class Solution:
         for i in range(len(board)):
             for j in range(len(board[0])):
                 if board[i][j] == word[0]:
-                    res = self.dfs(board, i, j, word)
-                    if res:
+                    if self.dfs(board, i, j, word):
                         return True
         return False
     
@@ -49,8 +48,7 @@ class Solution:
         board[i][j] = '#'
         for x, y in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
             if 0<=i+x<len(board) and 0<=j+y<len(board[0]) and board[i+x][j+y] == word[1]:
-                res = self.dfs(board, i+x, j+y, word[1:])
-                if res:
+                if self.dfs(board, i+x, j+y, word[1:]):
                     return True
         board[i][j] = temp
         return False
