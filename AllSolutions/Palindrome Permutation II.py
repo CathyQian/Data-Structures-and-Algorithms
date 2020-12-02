@@ -40,10 +40,7 @@ class Solution:
     
     def permute(self, s, m, path):
         if not s: # end of the dfs
-            if m:
-                self.result.add(''.join(path) + m + ''.join(path[::-1]))
-            else:
-                self.result.add(''.join(path) + ''.join(path[::-1]))
+            self.result.add(''.join(path) + m + ''.join(path[::-1]))
         else:
             for i in range(len(s)):
                 if i == 0 or s[i] != s[i-1]:
