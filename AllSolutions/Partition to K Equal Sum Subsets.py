@@ -47,23 +47,23 @@ class Solution:
        
         nums.sort(reverse=True) # needs to be reversed !!!!!
         self.visited = [False] * len(nums) # record which numbers has been used so far
-        target = sum(nums) // k
+        self.target = sum(nums) // k
   
-        return self.dfs(0, 0, k, nums, target)
+        return self.dfs(0, k, nums, self.target)
 
-    def dfs(self, start, curr, k, nums, target):
+    def dfs(self, start, k, nums, target):
 
         if k == 1: # k won't go to 0
             return True
-        if curr > target: # only correct if all elements in nums are non-negative (Leetcode all test case yes!)
+        if target < 0: # only correct if all elements in nums are non-negative (Leetcode all test case yes!)
             return False
-        if curr == target:   
-            return self.dfs(0, 0, k-1, nums, target)
+        if target == 0:   
+            return self.dfs(0, k-1, nums, self.target)
 
         for i in range(start, len(nums)): # exhaustive search
             if not self.visited[i]: # this node can't be used in the following dfs
                 self.visited[i] = True
-                if self.dfs(i+1, curr + nums[i], k, nums, target): #only need one True to return True
+                if self.dfs(i+1, k, nums, target-nums[i]): #only need one True to return True
                     return True
                 self.visited[i] = False # didn't find a path, reuse this node to try another route
             
