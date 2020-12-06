@@ -37,6 +37,19 @@ class Solution:
                     dp[i][j] = max(dp[i+1][j], dp[i][j-1])
         return dp[0][n-1]
 
+# change scan direction
+class Solution:
+    def longestPalindromeSubseq(self, s: str) -> int:
+        n = len(s)
+        dp = [[0 for _ in range(n)] for _ in range(n)]
+        for i in range(n):
+            dp[i][i] = 1
+            for j in range(i-1, -1, -1):
+                if s[j] == s[i]:
+                    dp[j][i] = dp[j+1][i-1] + 2
+                else:
+                    dp[j][i] = max(dp[j+1][i], dp[j][i-1])
+        return dp[0][n-1]
 """   
 Idea:
 - This problem is quite similar to find longest Palindromic subsequence (iterate through each element, 
