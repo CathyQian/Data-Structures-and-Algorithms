@@ -35,10 +35,9 @@ class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
         if not head or not head.next:
             return head
-        root = self.reverseList(head.next)
-        cur = root
-        while cur.next:
-            cur = cur.next
-        cur.next = head
-        head.next = None
-        return root
+        #recursion 
+        reverselist_tail = head.next
+        reverselist_head = self.reverseList(reverselist_tail)
+        reverselist_tail.next = head
+        reverselist_tail.next.next = None
+        return reverselist_head
