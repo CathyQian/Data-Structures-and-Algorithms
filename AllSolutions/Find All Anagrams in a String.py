@@ -49,14 +49,15 @@ class Solution:
             s_count[ss] += 1
         res = []
         
+        # maintain a sliding window
         if s_count == p_count:
             res.append(0)
         for i in range(n, m):
             s_count[s[i]] += 1
             s_count[s[i-n]] -= 1
             if s_count[s[i-n]] == 0:
-                _ = s_count.pop(s[i-n])
+                _ = s_count.pop(s[i-n]) # equivalent to del s_count[s[i-n]]
             if s_count == p_count:
-                res.append(i-n+1)
+                res.append(i-n+1) # make sure to append the right index here
         return res
     
