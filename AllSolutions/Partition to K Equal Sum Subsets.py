@@ -47,9 +47,9 @@ class Solution:
        
         nums.sort(reverse=True) # needs to be reversed !!!!!
         self.visited = [False] * len(nums) # record which numbers has been used so far
-        target = sum(nums) // k
+        self.target = sum(nums) // k
   
-        return self.dfs(0, k, nums, target)
+        return self.dfs(0, k, nums, self.target)
 
     def dfs(self, start, k, nums, target):
 
@@ -58,7 +58,7 @@ class Solution:
         if target < 0: # only correct if all elements in nums are non-negative (Leetcode all test case yes!)
             return False
         if target == 0:   
-            return self.dfs(0, k-1, nums, target)
+            return self.dfs(0, k-1, nums, self.target)
         
         # core part
         for i in range(start, len(nums)): # exhaustive search
