@@ -15,7 +15,6 @@ During dfs, you may change some elements which needs to be recovered after each 
 - figure out changing parameters and constants in dfs loops
 - figure out returning parameter
 - figure out edge cases and stopping criteria
-- 
 ```Python
 # dfs template for combination
 def dfs(self, arr, start, path, res):
