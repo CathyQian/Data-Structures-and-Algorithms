@@ -48,30 +48,32 @@ Note:
 
 # regular DFS divide and conquer
 class Solution:
-    def uniquePathsIII(self, grid):
-        self.grid = grid
-        self.row, self.col = len(grid), len(grid[0])
-        todo = 0 # count total number of non-obstacle squares ( = total number of steps to do)
-        for i in range(self.row):
-            for j in range(self.col):
+    def uniquePathsIII(self, grid: List[List[int]]) -> int:
+        if not grid or not grid[0]:
+            return 0
+        todo = 0
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
                 if grid[i][j] != -1:
-                    todo += 1
+                    todo +=1 
                 if grid[i][j] == 1:
-                    start_row = i
-                    start_col = j
+                    start_row, start_col = i, j
                 if grid[i][j] == 2:
-                    self.end_row = i
-                    self.end_col = j
-        return self.dfs(start_row, start_col, todo)
+                    self.end_row, self.end_col = i, j
+        
+        self.res = 0
+        self.dfs(grid, start_row, start_col, todo)
+        
+        return self.res
     
-    def dfs(self, row, col, todo):
-        if row == self.end_row and col == self.end_col and todo == 1:
-            return  1
-        else:
-            ans = 0
-            self.grid[row][col] = -1
-            for r, c in [(row-1, col),(row+1, col),(row, col-1),(row, col+1)]:
-                if 0 <= r < self.row and 0 <= c < self.col and self.grid[r][c]!= -1:
-                    ans += self.dfs(r, c, todo-1)
-            self.grid[row][col] = 0 # need to recover after each dfs path
-            return ans
+    def dfs(self, grid, i, j, cnt):
+        if i == self.end_row and j == self.end_col and cnt == 1:
+            self.res += 1
+            return
+        grid[i][j] = -1 # not x, y
+        for x, y in [(i+1, j), (i-1, j), (i, j+1), (i, j-1)]:
+            if 0 <= x < len(grid) and 0 <= y < len(grid[0]) and grid[x][y] != -1:
+                self.dfs(grid, x, y, cnt-1)
+        grid[i][j] = 0
+        
+        return 
