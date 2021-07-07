@@ -40,11 +40,12 @@ class Solution:
         return maxlength
     
     def dfs(self, matrix, row, col, memo):
+        # return the max length of increasing path starting from matrix[row][col]
         if (row, col) not in memo:
             ans = 1 # local variable to record max length 
-            for x, y in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
-                if 0 <= row+x < len(matrix) and 0 <= col+y < len(matrix[0]) and matrix[row+x][col+y] > matrix[row][col]:   
-                    length = self.dfs(matrix, row+x, col+y, memo)
+            for x, y in [(row+1, col), (row-1, col), (row, col+1), (row, col-1)]:
+                if 0 <= x < len(matrix) and 0 <= y < len(matrix[0]) and matrix[x][y] > matrix[row][col]:   
+                    length = self.dfs(matrix, x, y, memo)
                     ans = max(ans, length+1)
             memo[(row, col)] = ans # local maximum
         return memo[(row, col)]
