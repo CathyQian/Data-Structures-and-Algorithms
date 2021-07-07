@@ -136,7 +136,7 @@ class Solution(object):
                 else:
                     self.dfs(candidates, result, i, path + [candidates[i]], target - candidates[i])
                     # if each elements can only be used once
-                    # self.dfs(candidates, result, i+1, path + [candidates[i]], target - candidates[i])
+                    #  self.dfs(candidates, result, i+1, path + [candidates[i]], target - candidates[i])
 
 # combination sum ii, may have duplicates, each number used once
 class Solution:
@@ -153,13 +153,12 @@ class Solution:
 
         for i in range(start, len(nums)):
             # there may be duplicates in this array
-            if i > start and nums[i] == nums[i - 1]:
+            if i > start or nums[i] == nums[i - 1]:
                 continue
 
-            if nums[i] > target:
-                break
-            # each elements can be used only once
-            self.dfs(nums, i + 1, path + [nums[i]], result, target - nums[i])
+            if nums[i] <= target:
+            	# each elements can be used only once
+            	self.dfs(nums, i + 1, path + [nums[i]], result, target - nums[i])
         return
 
 # combination sum iii, fixed number of elements = k, no duplicates, each number used once
@@ -187,20 +186,18 @@ class Solution:
         return self.dfs(nums, target)
     
     def dfs(self, nums, target):
-        ans = 0
-        for num in nums:
-            if target == num:
-                ans = ans+1
-            elif target > num:
-                if target-num not in self.memo:
-                    subans = self.dfs(nums, target-num) # need to introduce index if it's combination instead of permutation
-                    self.memo[target-num] = subans
-                ans += self.memo[target-num]
-            else: # target < num, terminate for loop early
-                self.memo[target] = ans
-                return ans
-        self.memo[target] = ans
-        return ans
+    	if target not in self.memo:
+	    ans = 0
+	    for num in nums:
+		if target == num:
+		    ans = ans+1
+		elif target > num:
+		    if target-num not in self.memo:
+			subans = self.dfs(nums, target-num) # need to introduce index if it's combination instead of permutation
+			self.memo[target-num] = subans
+		    ans += self.memo[target-num]
+	    self.memo[target] = ans
+        return self.memo[target]
 ```
 
 ```Python
@@ -237,7 +234,7 @@ class Solution:
         # combination: for i in range(start, len(nums)) --> dfs(nums, i+1, path, res)
         for i in range(len(nums)):
             self.dfs(nums[:i] + nums[i+1:], res, path + [nums[i]])
-            # self.dfs(nums, res, path + nums[i]) #if nums can be used many times
+            # self.dfs(nums, res, path + nums[i]) # if nums can be used many times
 
 # permutations II, nums contains duplicates
 class Solution:
