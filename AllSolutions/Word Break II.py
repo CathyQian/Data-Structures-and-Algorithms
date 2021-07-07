@@ -47,7 +47,8 @@ Output:
 # dfs + memo (memo vals are different from word break I; dfs needs res to record path)
 class Solution(object):
     def wordBreak(self, s, wordDict):
-        return self.dfs(s, 0, wordDict, dict())
+        memo =  {len(s): [""]} # edge case; memo key: starting index, memo val: returning path
+        return self.dfs(s, 0, wordDict, memo)
     
     def dfs(self, s, start, wordDict, memo):
         """return breaking combination of s[start:] in memo[start]
