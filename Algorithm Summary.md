@@ -47,7 +47,7 @@ def dfs(self, arr, start, path, res):
 - [Partition to K Equal Sum Subsets](AllSolutions/Partition%20to%20K%20Equal%20Sum%20Subsets.py) (**)
 - [Unique Paths III](AllSolutions/Unique%20Paths%20III.py) (**)
 
-## dfs + memo
+## dfs + memo (time and space complexity**)
 dfs + memo is used if some operations have to be repeated again and again, thus it's easier to put them in a memo hashmap to allow for later retrieval. It's mostly used in string or array partitioning or matching.
 
 1. [Target Sum](AllSolutions/Target%20Sum.py)
