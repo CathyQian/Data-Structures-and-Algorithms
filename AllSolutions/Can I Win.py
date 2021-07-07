@@ -55,7 +55,8 @@ use dfs + memorization to reduce memory
     difference of the sum of the two. Therefore only allowed values uniquely determine the state.
     How many allowed values sets are possible? The length of the allowed value set can range 1 to maxChoosableInteger(N). So the answer is (N,1) + (N,2) + ..(N,N) where (N,K)
     means choose K from N. This is equal to 2^N.
-    Now at my turn, if the max(allowed) + so_far >= target, then I will win. Otherwise, I choose from the allowed values one by one and recursively call for the other player. If with any choice the opponent fails for sure, then also I can win for sure from this state.
+    Now at my turn, if the max(allowed) + so_far >= target, then I will win. Otherwise, I choose from the allowed values one by one and recursively call for the other player. 
+    If with any choice the opponent fails for sure, then also I can win for sure from this state.
     What is the time complexity? For a brute force solution, the game tree has 10 choices at first level, each of these choices has 9 choices at second level, and so on. 
     So the complexity is N!. But with memoization, we only compute 2^N sub-problems, and in each problem we do O(N) work. So total time complexity is O(N2^N).
 
