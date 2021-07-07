@@ -34,8 +34,10 @@ class Solution:
     def kSum(A: list, k: int, target: int) -> int:
         self.count = 0
         self.visited = set()
-        self.dfs(A.sort(reverse=True), k, target, 0, 0)
+        A.sort(reverse=True)
+        self.dfs(A, k, target, 0, 0)
         return self.count
+    
     def dfs(self, A, k, target, start, cursum):
         if k == 0 and cursum == target:
             self.count += 1
