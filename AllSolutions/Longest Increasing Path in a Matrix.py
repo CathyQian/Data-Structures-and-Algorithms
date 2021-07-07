@@ -49,3 +49,7 @@ class Solution:
                     ans = max(ans, length+1)
             memo[(row, col)] = ans # local maximum
         return memo[(row, col)]
+
+"""
+The tricky part of this problem is since it's looking for increasing path, there is only one direction to go between adjacent cells, therefore no need to block visited cells.
+"""
