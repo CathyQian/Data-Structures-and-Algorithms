@@ -44,8 +44,8 @@ def dfs(self, arr, start, path, res):
         self.dfs(arr, start+1, path+arr[i], res)
         arr[i] = temp # recover this element for future dfs loop
 ```
-- [Partition to K Equal Sum Subsets](AllSolutions/Partition%20to%20K%20Equal%20Sum%20Subsets.py)
-- [Unique Paths III](AllSolutions/Unique%20Paths%20III.py)
+- [Partition to K Equal Sum Subsets](AllSolutions/Partition%20to%20K%20Equal%20Sum%20Subsets.py) (**)
+- [Unique Paths III](AllSolutions/Unique%20Paths%20III.py) (**)
 
 ## dfs + memo
 dfs + memo is used if some operations have to be repeated again and again, thus it's easier to put them in a memo hashmap to allow for later retrieval. It's mostly used in string or array partitioning or matching.
