@@ -52,13 +52,11 @@ class Solution:
 # recursion with memory, pay special attention to r direction, O(n2)
 class Solution(object):
     def wordBreak(self, s, wordDict):  
-        memo = {}
+        memo = {len(s): True} # stop condition
         return self.canBreak(s, 0, memo, set(wordDict))
     
     def canBreak(self, s, start, m, wordDict):
         # m[start]: bool, indicate if s[start:] can be broken as desired or not
-        if start == len(s):
-            return True
         if start not in m:
             m[start] = False # initialize!
             if s[start:] in wordDict: 
