@@ -26,10 +26,12 @@ You may assume k is always valid, ie: k is always smaller than input array's siz
 """
 
 """
-Solution: use two heaps, one max heap, one min heap
+Solution1: use two heaps, one max heap, one min heap
 for every movement of the window, find the position of the removed elements, then decide what to do 
 about the two heap (heap may be the best option here given that is involves frequent adding and removal of elements.
 problem: need to find which element to delete each time
+
+Solution2: maintain a sorted array including the window elements and update the array via removal and adding elements one by one
 
 """
 # insertion sort
