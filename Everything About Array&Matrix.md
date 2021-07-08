@@ -107,18 +107,21 @@ Example 4: search for pairs in array
 # K-diff Pairs in an Array (unique pair)
 class Solution:
     def findPairs(self, nums: List[int], k: int) -> int:
-        visited = set()
-        count = 0
+        nums.sort(reverse=True)
+        val_count = {}
         for num in nums:
-            if num not in visited:
-                if k == 0 and nums.count(num) > 1:
-                    count += 1 # if not unique pair, count += nums.count(num)//2
-                    visited.add(num)
-                elif k != 0 and num+k in set(nums):
-                    count += 1
-                    visited.add(num)
-        return count
-
+            if k == 0:
+                if num not in val_count:
+                    val_count[num] = 0
+                else:
+                    val_count[num] = 1 # change if not unique pairs
+            if k != 0:
+                if num not in val_count:
+                    val_count[num] = 0
+                if num + k in val_count:
+                    val_count[num] = 1 # +1 if not unique pairs
+            
+        return sum(val_count.values())
 ```
 Other examples include two sum, 3 sum, 4 sum.
 
