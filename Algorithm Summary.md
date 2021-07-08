@@ -415,7 +415,7 @@ class Solution:
         pre = [0 for _ in range(m+1)] # 2D or 1D, n increment gradually
         n = len(A)
         for i in range(n):
-            post = pre.copy() # important
+            post = pre.copy() # important, pre and post are pointing to the same object, any changes in post will also modify the corresponding elements in pre
             for j in range(1, m+1):
                 if j >= A[i]:
                     post[j] = max(pre[j], pre[j-A[i]] + A[i])
