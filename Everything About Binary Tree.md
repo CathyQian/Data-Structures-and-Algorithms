@@ -207,15 +207,13 @@ class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
         if not root:
             return True
-        elif not root.left and not root.right:
-            return True
         q = [root.left, root.right]
         while q:
             l = q.pop(0)
             r = q.pop(0)
             if not l and not r:
                 pass
-            elif not l and not r and l.val == r.val:
+            elif l and r and l.val == r.val:
                 q.append(l.left)
                 q.append(r.right)
                 q.append(l.right)
