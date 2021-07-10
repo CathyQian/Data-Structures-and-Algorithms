@@ -368,29 +368,7 @@ class Solution:
 
 # recursion
 # min depth != min(min depth of left child, min depth of right child) + 1
-# has 2 separate cases that cannot be merged into the recursive call
-class Solution:
-    def minDepth(self, root: TreeNode) -> int:
-        if root is None:
-            return 0
-        
-        # elif root.left is None and root.right is None: # a separate case
-        #    return 1
-        
-        elif root.left is not None and root.right is None: # a separate case
-            left = self.minDepth(root.left)
-            return left + 1
-        
-        elif root.right is not None and root.left is None: # a separate case
-            right = self.minDepth(root.right)
-            return right + 1
-        
-        else:
-            left = self.minDepth(root.left)
-            right = self.minDepth(root.right)
-            return min(left, right) + 1
-	    
-	    
+# has 2 separate cases that cannot be merged into the recursive call    	    
 class Solution:
     def minDepth(self, root: TreeNode) -> int:
         if root is None:
