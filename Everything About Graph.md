@@ -23,7 +23,7 @@ class Graph:
         self.verticeslist = [0]*numvertex # host vertices by their index order
 
     def set_vertex(self, idx, vtx):
-        if 0 <= idx <= self.numvertex:
+        if 0 <= idx < self.numvertex:
             self.vertices[vtx] = idx
             self.verticeslist[idx] = vtx
 
