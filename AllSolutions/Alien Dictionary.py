@@ -70,7 +70,7 @@ def alienOrder(self, words: List[str]) -> str:
     # Step 1: Find all edges and put them in adj_list.
     for w1, w2 in zip(words, words[1:]):
         # Check that second word isn't a prefix of first word.
-        if w2 == w1[:len(w2)] and len(w2) < len(w1):
+        if len(w2) < len(w1) and w2 == w1[:len(w2)]:
                 return ""
         for c, d in zip(w1, w2):
             if c != d: 
