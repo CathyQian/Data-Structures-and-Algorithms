@@ -615,7 +615,7 @@ class Solution:
             return 0
 
         if root.data == value: 
-            return dist + 1
+            return dist
 
         left = self.findDist(root.left, data, dist + 1) 
         right = self.findDist(root.right, data, dist + 1) 
