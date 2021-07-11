@@ -91,7 +91,7 @@ def alienOrder(self, words: List[str]) -> str:
     if self.has_cycle:
         return ""
 
-    return "".join(output[::-1])
+    return "".join(self.output[::-1])
 
     def dfs(self, node):
         # Don't recurse further if we found a cycle already
