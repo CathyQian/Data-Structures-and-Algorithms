@@ -181,7 +181,7 @@ class Solution:
             if num_parent > 1:
                 return False
             if num_parent == 0 and not root:
-                root = child
+                root = node
             if num_parent == 0 and root:
                 return False
         if not root: # root not found
