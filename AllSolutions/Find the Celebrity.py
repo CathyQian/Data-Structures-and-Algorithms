@@ -79,7 +79,7 @@ class Solution(object):
         """
         isCelebrity = [True] * n
         for i in range(n):
-            if isCelebrity[i]:
+            if isCelebrity[i]: # avoid repeated searches
                 for j in range(n):
                     if j != i and (knows(i, j) or not knows(j, i)): # not celebrity: knows someone, or someone doesn't know you
                         isCelebrity[i] = False
