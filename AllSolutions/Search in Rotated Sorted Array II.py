@@ -18,6 +18,10 @@ Follow up:
     Would this affect the run-time complexity? How and why?
 """
 
+"""
+Note: The tricky part about this problem is if there's duplicates, depending on where the array is rotated, the if/else condition in the non-duplicated case doesn't work anymore.
+The workaround is if the mid element is equal to start element, start +=1 to skip this start element.
+"""
 class Solution:
     def search(self, nums: List[int], target: int) -> bool:
         l, r = 0, len(nums) - 1
