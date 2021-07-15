@@ -76,8 +76,9 @@ class Solution:
         
         # len(p) > 1 and p[1] == '*' and first letter match with s
         while len(s) > 0 and (s[0] == p[0] or p[0] == '.'):
-            if self.isMatch(s, p[2:]):# * stands for repeating once
+            if self.isMatch(s, p[2:]): # * stands for repeating zero times
                 return True
-            s = s[1:]
+            s = s[1:] # * stands for repeat at least one time
+            
         # len(p) > 1 and p[1] != '*' and first letter doesn't match with s, * stands for repeating zero times
         return self.isMatch(s, p[2:])
