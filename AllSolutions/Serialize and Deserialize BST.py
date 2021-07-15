@@ -20,6 +20,7 @@ Note: Do not use class member/global/static variables to store states. Your seri
 #         self.left = None
 #         self.right = None
 
+# This solution works for both binary tree and binary search tree
 class Codec:
 
     def serialize(self, root: TreeNode) -> str:
