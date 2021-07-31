@@ -62,17 +62,18 @@ class Solution:
         return self.dfs(nums, target)
     
     def dfs(self, nums, target):
-        ans = 0
-        for num in nums:
-            if target == num:
-                ans = ans+1
-            elif target > num:
-                if target-num not in self.memo:
-                    subans = self.dfs(nums, target-num)
-                    self.memo[target-num] = subans
-                ans += self.memo[target-num]
-            else:# target < num
-                self.memo[target] = ans
-                return ans
-        self.memo[target] = ans
-        return ans
+        # return number of combinations sums up to target
+        if target not in self.memo:
+            ans = 0
+            for num in nums:
+                if target == num:
+                    ans += 1
+                elif target > num:
+                    if target-num not in self.memo:
+                        subans = self.dfs(nums, target-num)
+                        self.memo[target-num] = subans
+                    ans += self.memo[target-num]
+                else:# target < num, early termination
+                    break
+            self.memo[target] = ans
+        return self.memo[target]

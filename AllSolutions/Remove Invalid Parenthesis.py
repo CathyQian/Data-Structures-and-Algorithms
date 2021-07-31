@@ -100,13 +100,13 @@ class Solution(object):
     def dfs(self, s, d_l, d_r, res, hist):
         if d_l == 0 and d_r == 0 : # once found, exit the dfs loop, to gurantee the minimum truncation
            if not s in res and self.check(s):
-                res[s] = True
+                res.add(s)
         elif s == "":
             return
         else:
             for i in range(len(s)):
                 if not s[0:i] + s[i+1:] in hist:
-                    hist[s[0:i] + s[i+1:]] = True
+                    hist.add(s[0:i] + s[i+1:])
                     
                     if s[i] == '(' and d_l > 0:
                         self.dfs(s[0:i] + s[i+1:], d_l-1, d_r, res, hist)
@@ -121,10 +121,10 @@ class Solution(object):
         :rtype: List[str]
         """
     
-        res = {}
-        hist = {}
-        d_r = 0 # number of '(' to be deleted
-        d_l = 0 # number of ')' to be deleted
+        res = set()
+        hist = set()
+        d_l = 0 # number of '(' to be deleted
+        d_r = 0 # number of ')' to be deleted
         for ch in s:
             if ch == '(':
                 d_l += 1
@@ -137,4 +137,4 @@ class Solution(object):
                     
         self.dfs(s, d_l, d_r, res, hist)
         
-        return res.keys()
+        return res

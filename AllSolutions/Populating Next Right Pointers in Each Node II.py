@@ -44,8 +44,8 @@ class Solution:
     def connect(self, root: 'Node') -> 'Node':
         q = root
         while q:
-            cur = q
-            head = pre = Node(0)
+            cur = q # 1st layer
+            head = pre = Node(0)  # 2nd layer
             while cur:
                 if cur.left:
                     pre.next = cur.left

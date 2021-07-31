@@ -52,3 +52,30 @@ class Solution:
             return self.findKth(A, B, A_start + k//2, B_start, k - k//2)
         else:
             return self.findKth(A, B, A_start, B_start + k//2, k - k//2)
+        
+# method2 Binary Search  --- easier
+class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        n, m = len(nums1), len(nums2)
+        
+        if m < n:
+            n, nums1, m, nums2 = m, nums2, n, nums1
+        
+        start, end = 0, n # end != n-1
+        
+        while start <= end:
+            pa = start + (end-start)//2
+            pb = (n+m+1)//2 - pa
+            max_a = -sys.maxsize if pa == 0 else nums1[pa-1]
+            min_a = sys.maxsize if pa == n else nums1[pa]
+            max_b = -sys.maxsize if pb == 0 else nums2[pb-1]
+            min_b = sys.maxsize if pb == m else nums2[pb]
+            if max_a <= min_b and max_b <= min_a:
+                if (n+m)%2==1:
+                    return max(max_a, max_b)  
+                else:
+                    return (max(max_a, max_b) + min(min_a, min_b))/2
+            elif max_a > min_b:
+                end = pa - 1
+            elif max_b > min_a:
+                start = pa + 1  

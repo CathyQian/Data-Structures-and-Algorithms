@@ -41,9 +41,10 @@ for (int i = 0; i < len; i++) {
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        i = 0
-        for num in nums:
-            if nums[i] != num:
-                i += 1
-                nums[i] = num
-        return i + 1
+        k = 0
+        for i in range(len(nums)):
+            if i == 0 or nums[i] != nums[i-1]:
+                nums[k] = nums[i]
+                k += 1
+            i += 1
+        return k

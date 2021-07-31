@@ -15,7 +15,13 @@ Key points:
 
 ## dfs or recursion + backtracking
 During dfs, you may change some elements which needs to be recovered after each dfs loop. Make sure to recover them after each dfs loop.
+<<<<<<< HEAD
 Key: what to return in dfs --- True/False, paths, # of path, None, minCut.
+=======
+- figure out changing parameters and constants in dfs loops
+- figure out returning parameter
+- figure out edge cases and stopping criteria
+>>>>>>> d5aa19fd4045ae0699cb3469a57e579bea0d43ce
 ```Python
 # dfs template for combination
 def dfs(self, arr, start, path, res, target):
@@ -45,12 +51,17 @@ def dfs(self, arr, start, path, res):
         self.dfs(arr, start+1, path+arr[i], res)
         arr[i] = temp # recover this element for future dfs loop
 ```
+<<<<<<< HEAD
 - [Partition to K Equal Sum Subsets](AllSolutions/Partition%20to%20K%20Equal%20Sum%20Subsets.py)
 - [Unique Paths III](AllSolutions/Unique%20Paths%20III.py)
 - [Word Search](AllSolutions/Word%20Search.py)
 - [Word Search II](AllSolutions/Word%20Search%20II.py)
+=======
+- [Partition to K Equal Sum Subsets](AllSolutions/Partition%20to%20K%20Equal%20Sum%20Subsets.py) (**)
+- [Unique Paths III](AllSolutions/Unique%20Paths%20III.py) (**)
+>>>>>>> d5aa19fd4045ae0699cb3469a57e579bea0d43ce
 
-## dfs + memo
+## dfs + memo (time and space complexity**)
 dfs + memo is used if some operations have to be repeated again and again, thus it's easier to put them in a memo hashmap to allow for later retrieval. It's mostly used in string or array partitioning or matching.
 
 1. [Target Sum](AllSolutions/Target%20Sum.py)
@@ -137,6 +148,7 @@ class Solution(object):
     def dfs(self, candidates, result, start, path, target): # remember these five params
         if target == 0 and path:
             result.append(path)
+<<<<<<< HEAD
             return
         for i in range(start, len(candidates)):
             if candidates[i] > target: # require sort first to allow early termination
@@ -145,6 +157,16 @@ class Solution(object):
                 self.dfs(candidates, result, i, path + [candidates[i]], target - candidates[i])
                 # if each elements can only be used once
                 # self.dfs(candidates, result, i+1, path + [candidates[i]], target - candidates[i])
+=======
+        else:
+            for i in range(start, len(candidates)):
+                if candidates[i] > target: # require sort first to allow early termination
+                    break
+                else:
+                    self.dfs(candidates, result, i, path + [candidates[i]], target - candidates[i])
+                    # if each elements can only be used once
+                    #  self.dfs(candidates, result, i+1, path + [candidates[i]], target - candidates[i])
+>>>>>>> d5aa19fd4045ae0699cb3469a57e579bea0d43ce
 
 # combination sum ii, may have duplicates, each number used once
 class Solution:
@@ -161,12 +183,19 @@ class Solution:
 
         for i in range(start, len(nums)):
             # there may be duplicates in this array
-            if i > start and nums[i] == nums[i - 1]:
+            if i > start or nums[i] == nums[i - 1]:
                 continue
+<<<<<<< HEAD
             if nums[i] > target:
                 break
             # each elements can be used only once
             self.dfs(nums, i + 1, path + [nums[i]], result, target - nums[i])
+=======
+
+            if nums[i] <= target:
+            	# each elements can be used only once
+            	self.dfs(nums, i + 1, path + [nums[i]], result, target - nums[i])
+>>>>>>> d5aa19fd4045ae0699cb3469a57e579bea0d43ce
         return
 
 # combination sum iii, fixed number of elements = k, no duplicates, each number used once
@@ -194,20 +223,18 @@ class Solution:
         return self.dfs(nums, target)
     
     def dfs(self, nums, target):
-        ans = 0
-        for num in nums:
-            if target == num:
-                ans = ans+1
-            elif target > num:
-                if target-num not in self.memo:
-                    subans = self.dfs(nums, target-num) # need to introduce index if it's combination instead of permutation
-                    self.memo[target-num] = subans
-                ans += self.memo[target-num]
-            else: # target < num, terminate for loop early
-                self.memo[target] = ans
-                return ans
-        self.memo[target] = ans
-        return ans
+    	if target not in self.memo:
+	    ans = 0
+	    for num in nums:
+		if target == num:
+		    ans = ans+1
+		elif target > num:
+		    if target-num not in self.memo:
+			subans = self.dfs(nums, target-num) # need to introduce index if it's combination instead of permutation
+			self.memo[target-num] = subans
+		    ans += self.memo[target-num]
+	    self.memo[target] = ans
+        return self.memo[target]
 ```
 
 ```Python
@@ -244,7 +271,7 @@ class Solution:
         # combination: for i in range(start, len(nums)) --> dfs(nums, i+1, path, res)
         for i in range(len(nums)):
             self.dfs(nums[:i] + nums[i+1:], res, path + [nums[i]])
-            # self.dfs(nums, res, path + nums[i]) #if nums can be used many times
+            # self.dfs(nums, res, path + nums[i]) # if nums can be used many times
 
 # permutations II, nums contains duplicates
 class Solution:
@@ -425,7 +452,7 @@ class Solution:
         pre = [0 for _ in range(m+1)] # 2D or 1D, n increment gradually
         n = len(A)
         for i in range(n):
-            post = pre.copy() # important
+            post = pre.copy() # important, pre and post are pointing to the same object, any changes in post will also modify the corresponding elements in pre
             for j in range(1, m+1):
                 if j >= A[i]:
                     post[j] = max(pre[j], pre[j-A[i]] + A[i])

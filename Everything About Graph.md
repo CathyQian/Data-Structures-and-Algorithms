@@ -23,7 +23,7 @@ class Graph:
         self.verticeslist = [0]*numvertex # host vertices by their index order
 
     def set_vertex(self, idx, vtx):
-        if 0 <= idx <= self.numvertex:
+        if 0 <= idx < self.numvertex:
             self.vertices[vtx] = idx
             self.verticeslist[idx] = vtx
 
@@ -181,7 +181,7 @@ class Solution:
             if num_parent > 1:
                 return False
             if num_parent == 0 and not root:
-                root = child
+                root = node
             if num_parent == 0 and root:
                 return False
         if not root: # root not found

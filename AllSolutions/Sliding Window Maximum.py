@@ -50,7 +50,9 @@ Constraints:
 """
 
 # time complexity ~ O(N), space complexity ~ O(N)
-
+# Solution: keep an array with index of elements, these elements are in descending order
+# for new elements, pop out any elements smaller than it before adding the new element; check if the biggest element needs to be popped out, if yes --> do it
+# the biggest element is always the first element in the array after above processing
 from collections import deque
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]: 

@@ -27,6 +27,17 @@ Note:
     All inputs are consist of lowercase letters a-z.
     The values of words are distinct.
 
+Constraints:
+
+    m == board.length
+    n == board[i].length
+    1 <= m, n <= 12
+    board[i][j] is a lowercase English letter.
+    1 <= words.length <= 3 * 10^4  # a lot of words
+    1 <= words[i].length <= 10
+    words[i] consists of lowercase English letters.
+    All the strings of words are unique.
+
 """
 
 class Solution:
@@ -70,4 +81,34 @@ class Solution:
 """
 use Trie to search for words with the same prefix in one DFS
 if not using Trie, needs to do one dfs for one word, time exceed limit
+
+# only works if number of words is small
+class Solution:
+    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
+        if not board or not board[0]:
+            return []
+        
+        res = []
+        for word in words:
+            for i in range(len(board)):
+                for j in range(len(board[0])):
+                    if word not in res and board[i][j] == word[0]:
+                        if self.dfs(board, i, j, word):
+                            res.append(word)
+        return res
+    
+    def dfs(self, board, i, j, word):
+        if len(word) == 1:
+            return True
+        curr = board[i][j]
+        board[i][j] = '#'
+        res = False
+        for x, y in [(i+1, j), (i-1, j), (i, j+1), (i, j-1)]:
+            if 0 <= x < len(board) and 0 <= y < len(board[0]) and board[x][y] == word[1]:
+                res = self.dfs(board, x, y, word[1:])
+                if res: # note: can not return here without recovering board[i][j]
+                    break
+        board[i][j] = curr
+        return res
+                
 """

@@ -20,13 +20,16 @@ Note: Do not use class member/global/static variables to store states. Your seri
 #         self.left = None
 #         self.right = None
 
+# This solution works for both binary tree and binary search tree
 class Codec:
 
     def serialize(self, root: TreeNode) -> str:
         """Encodes a tree to a single string.
         """
-        res = []
+        if not root:
+            return ""
         q = [root]
+        res = []
         while q:
             ele = q.pop(0)
             if ele:
@@ -34,29 +37,34 @@ class Codec:
                 q.append(ele.right)
             res.append(str(ele.val) if ele else '#')
         return ','.join(res)
+            
 
     def deserialize(self, data: str) -> TreeNode:
         """Decodes your encoded data to tree.
         """
-        vals = data.split(',')
-        if vals[0] == '#':
+        if len(data) == 0:
             return None
-        else:
-            root = TreeNode(int(vals[0]))
+        elist = data.split(',')
+        root = TreeNode(elist[0])
         q = [root]
         i = 1
-        while i < len(vals):
-            ele = q.pop(0)
-            if vals[i] != '#':
-                ele.left = TreeNode(int(vals[i]))
-                q.append(ele.left)
+        while i < len(elist):
+            cur = q.pop(0)
+            if elist[i] != '#':
+                cur.left = TreeNode(int(elist[i]))
+                q.append(cur.left)
             i += 1
-            if vals[i] != '#':
-                ele.right = TreeNode(int(vals[i]))
-                q.append(ele.right)
+            if elist[i] != '#':
+                cur.right = TreeNode(int(elist[i]))
+                q.append(cur.right)
             i += 1
         return root
+        
 
 # Your Codec object will be instantiated and called as such:
-# codec = Codec()
-# codec.deserialize(codec.serialize(root)) 
+# Your Codec object will be instantiated and called as such:
+# ser = Codec()
+# deser = Codec()
+# tree = ser.serialize(root)
+# ans = deser.deserialize(tree)
+# return ans

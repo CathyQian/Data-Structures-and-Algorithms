@@ -33,46 +33,27 @@ class Solution:
                         dp2[i] = min(dp2[j-1] + 1, dp2[i])
         return dp2[-1]
 
-# Method 2: Top-Down one DP (this method explain why we have to do 2 dps, repetitive computation for checking if s[j:i+1] is panlindrome )
-# time exceed limit
+# Method 2: Memoization
 class Solution:
     def minCut(self, s: str) -> int:
-        dp = [i for i in range(len(s))]
-        for i in range(1,len(s)):
-            for j in range(i+1):
-                if s[j:i+1] == s[j:i+1][::-1]:
-                    if j == 0:
-                        dp[i] = 0
-                    else:
-                        dp[i] = min(dp[i], dp[j-1]+1)
-        print(dp)
-        return dp[-1]
-
-# Memoization
-class Solution:
-    def minCut(self, s: str) -> int:
-        dp = [[False]*len(s) for i in range(len(s))]
-        for i in range(len(s)-1, -1, -1):
-            for j in range(i, len(s)):
-                if i == j:
-                    dp[i][j] = True
-                elif i < j:
-                    if s[i] == s[j]:
-                        dp[i][j] = (j-i==1) or dp[i+1][j-1]
-                        
+        dp = [[False]*len(s) for _ in range(len(s))]
+        for i in range(len(s)):
+            dp[i][i] = True
+            for j in range(i)[::-1]:
+                if s[j] == s[i]:
+                    dp[j][i] = (i-j == 1) or dp[j+1][i-1]
         self.memo = {}
         self.memo[len(s)] = -1
-        return self.dfs(0, s, dp)
+        return self.dfs(s, 0, dp)
     
-    def dfs(self, start, s, dp):
+    def dfs(self, s, start, dp):
         if start not in self.memo:
             ans = len(s) - start
-            for i in range(start,len(s)):
+            for i in range(start, len(s)):
                 if dp[start][i] == True:
-                    ans = min(ans, self.dfs(i+1, s, dp) + 1)
+                    ans = min(ans, self.dfs(s, i+1, dp) + 1)
             self.memo[start] = ans
         return self.memo[start]
-
 
 """
 key point: create the map based on the palindrome condition and find the shortest path.

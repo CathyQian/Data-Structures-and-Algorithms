@@ -207,15 +207,13 @@ class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
         if not root:
             return True
-        elif not root.left and not root.right:
-            return True
         q = [root.left, root.right]
         while q:
             l = q.pop(0)
             r = q.pop(0)
             if not l and not r:
                 pass
-            elif not l and not r and l.val == r.val:
+            elif l and r and l.val == r.val:
                 q.append(l.left)
                 q.append(r.right)
                 q.append(l.right)
@@ -370,27 +368,26 @@ class Solution:
 
 # recursion
 # min depth != min(min depth of left child, min depth of right child) + 1
-# has 2 separate cases that cannot be merged into the recursive call
+# has 2 separate cases that cannot be merged into the recursive call    	    
 class Solution:
     def minDepth(self, root: TreeNode) -> int:
         if root is None:
             return 0
         
-        # elif root.left is None and root.right is None: # a separate case
-        #    return 1
-        
-        elif root.left is not None and root.right is None: # a separate case
-            left = self.minDepth(root.left)
-            return left + 1
-        
-        elif root.right is not None and root.left is None: # a separate case
-            right = self.minDepth(root.right)
-            return right + 1
-        
-        else:
+        if root.left and root.right:
             left = self.minDepth(root.left)
             right = self.minDepth(root.right)
             return min(left, right) + 1
+	    
+        elif root.left:
+            return self.minDepth(root.left) + 1
+        
+	elif root.right:
+            return self.minDepth(root.right) + 1
+        
+	else:
+            return 1
+	    
 ```
 
 
@@ -618,7 +615,7 @@ class Solution:
             return 0
 
         if root.data == value: 
-            return dist + 1
+            return dist
 
         left = self.findDist(root.left, data, dist + 1) 
         right = self.findDist(root.right, data, dist + 1) 
