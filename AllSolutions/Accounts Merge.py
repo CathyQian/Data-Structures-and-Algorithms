@@ -75,6 +75,6 @@ class Solution:
         ans = []
         for k,v in pmail2mail.items():
             v.sort()
-            ans.append([k[name]]+v)
+            ans.append(mail2name[k]]+v)
             
         return ans

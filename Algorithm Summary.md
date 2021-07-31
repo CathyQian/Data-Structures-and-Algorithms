@@ -5,22 +5,25 @@ bfs and dfs are top solutions for finding all path/permutations/combinations. Be
 
 We need a list to store elements in bfs. Alternatively, we can use two list to store the previous and the current layer and update them along the way. This strategy is especially useful if we want to get results from a specific layer (i.e., min path).
 
+Key points:
+- what to put in the deque?
+- use separate list to store each individual layer?
+- do I need to record visited elements (i.e., shortest path)?
+
 - [Perfect Squares](AllSolutions/Perfect%20Squares.py) (BFS for shortest path)
-- [Word Search](AllSolutions/Word%20Search.py)
-- [Word Search II](AllSolutions/Word%20Search%20II.py)
 - **[Remove Invalid Parenthesis](AllSolutions/Remove%20Invalid%20Parenthesis.py)
 
 ## dfs or recursion + backtracking
 During dfs, you may change some elements which needs to be recovered after each dfs loop. Make sure to recover them after each dfs loop.
-
+Key: what to return in dfs --- True/False, paths, # of path, None, minCut.
 ```Python
 # dfs template for combination
-def dfs(self, arr, start, path, res):
-    if len(path) == len(arr):
+def dfs(self, arr, start, path, res, target):
+    if target == 0:
         res.append(path)
         return
     for i in range(start, len(arr)):
-        self.dfs(arr, start+1, path+arr[i], res)
+        self.dfs(arr, start+1, path+arr[i], res, target - arr[start])
 
 # dfs for permutation
 def dfs(self, arr, path, res):
@@ -44,6 +47,8 @@ def dfs(self, arr, start, path, res):
 ```
 - [Partition to K Equal Sum Subsets](AllSolutions/Partition%20to%20K%20Equal%20Sum%20Subsets.py)
 - [Unique Paths III](AllSolutions/Unique%20Paths%20III.py)
+- [Word Search](AllSolutions/Word%20Search.py)
+- [Word Search II](AllSolutions/Word%20Search%20II.py)
 
 ## dfs + memo
 dfs + memo is used if some operations have to be repeated again and again, thus it's easier to put them in a memo hashmap to allow for later retrieval. It's mostly used in string or array partitioning or matching.
@@ -62,6 +67,11 @@ Summary:
 - most commonly seen in array or string slicing to meet certain requirement (targeted total/value, palindrome, something is possible or not). The first intuition is to use dfs, where by moving the starting index of the array or string the problem is essentially the same. 
 - start from brutal force, see which part involves duplicated calculation, then try to use memo to record duplicated steps to avoid duplicated calculation
 - key needs to be unique enough to represent the duplicated steps, can be the index of the string/matrix, or the path representation (scanned elements), or tuple with multiple elements (a, b, c).
+
+Key points:
+- relationship between the current step and the consequtive step?
+- do I need memo?
+- do I need backtracking?
 
 ## permutation and combination
 - Common way to do permutation using dfs:
@@ -127,14 +137,14 @@ class Solution(object):
     def dfs(self, candidates, result, start, path, target): # remember these five params
         if target == 0 and path:
             result.append(path)
-        else:
-            for i in range(start, len(candidates)):
-                if candidates[i] > target: # require sort first to allow early termination
-                    break
-                else:
-                    self.dfs(candidates, result, i, path + [candidates[i]], target - candidates[i])
-                    # if each elements can only be used once
-                    # self.dfs(candidates, result, i+1, path + [candidates[i]], target - candidates[i])
+            return
+        for i in range(start, len(candidates)):
+            if candidates[i] > target: # require sort first to allow early termination
+                break
+            else:
+                self.dfs(candidates, result, i, path + [candidates[i]], target - candidates[i])
+                # if each elements can only be used once
+                # self.dfs(candidates, result, i+1, path + [candidates[i]], target - candidates[i])
 
 # combination sum ii, may have duplicates, each number used once
 class Solution:
@@ -153,7 +163,6 @@ class Solution:
             # there may be duplicates in this array
             if i > start and nums[i] == nums[i - 1]:
                 continue
-
             if nums[i] > target:
                 break
             # each elements can be used only once

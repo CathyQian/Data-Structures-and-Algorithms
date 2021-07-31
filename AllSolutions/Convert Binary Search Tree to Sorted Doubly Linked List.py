@@ -92,10 +92,9 @@ class Solution:
             cur = q.pop(-1)
             pre.right = cur
             cur.left = pre
-            pre = cur
-            cur = cur.right
+            pre, cur = cur, cur.right
         
-        cur2 = head.right
-        cur2.left = pre
-        pre.right = cur2
-        return cur2
+        root = head.right
+        root.left = pre
+        pre.right = root
+        return root
