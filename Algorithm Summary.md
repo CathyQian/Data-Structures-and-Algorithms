@@ -15,13 +15,9 @@ Key points:
 
 ## dfs or recursion + backtracking
 During dfs, you may change some elements which needs to be recovered after each dfs loop. Make sure to recover them after each dfs loop.
-<<<<<<< HEAD
-Key: what to return in dfs --- True/False, paths, # of path, None, minCut.
-=======
 - figure out changing parameters and constants in dfs loops
 - figure out returning parameter
 - figure out edge cases and stopping criteria
->>>>>>> d5aa19fd4045ae0699cb3469a57e579bea0d43ce
 ```Python
 # dfs template for combination
 def dfs(self, arr, start, path, res, target):
@@ -51,15 +47,10 @@ def dfs(self, arr, start, path, res):
         self.dfs(arr, start+1, path+arr[i], res)
         arr[i] = temp # recover this element for future dfs loop
 ```
-<<<<<<< HEAD
 - [Partition to K Equal Sum Subsets](AllSolutions/Partition%20to%20K%20Equal%20Sum%20Subsets.py)
 - [Unique Paths III](AllSolutions/Unique%20Paths%20III.py)
 - [Word Search](AllSolutions/Word%20Search.py)
 - [Word Search II](AllSolutions/Word%20Search%20II.py)
-=======
-- [Partition to K Equal Sum Subsets](AllSolutions/Partition%20to%20K%20Equal%20Sum%20Subsets.py) (**)
-- [Unique Paths III](AllSolutions/Unique%20Paths%20III.py) (**)
->>>>>>> d5aa19fd4045ae0699cb3469a57e579bea0d43ce
 
 ## dfs + memo (time and space complexity**)
 dfs + memo is used if some operations have to be repeated again and again, thus it's easier to put them in a memo hashmap to allow for later retrieval. It's mostly used in string or array partitioning or matching.
@@ -148,16 +139,6 @@ class Solution(object):
     def dfs(self, candidates, result, start, path, target): # remember these five params
         if target == 0 and path:
             result.append(path)
-<<<<<<< HEAD
-            return
-        for i in range(start, len(candidates)):
-            if candidates[i] > target: # require sort first to allow early termination
-                break
-            else:
-                self.dfs(candidates, result, i, path + [candidates[i]], target - candidates[i])
-                # if each elements can only be used once
-                # self.dfs(candidates, result, i+1, path + [candidates[i]], target - candidates[i])
-=======
         else:
             for i in range(start, len(candidates)):
                 if candidates[i] > target: # require sort first to allow early termination
@@ -166,7 +147,6 @@ class Solution(object):
                     self.dfs(candidates, result, i, path + [candidates[i]], target - candidates[i])
                     # if each elements can only be used once
                     #  self.dfs(candidates, result, i+1, path + [candidates[i]], target - candidates[i])
->>>>>>> d5aa19fd4045ae0699cb3469a57e579bea0d43ce
 
 # combination sum ii, may have duplicates, each number used once
 class Solution:
@@ -185,17 +165,10 @@ class Solution:
             # there may be duplicates in this array
             if i > start or nums[i] == nums[i - 1]:
                 continue
-<<<<<<< HEAD
-            if nums[i] > target:
-                break
-            # each elements can be used only once
-            self.dfs(nums, i + 1, path + [nums[i]], result, target - nums[i])
-=======
 
             if nums[i] <= target:
             	# each elements can be used only once
             	self.dfs(nums, i + 1, path + [nums[i]], result, target - nums[i])
->>>>>>> d5aa19fd4045ae0699cb3469a57e579bea0d43ce
         return
 
 # combination sum iii, fixed number of elements = k, no duplicates, each number used once
