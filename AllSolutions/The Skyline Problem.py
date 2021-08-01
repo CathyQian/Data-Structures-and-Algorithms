@@ -21,28 +21,42 @@ Notes:
 
 """
 
-# still need to digest
+# ref: https://leetcode.com/problems/the-skyline-problem/discuss/61210/14-line-python-code-straightforward-and-easy-to-understand
 
 from heapq import heappush, heappop
-class Solution:
-    def getSkyline(self, buildings: List[List[int]]) -> List[List[int]]:
-        #using -h, because we need the seg with higher h be pushed first to the hori_segs corner [[1,2,1],[1,2,2],[1,2,3]]
-        #place -h in front of r to avodid corner case [[3,10,20],[3,9,19],[3,8,18],[3,7,17],[3,6,16],[3,5,15],[3,4,14]]
-        
-        bud_start = [(l,-h, r) for l, r, h in buildings]
-        bud_end = [(r, 0, sys.maxsize) for _, r, _ in buildings]
-        hori_segs = sorted(bud_start+bud_end)
-        
-        # check the max current height when we have a new horizontal segment if the new max height is different from
-        # the previous max height, we get a new key point.
-        cur_hi, result = [], [[0,0]]
-        for l, h, r in hori_segs:
-            heappush(cur_hi, (h,r))
-            
-            while l >= cur_hi[0][1]:
-                heappop(cur_hi)
-            
-            new_hi = -cur_hi[0][0]
-            if new_hi != result[-1][1]:
-                result.append([l,new_hi])
-        return result[1:]
+class Solution(object):
+    def getSkyline(self, buildings):
+        """
+        :type buildings: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        def addsky(pos, hei):
+            if sky[-1][1] != hei:
+                sky.append([pos, hei])
+
+        sky = [[-1,0]]
+
+        # possible corner positions
+        position = set([b[0] for b in buildings] + [b[1] for b in buildings])
+
+        # live buildings
+        live = []
+
+        i = 0
+
+        for t in sorted(position):
+
+            # add the new buildings whose left side is lefter than position t
+            while i < len(buildings) and buildings[i][0] <= t:
+                heappush(live, (-buildings[i][2], buildings[i][1]))
+                i += 1
+
+            # remove the past buildings whose right side is lefter than position t
+            while live and live[0][1] <= t:
+                heappop(live)
+
+            # pick the highest existing building at this moment
+            h = -live[0][0] if live else 0
+            addsky(t, h)
+
+        return sky[1:]
