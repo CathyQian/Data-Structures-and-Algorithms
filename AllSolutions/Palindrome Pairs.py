@@ -31,7 +31,13 @@ Constraints:
     words[i] consists of lower-case English letters.
 
 """
+# time complexity O(n*k2) n == len(words), k = max(len(w) for w in words)
+# https://leetcode.com/problems/palindrome-pairs/solution/
+# follow up to speed lookup is to use trie to store reversed words
+# start to use trie for search and don't need the second for loop
+# time complexity is still O(n*k2) as building a trie takes O(n*k2)
 
+# space complexity: lookup --- O(nk), res --- O(n2), pre/pos = O(k2)
 class Solution:
     def palindromePairs(self, words: List[str]) -> List[List[int]]:
         lookup = {w:i for i, w in enumerate(words)}
