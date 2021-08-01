@@ -65,6 +65,7 @@ class Solution(object):
                 for i in range(start+1, len(s)):             
                     if s[start:i] in wordDict and self.canBreak(s, i, m, wordDict):
                         m[start] = True
+                        break
         return m[start]
 
 """
