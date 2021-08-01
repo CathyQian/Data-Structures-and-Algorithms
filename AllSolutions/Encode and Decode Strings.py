@@ -1,6 +1,5 @@
 """
-271. Encode and Decode Strings
-Medium
+Encode and Decode Strings
 
 Design an algorithm to encode a list of strings to a string. The encoded string is then sent over the network and is decoded back to the original list of strings.
 
@@ -73,7 +72,6 @@ class Codec:
         return ''.join([str(len(s)) + ':' + s for s in strs]) # no space in between
 
     def decode(self, s):
-        print(s)
         strs = []
         i = 0
         while i < len(s):
