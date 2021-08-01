@@ -72,43 +72,13 @@ class Solution:
             self.res.append(child.pop(self.keyword))
         # continue searching along the same path to see if other words can be found
         if child: # not elif
+            board[i][j] = '#' # don't forget this step
             for x, y in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
                 if 0 <= i+x < len(board) and 0 <= j+y < len(board[0]) and board[i+x][j+y] in child:
-                    board[i][j] = '#' # don't forget this step
                     self.dfs(board, i+x, j+y, child)
-                    board[i][j] = char # don't forget this step
+            board[i][j] = char # don't forget this step
 
 """
 use Trie to search for words with the same prefix in one DFS
 if not using Trie, needs to do one dfs for one word, time exceed limit
-
-# only works if number of words is small
-class Solution:
-    def findWords(self, board: List[List[str]], words: List[str]) -> List[str]:
-        if not board or not board[0]:
-            return []
-        
-        res = []
-        for word in words:
-            for i in range(len(board)):
-                for j in range(len(board[0])):
-                    if word not in res and board[i][j] == word[0]:
-                        if self.dfs(board, i, j, word):
-                            res.append(word)
-        return res
-    
-    def dfs(self, board, i, j, word):
-        if len(word) == 1:
-            return True
-        curr = board[i][j]
-        board[i][j] = '#'
-        res = False
-        for x, y in [(i+1, j), (i-1, j), (i, j+1), (i, j-1)]:
-            if 0 <= x < len(board) and 0 <= y < len(board[0]) and board[x][y] == word[1]:
-                res = self.dfs(board, x, y, word[1:])
-                if res: # note: can not return here without recovering board[i][j]
-                    break
-        board[i][j] = curr
-        return res
-                
 """
