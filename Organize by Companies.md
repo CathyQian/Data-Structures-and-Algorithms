@@ -312,7 +312,7 @@ recent 6 month
 - [Game of Life](AllSolutions/Game%20of%20Life.py)
 - [Expression Add Operators](AllSolutions/Expression%20Add%20Operators.py)
 - [Add Strings](AllSolutions/Add%20Strings.py)
-- [Compare Version Numbers](Compare%20Version%20Numbers.py)
+- [Compare Version Numbers](AllSolutions/Compare%20Version%20Numbers.py)
 - [Design Search Autocomplete System](AllSolutions/Design%20Search%20Autocomplete%20System.py)
 - [Minesweeper](AllSolutions/Minesweeper.py)
 - [Multiply Strings](AllSolutions/Multiply%20Strings.py)
