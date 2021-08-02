@@ -60,4 +60,4 @@ class Solution:
 # reason: There are ultimately 4^N combinations (worst case) of strings generated, and for each of 
 # those combinations you have to actually construct the string.
 # Constructing a string of N length is an O(N) operation. So thus 4^N * N.
-# space complexity:hashmap ---O(1),  O(4**N) for output size, O(N) for parameters in dfs
+# space complexity:hashmap ---O(1),  O(N*4**N) for output size, O(N) for parameters in dfs
