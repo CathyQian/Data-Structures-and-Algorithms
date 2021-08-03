@@ -57,15 +57,15 @@ Explanation: "06" cannot be mapped to "F" because of the leading zero ("6" is di
 # dfs + memo
 class Solution:
     def numDecodings(self, s: str) -> int:
-        self.count = {len(s):1} # end condition is important
+        self.count = {len(s): 1} # not 0
         return self.dfs(s, 0)
     
     def dfs(self, s, start):
         if start not in self.count:
             res = 0
             if s[start] != '0':
-                for i in range(2):
-                    if start+i+1 <= len(s) and int(s[start: start+i+1]) >= 1 and int(s[start: start+i+1]) <= 26:
-                        res += self.dfs(s, start+i+1)
+                for i in range(start+1, start+3):
+                    if i <= len(s) and int(s[start:i]) >= 1 and int(s[start:i]) <= 26:
+                        res += self.dfs(s, i)
             self.count[start] = res
         return self.count[start]
