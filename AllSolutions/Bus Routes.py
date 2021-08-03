@@ -45,27 +45,19 @@ class Solution:
                     stopBoard[stop].append(bus)
         
         # The queue is to record all of the stops you can reach when you take one time of bus.
-        queue = deque([S])
-        # Using visited to record the buses that have been taken before, because you needn't to take them again.
+        queue = deque([(S, 0)])
+        # Using visited to record the buses that have been taken before, because you needn't to take them again. Note not recorded stops
         visited = set()
-
-        res = 0
         while queue:
-            # take one time of bus.
-            res += 1
-            # In order to traverse all of the stops you can reach for this time, you have to traverse
-            # all of the stops you can reach in last time.
-            pre_num_stops = len(queue)
-            for _ in range(pre_num_stops):
-                curStop = queue.popleft()
-                # Each stop you can take at least one bus, you need to traverse all of the buses at this stop
-                # in order to get all of the stops can be reach at this time.
-                for bus in stopBoard[curStop]:
-                    # if the bus you have taken before, you needn't take it again.
-                    if bus in visited: continue
-                    visited.add(bus)
-                    for stop in routes[bus]:
-                        if stop == T: return res
-                        queue.append(stop)
+            curStop, depth = queue.popleft()
+            for bus in stopBoard[curStop]:
+                # if the bus you have taken before, you needn't take it again.
+                if bus in visited: 
+                    continue
+                visited.add(bus)
+                for stop in routes[bus]:
+                    if stop == T: 
+                        return depth + 1
+                    queue.append((stop, depth+1))
         return -1
 
