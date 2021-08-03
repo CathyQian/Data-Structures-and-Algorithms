@@ -63,10 +63,10 @@ Constraints:
 # The tricky part is temp[depth] will be updated every time a new line is scanned, so don't need to worry about overlapping.
 class Solution:
     def lengthLongestPath(self, input: str) -> int:
-        ret, tmp = 0, {-1: 0}
+        res, tmp = 0, {-1: 0}
         for line in input.split('\n'):
             depth = line.count('\t')
-            tmp[depth] = tmp[depth - 1] + len(line) - depth
-            if line.count('.'):
-                ret = max(ret, tmp[depth] + depth)
-        return ret
+            tmp[depth] = tmp[depth-1] + len(line) - depth
+            if '.' in line:
+                res = max(res, tmp[depth-1] + len(line))
+        return res
