@@ -46,7 +46,8 @@ class Solution:
         
         # The queue is to record all of the stops you can reach when you take one time of bus.
         queue = deque([(S, 0)])
-        # Using visited to record the buses that have been taken before, because you needn't to take them again. Note not recorded stops
+        # Using visited to record the buses that have been taken before, because you needn't to take them again. 
+        # Note if put recorded stops into visited, time exceed limit (too slow)
         visited = set()
         while queue:
             curStop, depth = queue.popleft()
