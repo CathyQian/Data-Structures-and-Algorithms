@@ -23,8 +23,7 @@ Input: routes = [[7,12],[4,5,15],[6],[15,19],[9,12,13]], source = 15, target = 1
 Output: -1
 
 """
-
-# typical bfs solution
+# typical bfs problem to find minimum path
 from collections import deque
 
 class Solution:
@@ -46,19 +45,19 @@ class Solution:
         
         # The queue is to record all of the stops you can reach when you take one time of bus.
         queue = deque([(S, 0)])
-        # Using visited to record the buses that have been taken before, because you needn't to take them again. 
-        # Note if put recorded stops into visited, time exceed limit (too slow)
-        visited = set()
+        # Using visited to record the buses and stops before since you don't want to visit them again
+        visitedBus, visitedStop = set(), set()
         while queue:
             curStop, depth = queue.popleft()
             for bus in stopBoard[curStop]:
                 # if the bus you have taken before, you needn't take it again.
-                if bus in visited: 
+                if bus in visitedBus: 
                     continue
-                visited.add(bus)
+                visitedBus.add(bus)
                 for stop in routes[bus]:
                     if stop == T: 
                         return depth + 1
-                    queue.append((stop, depth+1))
+                    if stop not in visitedStop:
+                        queue.append((stop, depth+1))
+                        visitedStop.add(stop)
         return -1
-
