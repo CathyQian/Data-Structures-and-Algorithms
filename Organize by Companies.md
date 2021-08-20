@@ -300,7 +300,7 @@ recent 6 month
 ## S
 - [Pancake Sorting](AllSolutions/Pancake%20Sorting.py)
 - [Edit Distance](AllSolutions/Edit%20Distance.py)
-- [Palindrome Pairs](AllSolutions/Palindrome%20Pairs.py)
+- [Palindrome Pairs](AllSolutions/Palindrome%20Pairs.py) (**)
 - [Available Captures for Rook](AllSolutions/Available%20Captures%20for%20Rook.py)
 - [Encode and Decode Strings](AllSolutions/Encode%20and%20Decode%20Strings.py)
 - [Integer to English Words](AllSolutions/Integer%20to%20English%20Words.py)
@@ -330,3 +330,28 @@ recent 6 month
 - [Squirrel Simulation](AllSolutions/Squirrel%20Simulation.py)
 - [Falling Squares](AllSolutions/Falling%20Squares.py)
 - [Count Nice Pairs in an Array](AllSolutions/Count%20Nice%20Pairs%20in%20an%20Array.py)
+
+
+## L
+- [Shortest Word Distance II]
+- [Shortest Word Distance]
+- [Nested List Weight Sum II]	
+
+- [Minimum One Bit Operations to Make Integers Zero]
+- [Max Stack]
+- [Nested List Weight Sum]
+
+- [All O`one Data Structure]
+- [Paint House]
+- [Closest Binary Search Tree Value II]
+- [Find Leaves of Binary Tree]
+- [Design Bounded Blocking Queue]
+- [Insert Delete GetRandom O(1)]
+- [Max Points on a Line]
+- [Can Place Flowers]
+- [Serialize and Deserialize Binary Tree]
+- [Count Different Palindromic Subsequences]
+- [Design HashMap]
+- [Second Minimum Node In a Binary Tree]
+- [Binary Tree Upside Down]
+- [Bomb Enemy]
