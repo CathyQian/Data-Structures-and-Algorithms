@@ -49,23 +49,28 @@ Constraints:
 class Solution:
     def addOperators(self, num: str, target: int) -> List[str]:
         self.ans = []
-        self.dfs(num, target, 0, "", 0, 0)
+        self.dfs(num, target, 0, '', 0, 0)
         return self.ans
-
-    def dfs(self, num, target, pos, exp, prev, curr):
-        if pos == len(num):
-            if curr == target: 
-                self.ans.append(exp)
-            return
     
-        for l in range(1, len(num) - pos + 1):
-            t = num[pos: pos+l] # next element for operation   
-            if t[0] == '0' and len(t) > 1: # edge case 1
+    def dfs(self, num, target, start, exp, prev, curr):
+        if start == len(num) and curr == target:
+            self.ans.append(exp)
+            return
+        
+        for i in range(start + 1, len(num)+1):
+            t = num[start:i]
+            
+            # edge case 1
+            if t[0] == '0' and len(t) > 1:
                 break
-
-            if pos == 0: # edge case 2
-                self.dfs(num, target, l, t, int(t), int(t))
-                continue
-            self.dfs(num, target, pos + l, exp + '+' + t, int(t), curr + int(t))
-            self.dfs(num, target, pos + l, exp + '-' + t, -int(t), curr - int(t))
-            self.dfs(num, target, pos + l, exp + '*' + t, prev * int(t), curr - prev + prev * int(t))
+            
+            # edge case 2 --- this is the first element
+            elif start == 0:
+                self.dfs(num, target, i, t, int(t), int(t))
+            
+            else:
+                self.dfs(num, target, i, exp + '+' + t, int(t), curr + int(t))
+                self.dfs(num, target, i, exp + '-' + t, -int(t), curr - int(t))
+                self.dfs(num, target, i, exp + '*' + t, prev * int(t), curr - prev + prev * int(t))
+                
+        

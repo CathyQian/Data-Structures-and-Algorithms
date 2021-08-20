@@ -23,8 +23,7 @@ Input: routes = [[7,12],[4,5,15],[6],[15,19],[9,12,13]], source = 15, target = 1
 Output: -1
 
 """
-
-# typical bfs solution
+# typical bfs problem to find minimum path
 from collections import deque
 
 class Solution:
@@ -45,27 +44,20 @@ class Solution:
                     stopBoard[stop].append(bus)
         
         # The queue is to record all of the stops you can reach when you take one time of bus.
-        queue = deque([S])
-        # Using visited to record the buses that have been taken before, because you needn't to take them again.
-        visited = set()
-
-        res = 0
+        queue = deque([(S, 0)])
+        # Using visited to record the buses and stops before since you don't want to visit them again
+        visitedBus, visitedStop = set(), set()
         while queue:
-            # take one time of bus.
-            res += 1
-            # In order to traverse all of the stops you can reach for this time, you have to traverse
-            # all of the stops you can reach in last time.
-            pre_num_stops = len(queue)
-            for _ in range(pre_num_stops):
-                curStop = queue.popleft()
-                # Each stop you can take at least one bus, you need to traverse all of the buses at this stop
-                # in order to get all of the stops can be reach at this time.
-                for bus in stopBoard[curStop]:
-                    # if the bus you have taken before, you needn't take it again.
-                    if bus in visited: continue
-                    visited.add(bus)
-                    for stop in routes[bus]:
-                        if stop == T: return res
-                        queue.append(stop)
+            curStop, depth = queue.popleft()
+            for bus in stopBoard[curStop]:
+                # if the bus you have taken before, you needn't take it again.
+                if bus in visitedBus: 
+                    continue
+                visitedBus.add(bus)
+                for stop in routes[bus]:
+                    if stop == T: 
+                        return depth + 1
+                    if stop not in visitedStop:
+                        queue.append((stop, depth+1))
+                        visitedStop.add(stop)
         return -1
-

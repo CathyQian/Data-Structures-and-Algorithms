@@ -49,7 +49,8 @@ class Solution:
     # time: O(n^n)
     # space: O(n)
  
-# recursion with memory, pay special attention to r direction, O(n2)
+# recursion with memory, pay special attention to r direction, O(n2) --- scan each word s[i:j] to see if it exist in wordDict and memorize it
+# Using memo or not: many duplicated operation --> yes, otherwise no
 class Solution(object):
     def wordBreak(self, s, wordDict):  
         memo = {len(s): True} # stop condition
@@ -65,6 +66,7 @@ class Solution(object):
                 for i in range(start+1, len(s)):             
                     if s[start:i] in wordDict and self.canBreak(s, i, m, wordDict):
                         m[start] = True
+                        break
         return m[start]
 
 """

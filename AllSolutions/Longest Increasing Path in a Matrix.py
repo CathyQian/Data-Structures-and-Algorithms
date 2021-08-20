@@ -44,7 +44,7 @@ class Solution:
         if (row, col) not in memo:
             ans = 1 # local variable to record max length 
             for x, y in [(row+1, col), (row-1, col), (row, col+1), (row, col-1)]:
-                if 0 <= x < len(matrix) and 0 <= y < len(matrix[0]) and matrix[x][y] > matrix[row][col]:   
+                if 0 <= x < len(matrix) and 0 <= y < len(matrix[0]) and matrix[x][y] < matrix[row][col]:   
                     length = self.dfs(matrix, x, y, memo)
                     ans = max(ans, length+1)
             memo[(row, col)] = ans # local maximum

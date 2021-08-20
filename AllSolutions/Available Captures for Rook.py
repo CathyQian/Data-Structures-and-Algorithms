@@ -1,6 +1,5 @@
 """
-999. Available Captures for Rook
-Easy
+Available Captures for Rook
 
 On an 8 x 8 chessboard, there is exactly one white rook 'R' and some number of white bishops 'B', black pawns 'p', and empty squares '.'.
 
@@ -28,21 +27,12 @@ Input: board = [[".",".",".",".",".",".",".","."],[".",".",".","p",".",".",".","
 Output: 3
 Explanation: The rook is attacking the pawns at positions b5, d6, and f5.
 
- 
-
 Constraints:
 
     board.length == 8
     board[i].length == 8
     board[i][j] is either 'R', '.', 'B', or 'p'
     There is exactly one cell with board[i][j] == 'R'
-
-Accepted
-43,890
-Submissions
-64,904
-Seen this question in a real interview before?
-
 """
 
 class Solution:

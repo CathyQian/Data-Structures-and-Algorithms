@@ -1,14 +1,16 @@
 """
 According to Wikipedia's article: "The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970."
 
-The board is made up of an m x n grid of cells, where each cell has an initial state: live (represented by a 1) or dead (represented by a 0). Each cell interacts with its eight neighbors (horizontal, vertical, diagonal) using the following four rules (taken from the above Wikipedia article):
+The board is made up of an m x n grid of cells, where each cell has an initial state: live (represented by a 1) or dead (represented by a 0). Each cell interacts with its eight
+neighbors (horizontal, vertical, diagonal) using the following four rules (taken from the above Wikipedia article):
 
     Any live cell with fewer than two live neighbors dies as if caused by under-population.
     Any live cell with two or three live neighbors lives on to the next generation.
     Any live cell with more than three live neighbors dies, as if by over-population.
     Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
 
-The next state is created by applying the above rules simultaneously to every cell in the current state, where births and deaths occur simultaneously. Given the current state of the m x n grid board, return the next state.
+The next state is created by applying the above rules simultaneously to every cell in the current state, where births and deaths occur simultaneously. Given the current state 
+of the m x n grid board, return the next state.
 
  
 
@@ -35,8 +37,10 @@ Constraints:
 
 Follow up:
 
-    Could you solve it in-place? Remember that the board needs to be updated simultaneously: You cannot update some cells first and then use their updated values to update other cells.
-    In this question, we represent the board using a 2D array. In principle, the board is infinite, which would cause problems when the active area encroaches upon the border of the array (i.e., live cells reach the border). How would you address these problems?
+    Could you solve it in-place? Remember that the board needs to be updated simultaneously: You cannot update some cells first and then use their updated values to update other
+    cells.
+    In this question, we represent the board using a 2D array. In principle, the board is infinite, which would cause problems when the active area encroaches upon the border
+    of the array (i.e., live cells reach the border). How would you address these problems?
 
 """
 """
@@ -48,7 +52,8 @@ we should not use the updated cell to compute to change decision for other cell,
 
 But usually it requires use O(1) space, so the problem becomes: How can we store store the middle result without use extra space.
 
-the solution is to store the result in the origin grid as different number by some rule, so when we compute decision for other cell, we can know the original value of those nearby cell which has already been updated based on the rule
+the solution is to store the result in the origin grid as different number by some rule, so when we compute decision for other cell, we can know the original value of those 
+nearby cell which has already been updated based on the rule
 
 for example, we can do like this
 

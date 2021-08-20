@@ -31,17 +31,24 @@ Constraints:
     words[i] consists of lower-case English letters.
 
 """
+# time complexity O(n*k2) n == len(words), k = max(len(w) for w in words)
+# https://leetcode.com/problems/palindrome-pairs/solution/
+# follow up to speed lookup is to use trie to store reversed words
+# start to use trie for search and don't need the second for loop
+# time complexity is still O(n*k2) as building a trie takes O(n*k2)
 
+# space complexity: lookup --- O(nk), res --- O(n2), pre/pos = O(k2)
 class Solution:
     def palindromePairs(self, words: List[str]) -> List[List[int]]:
-        lookup = {w:i for i, w in enumerate(words)}
+        lookup = {word: i for i, word in enumerate(words)}
         res = []
-        for i, w in enumerate(words):
-            for j in range(len(w)+1):
-                pre, pos = w[:j], w[j:]
-                if pre == pre[::-1] and pos[::-1] != w and pos[::-1] in lookup:
+        for i, word in enumerate(words):
+            for j in range(len(word)+1): # j from 0 to len(word)
+                pre, pos = word[:j], word[j:]
+                # pre can be ''
+                if pre == pre[::-1] and pos[::-1] != word and pos[::-1] in lookup:
                     res.append([lookup[pos[::-1]], i])
-                # j != len(w) to avoid duplicated counts
-                if j != len(w) and pos == pos[::-1] and pre[::-1] != w and pre[::-1] in lookup:
+                # pos cannot be ''; otherwise will create duplicates
+                if pos and pos == pos[::-1] and pre[::-1] != word and pre[::-1] in lookup:
                     res.append([i, lookup[pre[::-1]]])
         return res

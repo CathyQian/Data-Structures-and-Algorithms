@@ -45,7 +45,7 @@ class Solution:
         graph = collections.defaultdict(list)
         res = []
         for f, t in tickets:
-            graph[f] += t,
+            graph[f].append(t)
         for k in graph.keys():
             graph[k].sort(reverse = True)
         self.dfs(graph, 'JFK', res)
