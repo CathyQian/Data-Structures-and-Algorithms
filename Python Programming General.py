@@ -89,7 +89,7 @@ class Node:
         self.key = key 
         self.left = None
         self.right = None
-        self.parent = None # This is different from most Tree Node definition
+        self.parent = None # This is different from most Tree Node definition, needed for find_in_order_successor
 
 # A binary search tree 
 class BinarySearchTree:
@@ -104,7 +104,7 @@ class BinarySearchTree:
             while cur.left:
                 cur = cur.left
             return cur
-        else: 
+        else: # not all correct
             return inputNode.parent
   # Given a binary search tree and a number, inserts a
   # new node with the given number in the correct place
@@ -147,10 +147,10 @@ class BinarySearchTree:
             if(key == currentNode.key):
                 return currentNode
         
-        if(key < currentNode.key):
-            currentNode = currentNode.left
-        else:
-            currentNode = currentNode.right
+            if(key < currentNode.key):
+                currentNode = currentNode.left
+            else:
+                currentNode = currentNode.right
         
         return None
         
