@@ -27,7 +27,7 @@ One possible longest palindromic subsequence is "bb".
 class Solution:
     def longestPalindromeSubseq(self, s: str) -> int:
         n = len(s)
-        dp = [[0 for _ in range(n)] for _ in range(n)]
+        dp = [[0 for _ in range(n)] for _ in range(n)] # dp = [[0]*n]*n will give error
         for i in range(n)[::-1]:
             dp[i][i] = 1
             for j in range(i+1, n):

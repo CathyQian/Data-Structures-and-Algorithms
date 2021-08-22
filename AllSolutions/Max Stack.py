@@ -96,3 +96,54 @@ class MaxStack:
 # param_3 = obj.top()
 # param_4 = obj.peekMax()
 # param_5 = obj.popMax()
+
+# slower but more straightforward
+
+import heapq
+
+class MaxStack:
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.stack = []
+        self.heap = []
+        
+    def push(self, x: int) -> None:
+        self.stack.append(x)
+        heapq.heappush(self.heap, -x) # O(logn)
+
+    def pop(self) -> int:
+        ele = self.stack.pop(-1)
+        
+        # remove ele from self.heap
+        idx = self.heap.index(-ele) # O(n)
+        self.heap[idx] = self.heap[-1]
+        self.heap.pop()
+        heapq.heapify(self.heap) # O(n)
+        
+        return ele
+        
+    def top(self) -> int:
+        return self.stack[-1]
+
+    def peekMax(self) -> int:
+        return - self.heap[0]
+
+    def popMax(self) -> int:
+        ele = heapq.heappop(self.heap) # O(logn)
+        idx = self.stack[::-1].index(-ele) # O(n)
+        idx = len(self.stack) - idx - 1
+        self.stack = self.stack[:idx] + self.stack[idx+1:]
+        print(self.stack)
+        return -ele
+
+
+# Your MaxStack object will be instantiated and called as such:
+# obj = MaxStack()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.peekMax()
+# param_5 = obj.popMax()
