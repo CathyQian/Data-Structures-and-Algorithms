@@ -354,20 +354,20 @@ recent 6 month
 - [Second Minimum Node In a Binary Tree]
 - [Binary Tree Upside Down]
 - [Bomb Enemy]
-Factor Combinations**
-Partition to K Equal Sum Subsets
-Binary Tree Upside Down
-Lowest Common Ancestor of a Binary Tree III (find common ancestor template)
-Find K Pairs with Smallest Sums (O(k))
-Maximum Product Subarray (tricky)
-Maximum Subarray (Three methods)
-Longest Palindromic Subsequence (DP, pay attention to dp initialization)
-Search in Rotated Sorted Array (4 binary search template)
-Binary Tree Level Order Traversal (return val not node)
-Valid Triangle Number(O(n2))
-Pow(x, n) (note that x can be negative)
-Longest Substring with At Most Two Distinct Characters
-Longest Substring with At Most K Distinct Characters
-Rotate List (Typical Linked List problem)
-Delete Node in a BST (Delete node: can't do it via node = None **)
-Subarray Sum Equals K (use dictionary)
+- [Factor Combinations**]
+- [Partition to K Equal Sum Subsets]
+- [Binary Tree Upside Down]
+- [Lowest Common Ancestor of a Binary Tree III](find common ancestor template)
+- [Find K Pairs with Smallest Sums] (O(k))
+- [Maximum Product Subarray] (tricky)
+- [Maximum Subarray] (Three methods)
+- [Longest Palindromic Subsequence] (DP, pay attention to dp initialization)
+- [Search in Rotated Sorted Array] (4 binary search template)
+- [Binary Tree Level Order Traversal] (return val not node)
+- [Valid Triangle Number] (O(n2))
+- [Pow(x, n)] (note that x can be negative)
+- [Longest Substring with At Most Two Distinct Characters]
+- [Longest Substring with At Most K Distinct Characters]
+- [Rotate List] (Typical Linked List problem)
+- [Delete Node in a BST] (Delete node: can't do it via node = None **)
+- [Subarray Sum Equals K] (use dictionary)
