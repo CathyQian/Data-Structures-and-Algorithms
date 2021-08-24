@@ -334,40 +334,39 @@ recent 6 month
 
 ## L
 - [Shortest Word Distance II](AllSolutions/Shortest%20Word%20Distance%20II.py)
-- [Nested List Weight Sum II]	
+- [Nested List Weight Sum II](AllSolutions/Nested%20List%20Weight%20Sum%20II.py)
 
 - [Minimum One Bit Operations to Make Integers Zero]
-- [Max Stack]
-- [Nested List Weight Sum]
+- [Max Stack](AllSolutions/Max%20Stack.py)
 
 - [All O`one Data Structure]
-- [Paint House]
+- [Paint House](AllSolutions/Paint%20House.py)
 - [Closest Binary Search Tree Value II]
-- [Find Leaves of Binary Tree]
+- [Find Leaves of Binary Tree](AllSolutions/Find%20Leaves%20of%20Binary%20Tree.py)
 - [Design Bounded Blocking Queue]
-- [Insert Delete GetRandom O(1)]
+- [Insert Delete GetRandom O(1)](AllSolutions/Insert%20Delete%20GetRandom%20O(1).py)
 - [Max Points on a Line]
-- [Can Place Flowers]
-- [Serialize and Deserialize Binary Tree]
+- [Can Place Flowers](AllSolutions/Can%20Place%20Flowers.py)
+- [Serialize and Deserialize Binary Tree](AllSolutions/Serialize%20and%20Deserialize%20Binary%20Tree.py)
 - [Count Different Palindromic Subsequences]
 - [Design HashMap]
-- [Second Minimum Node In a Binary Tree]
-- [Binary Tree Upside Down]
-- [Bomb Enemy]
-- [Factor Combinations**]
-- [Partition to K Equal Sum Subsets]
-- [Binary Tree Upside Down]
-- [Lowest Common Ancestor of a Binary Tree III](find common ancestor template)
+- [Second Minimum Node In a Binary Tree](AllSolutions/Second%20Minimum%20Node%20In%20a%20Binary%20Tree.py)
+- [Bomb Enemy](AllSolutions/Bomb%20Enemy.py)
+
+- [Factor Combinations**](AllSolutions/Factor%20Combinations.py)
+- [Partition to K Equal Sum Subsets](AllSolutions/Partition%20to%20K%20Equal%20Sum%20Subsets.py)
+- [Binary Tree Upside Down](AllSolutions/Binary%20Tree%20Upside%20Down.py)
+- [Lowest Common Ancestor of a Binary Tree III](AllSolutions/Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree%20III.py)(find common ancestor template)
 - [Find K Pairs with Smallest Sums] (O(k))
 - [Maximum Product Subarray] (tricky)
-- [Maximum Subarray] (Three methods)
-- [Longest Palindromic Subsequence] (DP, pay attention to dp initialization)
-- [Search in Rotated Sorted Array] (4 binary search template)
-- [Binary Tree Level Order Traversal] (return val not node)
+- [Maximum Subarray](AllSolutions/Maximum%20subarray.py) (Three methods)
+- [Longest Palindromic Subsequence](AllSolutions/Longest%20Palindromic%20Subsequence.py) (DP, pay attention to dp initialization)
+- [Search in Rotated Sorted Array](AllSolutions/Search%20in%20Rotated%20Sorted%20Array.py) (4 binary search template)
+- [Binary Tree Level Order Traversal](AllSolutions/Binary%20Tree%20Level%20Order%20Traversal.py) (return val not node)
 - [Valid Triangle Number] (O(n2))
-- [Pow(x, n)] (note that x can be negative)
-- [Longest Substring with At Most Two Distinct Characters]
-- [Longest Substring with At Most K Distinct Characters]
+- [Pow(x, n)](AllSolutions/Pow(x%2C%20n).py) (note that x can be negative)
+- [Longest Substring with At Most Two Distinct Characters](AllSolutions/Longest%20Substring%20with%20At%20Most%20Two%20Distinct%20Characters.py)
+- [Longest Substring with At Most K Distinct Characters](AllSolutions/Longest%20Substring%20with%20At%20Most%20K%20Distinct%20Characters.py)
 - [Rotate List] (Typical Linked List problem)
-- [Delete Node in a BST] (Delete node: can't do it via node = None **)
-- [Subarray Sum Equals K] (use dictionary)
+- [Delete Node in a BST](AllSolutions/Delete%20Node%20in%20a%20BST.py) (Delete node: can't do it via node = None **)
+- [Subarray Sum Equals K](AllSolutions/Subarray%20Sum%20Equals%20K.py) (use dictionary)
