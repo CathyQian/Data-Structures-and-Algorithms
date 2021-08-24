@@ -21,6 +21,7 @@ Input: nums1 = [1,1,2], nums2 = [1,2,3], k = 2
 Output: [[1,1],[1,1]]
 Explanation: The first 2 pairs are returned from the sequence: [1,1],[1,1],[1,2],[2,1],[1,2],[2,2],[1,3],[1,3],[2,3]
 
+
 Example 3:
 
 Input: nums1 = [1,2], nums2 = [3], k = 3
@@ -36,10 +37,9 @@ Constraints:
     nums1 and nums2 both are sorted in ascending order.
     1 <= k <= 1000
 
-
-
 """
-
+# ref: https://leetcode.com/problems/find-k-pairs-with-smallest-sums/discuss/84629/BFS-Python-104ms-with-comments
+# two arrays --> look as matris --> scan from [0, 0] to [n-1, n-1]
 import heapq
 
 class Solution(object):

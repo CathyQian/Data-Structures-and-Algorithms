@@ -12,6 +12,7 @@ m.next(3) = (1 + 10 + 3) / 3
 m.next(5) = (10 + 3 + 5) / 3
 
 """
+
 class MovingAverage:
 
     def __init__(self, size: int):
@@ -20,21 +21,19 @@ class MovingAverage:
         """
         self.maxsize = size
         self.elements = []
-        self.cursum = 0
+        self.curlen = 0
+        self.avg = 0
 
     def next(self, val: int) -> float:
-        curlen = len(self.elements)
-        if curlen < self.maxsize:
+        if self.curlen < self.maxsize:
             self.elements.append(val)
-            self.cursum += val
-            avg = self.cursum/(curlen + 1)
+            self.avg = (self.avg * self.curlen + val)/(self.curlen + 1)
+            self.curlen += 1
         else:
             old = self.elements.pop(0)
             self.elements.append(val)
-            self.cursum = self.cursum - old + val
-            avg = self.cursum/curlen
-        return avg
-    
+            self.avg = (self.avg * self.curlen + val - old)/self.curlen
+        return self.avg 
 # Your MovingAverage object will be instantiated and called as such:
 # obj = MovingAverage(size)
 # param_1 = obj.next(val)

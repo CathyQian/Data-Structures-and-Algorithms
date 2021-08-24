@@ -27,9 +27,7 @@ Constraints:
     0 <= nums[i] <= 1000
 
 
-
 """
-
 
 # brutal force is O(n3)
 # optimized solution is O(n2)
