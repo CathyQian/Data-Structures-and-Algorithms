@@ -345,7 +345,7 @@ recent 6 month
 - [Find Leaves of Binary Tree](AllSolutions/Find%20Leaves%20of%20Binary%20Tree.py)
 - [Design Bounded Blocking Queue]
 - [Insert Delete GetRandom O(1)](AllSolutions/Insert%20Delete%20GetRandom%20O(1).py)
-- [Max Points on a Line]
+- [Max Points on a Line](AllSolutions/Max%20Points%20on%20a%20Line.py) (hard)
 - [Can Place Flowers](AllSolutions/Can%20Place%20Flowers.py)
 - [Serialize and Deserialize Binary Tree](AllSolutions/Serialize%20and%20Deserialize%20Binary%20Tree.py)
 - [Count Different Palindromic Subsequences]
