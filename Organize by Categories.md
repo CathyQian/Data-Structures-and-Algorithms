@@ -5,7 +5,7 @@
 #### matrix
 - [Search a 2D Matrix](AllSolutions/Search%20a%202D%20Matrix.py)
 - [Search a 2D Matrix II](AllSolutions/Search%20a%202D%20Matrix%20II.py)
-- **[Kth Smallest Element in a Sorted Matrix](AllSolutions/Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix.py)(binary search too slow??)
+- **[Kth Smallest Element in a Sorted Matrix](AllSolutions/Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix.py)(use heap when hard to decide which directions to go)
 #### array
 - [Find Minimum in Rotated Sorted Array I, II](AllSolutions/Find%20Minimum%20in%20Rotated%20Sorted%20Array%20I%2C%20II.py)
 - [Find Peak Element](AllSolutions/Find%20Peak%20Element.py)
