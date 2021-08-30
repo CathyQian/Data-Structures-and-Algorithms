@@ -57,7 +57,7 @@ class Solution:
         if not head.next: # also consider this edge case, make code more concise
             return TreeNode(head.val)
         
-        pre, slow, fast = None, head, head.next
+        pre, slow, fast = None, head, head
         while fast and fast.next:
             pre = slow
             slow = slow.next
