@@ -14,12 +14,12 @@
 
 
 ### 2. Binary Tree
-- [Balanced Binary Tree](AllSolutions/Balanced%20Binary%20Tree.py)
+- [Balanced Binary Tree](AllSolutions/Balanced%20Binary%20Tree.py) (**)
 - [Binary Tree Inorder Traversal](AllSolutions/Binary%20Tree%20Inorder%20Traversal.py)
 - [Binary Tree Level Order Traversal](AllSolutions/Binary%20Tree%20Level%20Order%20Traversal.py)
 - [Binary Tree Level Order Traversal II](AllSolutions/Binary%20Tree%20Level%20Order%20Traversal%20II.py)
 - [Binary Tree Zigzag Level Order Traversal](AllSolutions/Binary%20Tree%20Zigzag%20Level%20Order%20Traversal.py)
-- [Binary Tree Longest Consecutive Sequence](AllSolutions/Binary%20Tree%20Longest%20Consecutive%20Sequence.py)
+- [Binary Tree Longest Consecutive Sequence](AllSolutions/Binary%20Tree%20Longest%20Consecutive%20Sequence.py) (**)
 - [Binary Tree Maximum Path Sum](AllSolutions/Binary%20Tree%20Maximum%20Path%20Sum.py)
 - **[Binary Tree Right Side View](AllSolutions/Binary%20Tree%20Right%20Side%20View.py)
 - [Construct Binary Tree from Inorder and Postorder](AllSolutions/Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder.py)
