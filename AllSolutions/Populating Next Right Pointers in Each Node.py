@@ -50,17 +50,3 @@ class Solution:
                 cur = cur.next # not under if statement
             head = head.left
         return root
-
- class Solution:
-    def connect(self, root: 'Node') -> 'Node':
-        head = root
-        while head:
-            cur = head
-            while cur:
-                if cur.left and cur.right:
-                    cur.left.next = cur.right
-                    if cur.next:
-                        cur.right.next = cur.next.left
-                cur = cur.next
-            head = head.left
-        return root
