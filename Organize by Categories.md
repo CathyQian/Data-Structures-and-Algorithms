@@ -15,6 +15,7 @@
 
 ### 2. Binary Tree
 The key algorithm is recursion. 1) edge cases 2) what to return.
+Also try iterative solution if possible.
 - [Balanced Binary Tree](AllSolutions/Balanced%20Binary%20Tree.py) (**)
 - [Binary Tree Inorder Traversal](AllSolutions/Binary%20Tree%20Inorder%20Traversal.py)
 - [Binary Tree Level Order Traversal](AllSolutions/Binary%20Tree%20Level%20Order%20Traversal.py)
