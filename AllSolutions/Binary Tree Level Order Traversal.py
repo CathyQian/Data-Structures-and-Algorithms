@@ -29,9 +29,8 @@ class Solution:
         if not root: # need to take this out as an edge case, [[]] is not None, [] is None
             return []
         rlist = []
-        q = [root]
+        q = [root, '#']
         while q and q != ['#']:
-            q.append('#')
             r = []
             ele = q.pop(0)
             while ele and ele != '#':
@@ -41,5 +40,6 @@ class Solution:
                     q.append(ele.right)
                 r.append(ele.val)
                 ele = q.pop(0)
+            q.append('#')
             rlist.append(r)
         return rlist
