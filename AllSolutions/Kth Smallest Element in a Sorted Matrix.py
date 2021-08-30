@@ -54,33 +54,8 @@ class Solution:
             else:
                 l = mid + 1
         return l
-# binary search, slightly different way of writting the code   
-class Solution:
-    def kthSmallest(self, matrix, k):
-        if not matrix or not matrix[0]:
-            return None
-        left, right = matrix[0][0], matrix[-1][-1]
-        while left < right:
-            mid = left + (right - left)//2
-            cnt = self.search_less_equal(matrix, mid)
-            if cnt < k:
-                left = mid + 1
-            else:
-                right = mid
-        return left
-        
-    def search_less_equal(self, matrix, target):
-        n = len(matrix)
-        i, j, res = n - 1, 0, 0
-        while i >= 0 and j < n:
-            if matrix[i][j] <= target:
-                res += i + 1;
-                j += 1;
-            else:
-                i -= 1
-        return res
 
-# Solution 2: use heap. Don't need to put all elements in the heap. Instead, put the smallest element in
+# Solution 2 (preferred): use heap. Don't need to put all elements in the heap. Instead, put the smallest element in
 # the heap first, pop it, then put the next possible targets into the heap; pop min element again. Repeat
 # k times. The kth element is the targeted kth smallest elements
 
