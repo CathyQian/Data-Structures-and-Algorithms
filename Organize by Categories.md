@@ -9,7 +9,7 @@
 #### array
 - [Find Minimum in Rotated Sorted Array I, II](AllSolutions/Find%20Minimum%20in%20Rotated%20Sorted%20Array%20I%2C%20II.py)
 - [Find Peak Element](AllSolutions/Find%20Peak%20Element.py)
-- [Insert Intervals](AllSolutions/Insert%20Intervals.py)
+- [Insert Intervals](AllSolutions/Insert%20Intervals.py) (binary search)
 - [Search in Rotated Sorted Array](AllSolutions/Search%20in%20Rotated%20Sorted%20Array.py)
 
 
