@@ -57,7 +57,7 @@ Also try iterative solution if possible.
 
 ### 3. Bread-First Search and Depth-First Search
 - [Perfect Squares](AllSolutions/Perfect%20Squares.py) (BFS for shortest path)
-- [Can I Win](AllSolutions/Can%20I%20Win.py)
+- **[Can I Win](AllSolutions/Can%20I%20Win.py) (dfs with memo)
 - [Flood Fill](AllSolutions/Flood%20Fill.py)
 - [Island Perimeter](AllSolutions/Island%20Perimeter.py)
 - [Number of Closed Islands](AllSolutions/Number%20of%20Closed%20Islands.py)
