@@ -69,7 +69,7 @@ Also try iterative solution if possible.
 - [Subsets](AllSolutions/Subsets.py)
 - [Subset II](AllSolutions/Subset%20II.py)
 - [Surrounded Regions](AllSolutions/Surrounded%20Regions.py)
-- [Target Sum](AllSolutions/Target%20Sum.py)
+- **[Target Sum](AllSolutions/Target%20Sum.py) (dfs with memo)
 - [Unique Paths III](AllSolutions/Unique%20Paths%20III.py)
 - [Word Ladder](AllSolutions/Word%20Ladder.py)
 - [Word Ladder II](AllSolutions/Word%20Ladder%20II.py)
