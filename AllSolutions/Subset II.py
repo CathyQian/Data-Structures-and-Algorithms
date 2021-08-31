@@ -36,23 +36,6 @@ class Solution:
         return res
 
 # dfs
-class Solution:
-    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
-        result = []
-        nums.sort()
-        self.dfs(result, [], nums, 0)
-        return result
-    
-    def dfs(self, result, base, nums, start):
-        result.append(base)
-        curr = -sys.maxsize # why not in for loop?  nums[idx] == nums[idx-1]
-        for idx in range(start, len(nums)):
-            if nums[idx] == curr:
-                continue
-            else:
-                self.dfs(result, base+[nums[idx]], nums, idx+1)
-                curr = nums[idx]
-        return
 
 class Solution:
     def subsetsWithDup(self, nums):
@@ -64,7 +47,6 @@ class Solution:
     def dfs(self, nums, start, path, result):
         result.append(path)
         for i in range(start, len(nums)):
-            if i > start and nums[i] == nums[i - 1]:
-                continue
-            self.dfs(nums, i + 1, path + [nums[i]], result)
+            if i == start or nums[i] != nums[i - 1]:
+              self.dfs(nums, i + 1, path + [nums[i]], result)
         return
