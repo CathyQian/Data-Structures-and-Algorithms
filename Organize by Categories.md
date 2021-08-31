@@ -79,7 +79,7 @@ Also try iterative solution if possible.
 - [Word Break II](AllSolutions/Word%20Break%20II.py)
 - [k sum](AllSolutions/k%20sum.py)
 - [Jump Game III](AllSolutions/Jump%20Game%20III.py) (bfs or dfs)
-- [Walls and Gates](/AllSolutions/Walls%20and%20Gates.py) (bfs or dfs)
+- **[Walls and Gates](/AllSolutions/Walls%20and%20Gates.py) (bfs or dfs)
 
 ### 4. Combination & Permutation
 - [24 Game](AllSolutions/24%20Game.py)
