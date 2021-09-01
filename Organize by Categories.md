@@ -91,7 +91,7 @@ Also try iterative solution if possible.
 - [Combination Sum](AllSolutions/Combination%20Sum.py)
 - [Combination Sum II](AllSolutions/Combination%20Sum%20II.py)
 - [Combination Sum III](AllSolutions/Combination%20Sum%20III.py)
-- [Combination Sum IV](AllSolutions/Combination%20Sum%20IV.py)
+- **[Combination Sum IV](AllSolutions/Combination%20Sum%20IV.py) (dp or dfs+memo)
 - [Factor Combinations](AllSolutions/Factor%20Combinations.py)
 - [Letter Combinations of a Phone Number](AllSolutions/Letter%20Combinations%20of%20a%20Phone%20Number.py)
 - [Permutations](AllSolutions/Permutations.py)
