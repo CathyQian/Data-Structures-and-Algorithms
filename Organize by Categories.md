@@ -104,6 +104,7 @@ Also try iterative solution if possible.
 - [Restore IP Addresses](AllSolutions/Restore%20IP%20Addresses.py)
 
 ### 5. String Operations
+Substring vs subsequence; dfs and dp; stack
 - [Excel Sheet Column Number](AllSolutions/Excel%20Sheet%20Column%20Number.py)
 - [Find Duplicate File in System](AllSolutions/Find%20Duplicate%20File%20in%20System.py)
 - [Integer to English Words](AllSolutions/Integer%20to%20English%20Words.py)
@@ -118,9 +119,9 @@ Also try iterative solution if possible.
 - [Longest Valid Parentheses](AllSolutions/Longest%20Valid%20Parentheses.py) (stack)
 - [Valid Palindrome](AllSolutions/Valid%20Palindrome.py) (s.isalnum())
 - [Valid Palindrome II](AllSolutions/Valid%20Palindrome%20II.py) (s.isalnum())
-- [Markov Chain](AllSolutions/Markov%20Chain.py) (random generator)
+- **[Markov Chain](AllSolutions/Markov%20Chain.py) (random generator)
 - [Minimum Window Substring](AllSolutions/Minimum%20Window%20Substring.py) (**)
-- [Minimum Window Subsequence](AllSolutions/Minimum%20Window%20Subsequence.py) (**)
+- **[Minimum Window Subsequence](AllSolutions/Minimum%20Window%20Subsequence.py) (**)
 - [Most Common Word](AllSolutions/Most%20Common%20Word.py)
 - [Reorder Data in Log Files](AllSolutions/Reorder%20Data%20in%20Log%20Files.py)
 - [Reverse Words in a String](AllSolutions/Reverse%20Words%20in%20a%20String.py)
@@ -130,7 +131,7 @@ Also try iterative solution if possible.
 - [String to Integer (atoi)](AllSolutions/String%20to%20Integer%20(atoi).py)
 - [Text Justification](AllSolutions/Text%20Justification.py)
 - [Wildcard Matching](AllSolutions/Wildcard%20Matching.py) (hard**)
-- [Regular Expression Matching](AllSolutions/Regular%20Expression%20Matching.py) (hard)
+- **[Regular Expression Matching](AllSolutions/Regular%20Expression%20Matching.py) (hard)
 - **[Expression Add Operators](AllSolutions/Expression%20Add%20Operators.py)
 
 ### 6. Heap, Trie, Stack, Graph, Hashmap
