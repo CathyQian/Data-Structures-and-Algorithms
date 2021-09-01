@@ -96,7 +96,7 @@ Also try iterative solution if possible.
 - [Letter Combinations of a Phone Number](AllSolutions/Letter%20Combinations%20of%20a%20Phone%20Number.py)
 - [Permutations](AllSolutions/Permutations.py)
 - [Permutations II](AllSolutions/Permutations%20II.py)
-- [Palindrome Permutation](AllSolutions/Palindrome%20Permutation.py)
+- **[Palindrome Permutation](AllSolutions/Palindrome%20Permutation.py) (dfs + dp)
 - [Palindrome Permutation II](AllSolutions/Palindrome%20Permutation%20II.py)
 - [Palindrome Partitioning](AllSolutions/Palindrome%20Partitioning.py)
 - [Palindrome Partitioning II](AllSolutions/Palindrome%20Partitioning%20II.py)
