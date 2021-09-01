@@ -99,7 +99,7 @@ Also try iterative solution if possible.
 - **[Palindrome Permutation](AllSolutions/Palindrome%20Permutation.py) (dfs + dp)
 - [Palindrome Permutation II](AllSolutions/Palindrome%20Permutation%20II.py)
 - [Palindrome Partitioning](AllSolutions/Palindrome%20Partitioning.py)
-- [Palindrome Partitioning II](AllSolutions/Palindrome%20Partitioning%20II.py)
+- **[Palindrome Partitioning II](AllSolutions/Palindrome%20Partitioning%20II.py) (dp)
 - **[Palindrome Partioning III](AllSolutions/Palindrome%20Partioning%20III.py) (dp)
 - [Restore IP Addresses](AllSolutions/Restore%20IP%20Addresses.py)
 
