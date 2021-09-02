@@ -139,7 +139,7 @@ Substring vs subsequence; dfs and dp; stack
 - [Read N Characters Given Read4](AllSolutions/Read%20N%20Characters%20Given%20Read4.py)
 
 #### Heap
-- [Employee Free Time](AllSolutions/Employee%20Free%20Time.py)
+- **[Employee Free Time](AllSolutions/Employee%20Free%20Time.py)
 - [Implement min Heap](AllSolutions/Implement%20min%20Heap.py)
 - [Merge k Sorted Lists](AllSolutions/Merge%20k%20Sorted%20Lists.py)
 - [Priority Queue](AllSolutions/Priority%20Queue.py)
