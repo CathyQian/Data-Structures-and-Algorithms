@@ -140,10 +140,10 @@ Substring vs subsequence; dfs and dp; stack
 
 #### Heap
 - **[Employee Free Time](AllSolutions/Employee%20Free%20Time.py)
-- [Implement min Heap](AllSolutions/Implement%20min%20Heap.py)
+- **[Implement min Heap](AllSolutions/Implement%20min%20Heap.py)
 - [Merge k Sorted Lists](AllSolutions/Merge%20k%20Sorted%20Lists.py)
-- [Priority Queue](AllSolutions/Priority%20Queue.py)
-- [The Skyline Problem](AllSolutions/The%20Skyline%20Problem.py)
+- **[Priority Queue](AllSolutions/Priority%20Queue.py)
+- **[The Skyline Problem](AllSolutions/The%20Skyline%20Problem.py)
 
 #### Trie
 - [Implement Trie (Prefix Tree)](AllSolutions/Implement%20Trie%20(Prefix%20Tree).py)
