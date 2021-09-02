@@ -58,14 +58,14 @@ class Solution:
         # dfs
         for i in range(n):
             if self.visited[i] == False:
-                self.dfs(M, i)
+                self.dfs(i)
                 count += 1
         return count
         
-    def dfs(self, M, i):
+    def dfs(self, i):
         self.visited[i] = True
         for n in self.adj_dict[i]:
             if self.visited[n] == False:
-                self.dfs(M, n)
+                self.dfs(n)
             
         
