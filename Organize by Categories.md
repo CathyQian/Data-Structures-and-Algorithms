@@ -171,7 +171,7 @@ Substring vs subsequence; dfs and dp; stack
 - **[Network Delay Time](AllSolutions/Network%20Delay%20Time.py) (Dijkstras's algorithm)
 
 #### Hashmap
-- [Add and Search Word - Data structure design](AllSolutions/Add%20and%20Search%20Word%20-%20Data%20structure%20design.py)
+- **[Add and Search Word - Data structure design](AllSolutions/Add%20and%20Search%20Word%20-%20Data%20structure%20design.py) (match by length, trie makes things complicated)
 - [Design Hit Counter](AllSolutions/Design%20Hit%20Counter.py)
 - [Insert Delete GetRandom O(1)](AllSolutions/Insert%20Delete%20GetRandom%20O(1).py)
 - [LFU Cache](AllSolutions/LFU%20Cache.py)
