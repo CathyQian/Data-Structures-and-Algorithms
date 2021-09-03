@@ -181,6 +181,7 @@ Substring vs subsequence; dfs and dp; stack
 
 
 ### 7. Dynamic Programming
+Key: convert to two array or one array problem, find the updating rule
 - [Edit Distance](AllSolutions/Edit%20Distance.py)
 - [Jump Game](AllSolutions/Jump%20game.py)
 - [Jump Game II](AllSolutions/Jump%20Game%20II.py)
@@ -195,8 +196,8 @@ Substring vs subsequence; dfs and dp; stack
 - [backPack II](AllSolutions/backPack%20II.py)
 - **[Number of Longest Increasing Subsequence](AllSolutions/Number%20of%20Longest%20Increasing%20Subsequence.py)
 - [Maximum Length of Repeated Subarray](AllSolutions/Maximum%20Length%20of%20Repeated%20Subarray.py)
--**[Distinct Subsequences](AllSolutions/Distinct%20Subsequences.py) (hard)
--**[Distinct Subsequences II](AllSolutions/Distinct%20Subsequences%20II.py) (hard)
+- **[Distinct Subsequences](AllSolutions/Distinct%20Subsequences.py) (hard)
+- **[Distinct Subsequences II](AllSolutions/Distinct%20Subsequences%20II.py) (hard)
 
 
 ### 8. Linked List
