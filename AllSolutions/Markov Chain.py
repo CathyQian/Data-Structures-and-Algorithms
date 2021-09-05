@@ -35,12 +35,13 @@ class Solution:
                 break     
         return result
 
-    def randomWord(self, wordict):     
+    def randomWord(self, wordcount):     
         count_sum = 0     
-        for key, value in wordict.items():         
+        for key, value in wordcount.items():         
             count_sum += value 
         randindex = random.randint(1, count_sum) # [0, total] or [1, total]
-        for key, value in wordict.items():  # output is random       
+        wordcount = sorted(list(wordcount.items()), lambda=x: x[1]) # convert dict to a list of tuple ordered by count
+        for key, value in wordcount:     
             randindex -= value         
             if randindex <= 0:             
                 return key 
