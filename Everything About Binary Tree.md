@@ -1,5 +1,5 @@
 Summary:
-- recursion (divide and conquer, dfs, bfs)
+- recursion (divide and conquer, both dfs and bfs solutions for the same problem)
 - 5 edge cases 
 - always think about both recursive and iterative solution (esp in-order traversal of binary search tree)
 
