@@ -24,6 +24,7 @@ return its level order traversal as:
 #         self.left = None
 #         self.right = None
 
+# bfs solution
 class Solution:
     def levelOrder(self, root: TreeNode) -> List[List[int]]:
         if not root: # need to take this out as an edge case, [[]] is not None, [] is None
@@ -43,3 +44,22 @@ class Solution:
             q.append('#')
             rlist.append(r)
         return rlist
+
+ # dfs solution
+ class Solution:
+     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        
+        # DFS recursively 
+         ret = []
+         self.helper(root, 0, ret)
+         return ret         
+        
+     def helper(self, root, level, ret):
+         if root:
+             if len(ret) < level+1:
+                 ret.append([ ]) 
+             ret[level].append(root.val)
+             self.helper(root.left,  level+1, ret)   
+             self.helper(root.right, level+1, ret) 
+            
+ 
