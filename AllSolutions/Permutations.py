@@ -15,7 +15,10 @@ Output:
 ]
 
 """
-# solution 1: dfs
+# solution 1: dfs (preferred)
+# time complexity: O(n*n!) n! permutations, n steps to calculate each permutation
+# space complexity: O(n*n!)
+
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         res = []
