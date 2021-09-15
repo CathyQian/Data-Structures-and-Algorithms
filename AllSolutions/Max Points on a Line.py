@@ -25,8 +25,8 @@ Constraints:
 
 """
 # time complexity O(n2), space O(n)
-# tricky part is cannot use slope for direct comparison due to the inaccuracy of these numbers stored in computer (i.e., float(1/3) != float(1/3))
-# the workaround is use gcd (maximum shared dividor), note gcd is always positive, so need to avoid (-1, -3) != (1, 3), (-1, 3） ！= （1，-3） 
+# tricky part is cannot use slope for direct comparison due to the inaccuracy of these numbers stored in computer (i.e., float(1/3) != float(1/3))  --- ask the interviewer to confirm
+# the workaround is use gcd (greatest common divisor), note gcd is always positive, so need to avoid (-1, -3) != (1, 3), (-1, 3） ！= （1，-3） 
 import math
 class Solution:
     def maxPoints(self, points: List[List[int]]) -> int:
