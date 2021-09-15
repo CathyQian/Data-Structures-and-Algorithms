@@ -24,6 +24,10 @@ Constraints:
     All the points are unique.
 
 """
+# time complexity O(n2), space O(n)
+# tricky part is cannot use slope for direct comparison due to the inaccuracy of these numbers stored in computer (i.e., float(1/3) != float(1/3))
+# the workaround is use gcd (maximum shared dividor), note gcd is always positive, so need to avoid (-1, -3) != (1, 3), (-1, 3） ！= （1，-3） 
+import math
 class Solution:
     def maxPoints(self, points: List[List[int]]) -> int:
         m = 0
@@ -38,7 +42,12 @@ class Solution:
                 elif tx == x:
                     slope = 'i'
                 else:
-                    slope = (ty-y)*1.0/(tx-x)
+                    delta_y, delta_x = ty-y, tx-x
+                    gcd = math.gcd(delta_y, delta_x) # gcd is always positive
+                    if delta_x < 0: # 
+                        delta_x, delta_y = - delta_x, - delta_y
+                    slope = (delta_y/gcd, delta_x/gcd)
+                        
                 if slope not in dic:
                     dic[slope] = 2
                 else:
