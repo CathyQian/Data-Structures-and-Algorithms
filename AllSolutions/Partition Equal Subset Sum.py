@@ -37,9 +37,12 @@ class Solution:
     def canPartition(self, nums: List[int]) -> bool:
         if sum(nums) % 2 == 1:
             return False
+        nums.sort(reverse=True) # sort in descend order, can help find val == num faster
         target = sum(nums)//2
         curr = set([target])
         for idx, num in enumerate(nums):
+            if num > target: # have nowhere to put num
+                break
             new = set() # start new
             for val in curr:
                 if val > num:
@@ -87,6 +90,7 @@ class Solution:
             return False
         self.visited = [False] * len(nums) # record which numbers has been used so far
         target = sum(nums) // 2
+        nums.sort(reverse=True)
         return self.dfs(0, 0, nums, target)
 
     def dfs(self, start, curr, nums, target):

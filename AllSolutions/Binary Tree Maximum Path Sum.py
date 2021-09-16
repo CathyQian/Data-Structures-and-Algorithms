@@ -43,14 +43,14 @@ class Solution:
         _ = self.maxPathSumHelper(root)
         return self.globalmax
     
-    def maxPathSumHelper(self, root):
-        # max path sum start at root
+    def maxPathSumHelper(self, node):
+        # max path sum start at node
         if root is None:
             return 0
         
-        left = max(self.maxPathSumHelper(root.left), 0)
-        right = max(self.maxPathSumHelper(root.right), 0)
+        left = max(self.maxPathSumHelper(node.left), 0)
+        right = max(self.maxPathSumHelper(node.right), 0)
         
-        self.globalmax = max(left + root.val + right, self.globalmax)
+        self.globalmax = max(left + node.val + right, self.globalmax)
         
-        return max(left, right) + root.val
+        return max(left, right) + node.val

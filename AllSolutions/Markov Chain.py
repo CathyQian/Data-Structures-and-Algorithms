@@ -13,38 +13,35 @@ import collections
 class Solution:
     def sentenceMarkovGenerator(self, sentence_lst, N):     
         # begin word and next word are treated differently
-        begin = collections.defaultdict(int)     
-        nextword = collections.defaultdict(dict)   
+        beginword = collections.defaultdict(int)     
+        nextword = collections.defaultdict(collections.defaultdict(int))   
         prev = ''     
         for sentence in sentence_lst:         
             words = sentence.split(' ') 
-            for i in range(len(words)):             
+            for i, word in enumerate(words):             
                 if i == 0:                                  
-                    begin[words[i]] += 1                 
-                    prev = words[i]             
-                else:                 
-                    if prev in nextword:                                             
-                        nextword[prev][words[i]] += 1 
-                    else:                     
-                        nextword[prev] = {}                     
-                        nextword[prev][words[i]] = 1                 
-                    prev = words[i] 
+                    beginword[word] += 1                 
+                    prev = word             
+                else:                                       
+                    nextword[prev][word] += 1           
+                    prev = word
         result = []     
         for i in range(N):         
             if i == 0: # first word      
-                result += [self.randomWord(begin)]         
+                result += [self.randomWord(beginword)]         
             elif result[-1] in nextword: # following words             
                 result += [self.randomWord(nextword[result[-1]])]         
             else:  # begin word doesn't exit in nextword, can't predict next. This happens if the given sentences has too many one word sentence         
                 break     
         return result
 
-    def randomWord(self, wordict):     
-        total = 0     
-        for key, value in wordict.items():         
-            total += value 
-        randindex = random.randint(1, total) # [0, total] or [1, total]
-        for key, value in wordict.items():  # output is random       
+    def randomWord(self, wordcount):     
+        count_sum = 0     
+        for key, value in wordcount.items():         
+            count_sum += value 
+        randindex = random.randint(1, count_sum) # [0, total] or [1, total]
+        wordcount = sorted(list(wordcount.items()), lambda=x: x[1]) # convert dict to a list of tuple ordered by count
+        for key, value in wordcount:     
             randindex -= value         
             if randindex <= 0:             
                 return key 

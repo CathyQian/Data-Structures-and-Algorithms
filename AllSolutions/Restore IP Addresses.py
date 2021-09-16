@@ -18,7 +18,7 @@ class Solution:
         if start == len(s) and parts == 0:
             res.append(path[:-1]) 
     
-        elif parts <= len(s) - start and 3*parts >= len(s) - start:
+        elif parts <= len(s) - start <= 3*parts:
             for i in range(1,4):
                 if int(s[start:start + i]) <= 255 and (i > 1 and int(s[start]) != 0 or i == 1):
                     self.dfs(s, start + i, path + s[start:start + i] + '.', parts - 1, res)

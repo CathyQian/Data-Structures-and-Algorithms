@@ -24,24 +24,33 @@ Constraints:
     All the points are unique.
 
 """
+# time complexity O(n2), space O(n)
+# tricky part is cannot use slope for direct comparison due to the inaccuracy of these numbers stored in computer (i.e., float(1/3) != float(1/3))  --- ask the interviewer to confirm
+# the workaround is use gcd (greatest common divisor), note gcd is always positive, so need to avoid (-1, -3) != (1, 3), (-1, 3） ！= （1，-3） 
+import math
 class Solution:
-    def maxPoints(self, points):
-        l = len(points)
+    def maxPoints(self, points: List[List[int]]) -> int:
         m = 0
-        for i in range(l):
+        for i in range(len(points)):
             dic = {'i': 1}
+            x, y = points[i][0], points[i][1]
             same = 0
-            for j in range(i+1, l):
+            for j in range(i+1, len(points)):
                 tx, ty = points[j][0], points[j][1]
-                if tx == points[i][0] and ty == points[i][1]: # same points
+                if tx == x and ty == y:
                     same += 1
-                    continue
-                if points[i][0] == tx: # same x
+                elif tx == x:
                     slope = 'i'
-                else: # different x, differnt y
-                    slope = (points[i][1]-ty) * 1.0 /(points[i][0]-tx)
-                if slope not in dic: 
-                    dic[slope] = 1
-                dic[slope] += 1
+                else:
+                    delta_y, delta_x = ty-y, tx-x
+                    gcd = math.gcd(delta_y, delta_x) # gcd is always positive
+                    if delta_x < 0: # 
+                        delta_x, delta_y = - delta_x, - delta_y
+                    slope = (delta_y/gcd, delta_x/gcd)
+                        
+                if slope not in dic:
+                    dic[slope] = 2
+                else:
+                    dic[slope] += 1
             m = max(m, max(dic.values()) + same)
         return m

@@ -17,7 +17,7 @@ class Solution:
     def minCut(self, s: str) -> int:
         dp1 = [[False]*len(s) for i in range(len(s))]
         for i in range(len(s)):
-            for j in range(i+1):
+            for j in range(i+1)[::-1]:
                 if j == i:
                     dp1[j][i] = True
                 else:

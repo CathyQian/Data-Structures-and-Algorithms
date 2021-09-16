@@ -48,22 +48,15 @@ the (k-1) the smallest element
 #         self.right = None
 class Solution(object):
     def kthSmallest(self, root, k):
-        """
-        :type root: TreeNode
-        :type k: int
-        :rtype: int
-        """
-        stack = []
-        while root != None:
-            stack.append(root)
-            root = root.left
-        while stack:
-            curr = stack.pop()
+        q = []
+        cur = root
+        while q or cur:
+            while cur:
+                q.append(cur)
+                cur = cur.left
+            cur = q.pop()
             k -= 1
             if k == 0:
-                return curr.val
-            if curr.right:
-                curr = curr.right
-                while curr:
-                    stack.append(curr)
-                    curr = curr.left
+                return cur.val
+            cur = cur.right
+        return -1

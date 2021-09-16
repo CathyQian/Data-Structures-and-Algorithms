@@ -5,21 +5,23 @@
 #### matrix
 - [Search a 2D Matrix](AllSolutions/Search%20a%202D%20Matrix.py)
 - [Search a 2D Matrix II](AllSolutions/Search%20a%202D%20Matrix%20II.py)
-- **[Kth Smallest Element in a Sorted Matrix](AllSolutions/Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix.py)(binary search too slow??)
+- **[Kth Smallest Element in a Sorted Matrix](AllSolutions/Kth%20Smallest%20Element%20in%20a%20Sorted%20Matrix.py)(use heap when hard to decide which directions to go)
 #### array
 - [Find Minimum in Rotated Sorted Array I, II](AllSolutions/Find%20Minimum%20in%20Rotated%20Sorted%20Array%20I%2C%20II.py)
 - [Find Peak Element](AllSolutions/Find%20Peak%20Element.py)
-- [Insert Intervals](AllSolutions/Insert%20Intervals.py)
+- [Insert Intervals](AllSolutions/Insert%20Intervals.py) (binary search)
 - [Search in Rotated Sorted Array](AllSolutions/Search%20in%20Rotated%20Sorted%20Array.py)
 
 
 ### 2. Binary Tree
-- [Balanced Binary Tree](AllSolutions/Balanced%20Binary%20Tree.py)
+The key algorithm is recursion. 1) edge cases 2) what to return.
+Also try iterative solution if possible.
+- [Balanced Binary Tree](AllSolutions/Balanced%20Binary%20Tree.py) (**)
 - [Binary Tree Inorder Traversal](AllSolutions/Binary%20Tree%20Inorder%20Traversal.py)
 - [Binary Tree Level Order Traversal](AllSolutions/Binary%20Tree%20Level%20Order%20Traversal.py)
 - [Binary Tree Level Order Traversal II](AllSolutions/Binary%20Tree%20Level%20Order%20Traversal%20II.py)
 - [Binary Tree Zigzag Level Order Traversal](AllSolutions/Binary%20Tree%20Zigzag%20Level%20Order%20Traversal.py)
-- [Binary Tree Longest Consecutive Sequence](AllSolutions/Binary%20Tree%20Longest%20Consecutive%20Sequence.py)
+- [Binary Tree Longest Consecutive Sequence](AllSolutions/Binary%20Tree%20Longest%20Consecutive%20Sequence.py) (**)
 - [Binary Tree Maximum Path Sum](AllSolutions/Binary%20Tree%20Maximum%20Path%20Sum.py)
 - **[Binary Tree Right Side View](AllSolutions/Binary%20Tree%20Right%20Side%20View.py)
 - [Construct Binary Tree from Inorder and Postorder](AllSolutions/Construct%20Binary%20Tree%20from%20Inorder%20and%20Postorder.py)
@@ -55,19 +57,19 @@
 
 ### 3. Bread-First Search and Depth-First Search
 - [Perfect Squares](AllSolutions/Perfect%20Squares.py) (BFS for shortest path)
-- [Can I Win](AllSolutions/Can%20I%20Win.py)
+- **[Can I Win](AllSolutions/Can%20I%20Win.py) (dfs with memo)
 - [Flood Fill](AllSolutions/Flood%20Fill.py)
 - [Island Perimeter](AllSolutions/Island%20Perimeter.py)
 - [Number of Closed Islands](AllSolutions/Number%20of%20Closed%20Islands.py)
-- [Number of Distinct Islands](AllSolutions/Number%20of%20Distinct%20Islands.py)
-- [Number of Islands II](AllSolutions/Number%20of%20Islands%20II.py)
+- **[Number of Distinct Islands](AllSolutions/Number%20of%20Distinct%20Islands.py)
+- **[Number of Islands II](AllSolutions/Number%20of%20Islands%20II.py) （union find)
 - [Number of Islands](AllSolutions/Number%20of%20Islands.py)
 - [Partition to K Equal Sum Subsets](AllSolutions/Partition%20to%20K%20Equal%20Sum%20Subsets.py)
 - **[Remove Invalid Parenthesis](AllSolutions/Remove%20Invalid%20Parenthesis.py)
 - [Subsets](AllSolutions/Subsets.py)
 - [Subset II](AllSolutions/Subset%20II.py)
 - [Surrounded Regions](AllSolutions/Surrounded%20Regions.py)
-- [Target Sum](AllSolutions/Target%20Sum.py)
+- **[Target Sum](AllSolutions/Target%20Sum.py) (dfs with memo)
 - [Unique Paths III](AllSolutions/Unique%20Paths%20III.py)
 - [Word Ladder](AllSolutions/Word%20Ladder.py)
 - [Word Ladder II](AllSolutions/Word%20Ladder%20II.py)
@@ -77,7 +79,7 @@
 - [Word Break II](AllSolutions/Word%20Break%20II.py)
 - [k sum](AllSolutions/k%20sum.py)
 - [Jump Game III](AllSolutions/Jump%20Game%20III.py) (bfs or dfs)
-- [Walls and Gates](/AllSolutions/Walls%20and%20Gates.py) (bfs or dfs)
+- **[Walls and Gates](/AllSolutions/Walls%20and%20Gates.py) (bfs or dfs)
 
 ### 4. Combination & Permutation
 - [24 Game](AllSolutions/24%20Game.py)
@@ -89,19 +91,20 @@
 - [Combination Sum](AllSolutions/Combination%20Sum.py)
 - [Combination Sum II](AllSolutions/Combination%20Sum%20II.py)
 - [Combination Sum III](AllSolutions/Combination%20Sum%20III.py)
-- [Combination Sum IV](AllSolutions/Combination%20Sum%20IV.py)
+- **[Combination Sum IV](AllSolutions/Combination%20Sum%20IV.py) (dp or dfs+memo)
 - [Factor Combinations](AllSolutions/Factor%20Combinations.py)
 - [Letter Combinations of a Phone Number](AllSolutions/Letter%20Combinations%20of%20a%20Phone%20Number.py)
 - [Permutations](AllSolutions/Permutations.py)
 - [Permutations II](AllSolutions/Permutations%20II.py)
-- [Palindrome Permutation](AllSolutions/Palindrome%20Permutation.py)
+- **[Palindrome Permutation](AllSolutions/Palindrome%20Permutation.py) (dfs + dp)
 - [Palindrome Permutation II](AllSolutions/Palindrome%20Permutation%20II.py)
 - [Palindrome Partitioning](AllSolutions/Palindrome%20Partitioning.py)
-- [Palindrome Partitioning II](AllSolutions/Palindrome%20Partitioning%20II.py)
-- [Palindrome Partioning III](AllSolutions/Palindrome%20Partioning%20III.py) (dp)
+- **[Palindrome Partitioning II](AllSolutions/Palindrome%20Partitioning%20II.py) (dp)
+- **[Palindrome Partioning III](AllSolutions/Palindrome%20Partioning%20III.py) (dp)
 - [Restore IP Addresses](AllSolutions/Restore%20IP%20Addresses.py)
 
 ### 5. String Operations
+Substring vs subsequence; dfs and dp; stack
 - [Excel Sheet Column Number](AllSolutions/Excel%20Sheet%20Column%20Number.py)
 - [Find Duplicate File in System](AllSolutions/Find%20Duplicate%20File%20in%20System.py)
 - [Integer to English Words](AllSolutions/Integer%20to%20English%20Words.py)
@@ -116,9 +119,9 @@
 - [Longest Valid Parentheses](AllSolutions/Longest%20Valid%20Parentheses.py) (stack)
 - [Valid Palindrome](AllSolutions/Valid%20Palindrome.py) (s.isalnum())
 - [Valid Palindrome II](AllSolutions/Valid%20Palindrome%20II.py) (s.isalnum())
-- [Markov Chain](AllSolutions/Markov%20Chain.py) (random generator)
+- **[Markov Chain](AllSolutions/Markov%20Chain.py) (random generator)
 - [Minimum Window Substring](AllSolutions/Minimum%20Window%20Substring.py) (**)
-- [Minimum Window Subsequence](AllSolutions/Minimum%20Window%20Subsequence.py) (**)
+- **[Minimum Window Subsequence](AllSolutions/Minimum%20Window%20Subsequence.py) (**)
 - [Most Common Word](AllSolutions/Most%20Common%20Word.py)
 - [Reorder Data in Log Files](AllSolutions/Reorder%20Data%20in%20Log%20Files.py)
 - [Reverse Words in a String](AllSolutions/Reverse%20Words%20in%20a%20String.py)
@@ -128,7 +131,7 @@
 - [String to Integer (atoi)](AllSolutions/String%20to%20Integer%20(atoi).py)
 - [Text Justification](AllSolutions/Text%20Justification.py)
 - [Wildcard Matching](AllSolutions/Wildcard%20Matching.py) (hard**)
-- [Regular Expression Matching](AllSolutions/Regular%20Expression%20Matching.py) (hard)
+- **[Regular Expression Matching](AllSolutions/Regular%20Expression%20Matching.py) (hard)
 - **[Expression Add Operators](AllSolutions/Expression%20Add%20Operators.py)
 
 ### 6. Heap, Trie, Stack, Graph, Hashmap
@@ -136,11 +139,11 @@
 - [Read N Characters Given Read4](AllSolutions/Read%20N%20Characters%20Given%20Read4.py)
 
 #### Heap
-- [Employee Free Time](AllSolutions/Employee%20Free%20Time.py)
-- [Implement min Heap](AllSolutions/Implement%20min%20Heap.py)
+- **[Employee Free Time](AllSolutions/Employee%20Free%20Time.py)
+- **[Implement min Heap](AllSolutions/Implement%20min%20Heap.py)
 - [Merge k Sorted Lists](AllSolutions/Merge%20k%20Sorted%20Lists.py)
-- [Priority Queue](AllSolutions/Priority%20Queue.py)
-- [The Skyline Problem](AllSolutions/The%20Skyline%20Problem.py)
+- **[Priority Queue](AllSolutions/Priority%20Queue.py)
+- **[The Skyline Problem](AllSolutions/The%20Skyline%20Problem.py)
 
 #### Trie
 - [Implement Trie (Prefix Tree)](AllSolutions/Implement%20Trie%20(Prefix%20Tree).py)
@@ -168,7 +171,7 @@
 - **[Network Delay Time](AllSolutions/Network%20Delay%20Time.py) (Dijkstras's algorithm)
 
 #### Hashmap
-- [Add and Search Word - Data structure design](AllSolutions/Add%20and%20Search%20Word%20-%20Data%20structure%20design.py)
+- **[Add and Search Word - Data structure design](AllSolutions/Add%20and%20Search%20Word%20-%20Data%20structure%20design.py) (match by length, trie makes things complicated)
 - [Design Hit Counter](AllSolutions/Design%20Hit%20Counter.py)
 - [Insert Delete GetRandom O(1)](AllSolutions/Insert%20Delete%20GetRandom%20O(1).py)
 - [LFU Cache](AllSolutions/LFU%20Cache.py)
@@ -178,6 +181,7 @@
 
 
 ### 7. Dynamic Programming
+Key: convert to two array or one array problem, find the updating rule
 - [Edit Distance](AllSolutions/Edit%20Distance.py)
 - [Jump Game](AllSolutions/Jump%20game.py)
 - [Jump Game II](AllSolutions/Jump%20Game%20II.py)
@@ -192,8 +196,8 @@
 - [backPack II](AllSolutions/backPack%20II.py)
 - **[Number of Longest Increasing Subsequence](AllSolutions/Number%20of%20Longest%20Increasing%20Subsequence.py)
 - [Maximum Length of Repeated Subarray](AllSolutions/Maximum%20Length%20of%20Repeated%20Subarray.py)
--**[Distinct Subsequences](AllSolutions/Distinct%20Subsequences.py) (hard)
--**[Distinct Subsequences II](AllSolutions/Distinct%20Subsequences%20II.py) (hard)
+- **[Distinct Subsequences](AllSolutions/Distinct%20Subsequences.py) (hard)
+- **[Distinct Subsequences II](AllSolutions/Distinct%20Subsequences%20II.py) (hard)
 
 
 ### 8. Linked List
