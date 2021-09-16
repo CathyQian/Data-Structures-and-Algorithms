@@ -352,10 +352,12 @@ recent 6 month
 - [Design HashMap]
 - [Second Minimum Node In a Binary Tree](AllSolutions/Second%20Minimum%20Node%20In%20a%20Binary%20Tree.py)
 - [Bomb Enemy](AllSolutions/Bomb%20Enemy.py)
-
+- [Permutation]()
 - [Factor Combinations**](AllSolutions/Factor%20Combinations.py)
 - [Partition to K Equal Sum Subsets](AllSolutions/Partition%20to%20K%20Equal%20Sum%20Subsets.py)
 - [Binary Tree Upside Down](AllSolutions/Binary%20Tree%20Upside%20Down.py)
+- [Lowest Common Ancestor of a Binary Tree]()
+- [Lowest Common Ancestor of a Binary Search Tree]()
 - [Lowest Common Ancestor of a Binary Tree III](AllSolutions/Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree%20III.py)(find common ancestor template)
 - [Find K Pairs with Smallest Sums](AllSolutions/Find%20K%20Pairs%20with%20Smallest%20Sums.py) (O(k))
 - [Maximum Product Subarray](AllSolutions/Maximum%20Product%20Subarray.py) (tricky)
@@ -370,3 +372,8 @@ recent 6 month
 - [Rotate List](AllSolutions/Rotate%20List.py) (Typical Linked List problem)
 - [Delete Node in a BST](AllSolutions/Delete%20Node%20in%20a%20BST.py) (Delete node: can't do it via node = None **)
 - [Subarray Sum Equals K](AllSolutions/Subarray%20Sum%20Equals%20K.py) (use dictionary)
+- [Best Meeting Point]()
+- [Two Sum III - Data structure design]()
+- [Shorest World Distance III]()
+- [Design Bounded Blocking Queue]()
+- [Isomorphic Strings]()
