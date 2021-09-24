@@ -21,3 +21,17 @@ class Solution:
                 return [residual[num], i]
             else:
                 residual[target-num] = i
+                
+# If there's duplicated elements, return all possible pairs
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        visited = {} # ele: [idx,idx,...] residual also works
+        res = []
+        for i in range(len(nums)):
+            if target - nums[i] in visited:
+                res.extend([[k, i] for k in visited[target-nums[i]]])
+            else:
+                if nums[i] in visited:
+                    visited[nums[i]].append(i)
+                else:
+                     visited[nums[i]] = [i]
