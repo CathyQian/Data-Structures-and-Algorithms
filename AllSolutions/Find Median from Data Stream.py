@@ -32,7 +32,24 @@ Follow up:
 
 
 """
-# small里存的更大的那一半，large存的是较小的那一半
+# direct solution, slower than heap, O(N)
+class MedianFinder:
+
+    def __init__(self):
+        self.sorted_nums = []
+
+    def addNum(self, num: int) -> None:
+        bisect.insort_left(self.sorted_nums, num) # O(N)
+
+    def findMedian(self) -> float:
+        n = len(self.sorted_nums)
+        if n%2 == 1:
+            return self.sorted_nums[n//2]
+        else:
+            return (self.sorted_nums[n//2-1] + self.sorted_nums[n//2])*0.5
+
+
+# small里存的更大的那一半，large存的是较小的那一半, O(logN)
 from heapq import heapify, heappush, heappop
 
 class MedianFinder:
