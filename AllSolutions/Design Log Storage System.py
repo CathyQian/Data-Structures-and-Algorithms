@@ -24,3 +24,27 @@ Note:
     Output for Retrieve has no order required.
 
 """
+
+class LogSystem:
+
+    def __init__(self):
+        self.time2id = collections.defaultdict(list)
+
+    def put(self, id: int, timestamp: str) -> None:
+        self.time2id[timestamp].append(id)
+
+    def retrieve(self, start: str, end: str, granularity: str) -> List[int]:
+        granu2length = {'Year':4, 'Month':7, 'Day':10, 'Hour':13, 'Minute':16, 'Second':19}
+        length = granu2length[granularity]
+        start, end = start[:length], end[:length]
+        
+        res = []
+        for time, ids in self.time2id.items():
+            if start <= time[:length] <= end:
+                res.extend(ids)
+        return res
+
+# Your LogSystem object will be instantiated and called as such:
+# obj = LogSystem()
+# obj.put(id,timestamp)
+# param_2 = obj.retrieve(start,end,granularity)
