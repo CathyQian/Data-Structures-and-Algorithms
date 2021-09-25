@@ -51,7 +51,7 @@ class TweetCounts:
         i = startTime
         res = []
         while i <= endTime:
-            j = min(i + delta, endTime+1)
+            j = min(i + delta, endTime+1) # bisect_left to include endTime
             res.append(bisect.bisect_left(self.records[tn], j) - bisect.bisect_left(self.records[tn], i))
             i += delta
         return res
