@@ -211,67 +211,6 @@ Recent 6 months
 - [Find All Anagram In a String](AllSolutions/Find%20All%20Anagrams%20in%20a%20String.py)
 
 
-T
-- Minimum Genetic Mutation
-- Validate IP address
-- Alien Dictionary
-- friend cycle
-- text justification
-
-- LRU Cache
-- [One edit distance](AllSolutions/One%20Edit%20Distance.py) 
-
-- Design log storage system
-- flatten nested list iterator
-- reaching points
-- paint house
-
-
-- best meeting point
-- tree node
-
-
-- Investments in 2016
-- palindromic substrings
-- valid parenthesis
-- masking personal information
-
-- range sum query-mutable
-- max points on a line
-- rectangles area
-- minimum number of steps to make two strings anagram
-- permutation sequence
-- integer to Roman
-- happy number
-- Number of Connected Components in an Undirected Graph (union find)
-- Minimum increment to make array unique
-- minimum number of taps to open to water a garden
-- the skyline problem (*)
-- flatten 2D vector
-
-- Multiply strings
-- single element in a sorted array
-
-- reorganizing string
-- time based key-value store
-- binary tree pruning
-- k-diff pairs in an array
-- max stack
-- robot bounded in cycle
-- next greater element i
-
-- binary gap
-- design skiplist
-
-recent 6 month
-- Tweet Count Per Frequency (medium**)
-- Insert Delete GetRandom O(1)
-- Design HashMap (easy, new)
-- Insert Interval (medium, **binary search)
-- Find Median from Data Stream (medium, minheap + maxheap)
-- Frog Jump (hard, **)
-- Range Sum Query 2D - Immutable (medium, **)
-
 # A1
 - [Peaking Iterator](AllSolutions/Peeking%20Interator.py) (use cache)
 - Moving Average from Data Steam (what if long array?)
@@ -376,3 +315,32 @@ recent 6 month
 - [Two Sum III - Data structure design](AllSolutions/Two%20Sum%20III%20-%20Data%20structure%20design.py)
 - [Shorest Word Distance III](AllSolutions/Shortest%20Word%20Distance%20III.py)
 - [Isomorphic Strings](AllSolutions/Isomorphic%20Strings.py)
+
+
+T
+
+- [2Sum](AllSolutions/2Sum.py)
+- [Word Search II](AllSolutions/Word%20Search%20II.py) (hard)
+- [Accounts Merge](AllSolutions/Accounts%20Merge.py) (Union find)
+- [Flatten Nested List Iterator]
+- [Implement Trie Prefix Tree](AllSolutions/Implement%20Trie%20(Prefix%20Tree).py) (use a set to record all added values)
+- [Tweet Counts Per Frequency](AllSolutions/Tweet%20Counts%20Per%20Frequency.py)
+- [Design Log Storage System](AllSolutions/Design%20Log%20Storage%20System.py)
+- [Finding the Users Active Minutes]
+- [The kth Factor of n]
+- [Insert Delete GetRandom O(1)](AllSolutions/Insert%20Delete%20GetRandom%20O(1).py)
+- Design HashMap (easy, use dictionary)
+- [Insert Interval](AllSolutions/Insert%20Intervals.py) (medium, **binary search)
+- [Find Median from Data Stream](AllSolutions/Find%20Median%20from%20Data%20Stream.py) (hard, minheap + maxheap, pay attention to follow-up)
+- Frog Jump (hard, **)
+- Range Sum Query 2D - Immutable (medium, **)
+- Maximal Square
+- [Design Search Autocomplete System](AllSolutions/Design%20Search%20Autocomplete%20System.py) (hard)
+- [Design Add and Search Words Data Structure](AllSolutions/Design%20Add%20and%20Search%20Words%20Data%20Structure.py)
+- Reaching Points
+- Minimum Swaps to Group All 1's Together
+- Maximal Square
+- Minimum Increment to Make Array Unique
+- K-diff Pairs in an Array
+- Text justification
+- The skyline problem
