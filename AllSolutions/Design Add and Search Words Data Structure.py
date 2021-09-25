@@ -51,7 +51,7 @@ class WordDictionary:
         self.root = {}
         self.words = set()
         
-    def addWord(self, word: str) -> None:
+    def addWord(self, word: str) -> None: # O(len(word))
         """
         Adds a word into the data structure.
         """
@@ -61,10 +61,10 @@ class WordDictionary:
             for ch in word:
                 if ch not in node:
                     node[ch] = {}
-                    node = node[ch]
-            node[word] = word        
+                node = node[ch]
+            node['*'] = word        
 
-    def search(self, word: str) -> bool:
+    def search(self, word: str) -> bool: # O(len(word))
         """
         Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter.
         """
@@ -83,7 +83,48 @@ class WordDictionary:
                 node = node[ch]
             elif ch == '.':
                 for key in node:
-                    if self.searchWord(node[key], word[i+1:]):
+                    if key != '*' and self.searchWord(node[key], word[i+1:]):
                         return True
-        return True
+                return False # key step, easy to ignore
+            
+        if '*' in node: # also easy to ignore
+            return True
+        
+        return False
+
+    
+# another solution, easier to implement    
+# n: number of words, m: avg length of words ----> search O(mn)
+class WordDictionary:
+
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.words = collections.defaultdict(list)
+        
+    def addWord(self, word: str) -> None:
+        """
+        Adds a word into the data structure.
+        """
+        self.words[len(word)].append(word) # O(1)
+   
+    def search(self, word: str) -> bool:
+        """
+        Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter.
+        """
+        if len(word) not in self.words:
+            return False
+        cur = self.words[len(word)]
+        for w in cur: # check one by one, O(nm)
+            res = True
+            for i in range(len(w)):
+                if w[i] == word[i] or word[i] == '.':
+                    pass
+                else:
+                    res = False
+                    break
+            if res:
+                return True
+        return res
                 
