@@ -49,7 +49,8 @@ class Solution:
 
 
 # Method2: binary search to find the index of the left and right edge of the newInterval, be careful with bounds
-# time complexity: O (logn) to do binary search , worst case O(n), average: O(logn)
+# time complexity: O (logn) to do binary search, best: O(logn) when left and right bound points to two ends of the list, worst: O(n) still need to copy all elements inside
+# space O(n) -- if not in place.
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]: 
         bounds = []
@@ -71,8 +72,8 @@ class Solution:
         else:
             result[-1][1]= max(result[-1][1], newInterval[1])
         
-        # all points in the middle merge to one point
-        for idx in range(left_bound+1, right_bound):
-                result[-1][1]= max(result[-1][1], intervals[idx][1])
+        # jump to the rightbound element directly
+        if right_bound - 1 >= 0:
+            result[-1][1]= max(result[-1][1], intervals[right_bound-1][1])
         
         return result + intervals[right_bound:]
