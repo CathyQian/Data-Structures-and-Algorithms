@@ -98,33 +98,39 @@ class WordDictionary:
 class WordDictionary:
 
     def __init__(self):
-        """
-        Initialize your data structure here.
-        """
-        self.words = collections.defaultdict(list)
-        
+        self.len2words = collections.defaultdict(set)
+        self.words_set = set()
+
     def addWord(self, word: str) -> None:
-        """
-        Adds a word into the data structure.
-        """
-        self.words[len(word)].append(word) # O(1)
-   
+        self.words_set.add(word)
+        self.len2words[len(word)].add(word)
+        
+
     def search(self, word: str) -> bool:
-        """
-        Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter.
-        """
-        if len(word) not in self.words:
-            return False
-        cur = self.words[len(word)]
-        for w in cur: # check one by one, O(nm)
-            res = True
-            for i in range(len(w)):
-                if w[i] == word[i] or word[i] == '.':
-                    pass
-                else:
-                    res = False
-                    break
-            if res:
+        if '.' not in word:
+            if word in self.words_set:
                 return True
-        return res
-                
+            else:
+                return False
+            
+        else:
+            if len(word) not in self.len2words:
+                return False
+            candidates = self.len2words[len(word)]
+            for candidate in candidates:
+                i = 0
+                while i < len(word):
+                    if word[i] == '.' or word[i] == candidate[i]:
+                        i += 1
+                    else:
+                        break
+                if i == len(word):
+                    return True
+            return False
+        
+
+
+# Your WordDictionary object will be instantiated and called as such:
+# obj = WordDictionary()
+# obj.addWord(word)
+# param_2 = obj.search(word)
