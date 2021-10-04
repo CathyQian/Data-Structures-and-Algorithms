@@ -322,25 +322,25 @@ T
 - [2Sum](AllSolutions/2Sum.py)
 - [Word Search II](AllSolutions/Word%20Search%20II.py) (hard)
 - [Accounts Merge](AllSolutions/Accounts%20Merge.py) (Union find)
-- [Flatten Nested List Iterator]
+- [Flatten Nested List Iterator](AllSolutions/Flatten%20Nested%20List%20Iterator.py)
 - [Implement Trie Prefix Tree](AllSolutions/Implement%20Trie%20(Prefix%20Tree).py) (use a set to record all added values)
 - [Tweet Counts Per Frequency](AllSolutions/Tweet%20Counts%20Per%20Frequency.py)
 - [Design Log Storage System](AllSolutions/Design%20Log%20Storage%20System.py)
-- [Finding the Users Active Minutes]
-- [The kth Factor of n]
+- [Finding the Users Active Minutes](AllSolutions/Finding%20the%20Users%20Active%20Minutes.py)
+- [The kth Factor of n](AllSolutions/The%20kth%20Factor%20of%20n.py)
 - [Insert Delete GetRandom O(1)](AllSolutions/Insert%20Delete%20GetRandom%20O(1).py)
-- Design HashMap (easy, use dictionary)
+- [Design HashMap]() (easy, use dictionary)
 - [Insert Interval](AllSolutions/Insert%20Intervals.py) (medium, **binary search)
 - [Find Median from Data Stream](AllSolutions/Find%20Median%20from%20Data%20Stream.py) (hard, minheap + maxheap, pay attention to follow-up)
-- Frog Jump (hard, **)
-- Range Sum Query 2D - Immutable (medium, **)
-- Maximal Square
+- [Frog Jump](AllSolutions/Frog%20Jump.py) (hard, bfs and dfs**)
+- [Range Sum Query 2D - Immutable](AllSolutions/Range%20Sum%20Query%202D%20-%20Immutable.py) (medium, **)
+- [Maximal Square](dp)
 - [Design Search Autocomplete System](AllSolutions/Design%20Search%20Autocomplete%20System.py) (hard)
 - [Design Add and Search Words Data Structure](AllSolutions/Design%20Add%20and%20Search%20Words%20Data%20Structure.py)
-- Reaching Points
+- [Reaching Points](AllSolutions/Reaching%20Points.py) (hard)
+- [K-diff Pairs in an Array](AllSolutions/K-diff%20Pairs%20in%20an%20Array.py) (consider k==0 case)
+
 - Minimum Swaps to Group All 1's Together
-- Maximal Square
 - Minimum Increment to Make Array Unique
-- K-diff Pairs in an Array
 - Text justification
 - The skyline problem
