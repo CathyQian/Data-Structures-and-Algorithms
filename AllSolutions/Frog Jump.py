@@ -51,7 +51,7 @@ class Solution:
         for j in (jump-1, jump, jump+1):
             if self.dfs(stones, pos+j, j, target, memo):
                 return True
-        memo.add((pos, jump))
+        memo.add((pos, jump)) # record historical jumps
         return False
     
 # bfs solution
@@ -65,7 +65,7 @@ class Solution:
             if pos == target:
                 return True
             for j in [jump-1, jump, jump+1]:
-                if pos in stones and j > 0 and (pos+j, j) not in memo:
+                if pos in stones and j > 0 and pos+j in stones and (pos+j, j) not in memo: # j>0
                     q.append((pos+j, j))
                     memo.add((pos+j, j))
         return False
