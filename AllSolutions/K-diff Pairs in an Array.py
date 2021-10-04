@@ -40,7 +40,7 @@ class Solution:
                 if k == 0 and nums.count(num) > 1:
                     count += nums.count(num)//2
                     visited.add(num)
-                elif k != 0 and num+k in nums:
+                elif k != 0 and num+k in set(nums):
                     count += 1
                     visited.add(num)
         return count

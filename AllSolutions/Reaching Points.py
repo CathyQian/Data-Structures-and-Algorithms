@@ -44,6 +44,7 @@ class Solution:
         return self.memo[(sx, xy)]
 
 # method 2: work backword, no memo needed because there's only one path
+# ref: https://leetcode.com/problems/reaching-points/discuss/230588/Easy-to-understand-diagram-and-recursive-solution
 class Solution(object):
     def reachingPoints(self, sx, sy, tx, ty):
         while tx >= sx and ty >= sy:
