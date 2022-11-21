@@ -31,10 +31,7 @@ class Solution(object):
         left = self.rightSideView(root.left)
         right = self.rightSideView(root.right)
 
-        if len(left) <= len(right):
-            return [root.val] + right
-        else:
-            return [root.val] + right + left[len(right):]
+        return [root.val] + right + left[len(right):] # if len(left) <= len(right), left(len(right):] will be equal to []
 
 """
 Solution 2: layer by layer scanning of binary tree using breadth-first search and then return the last element of each layer
