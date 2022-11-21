@@ -23,9 +23,9 @@ class Solution:
         contents = []   
         for i in range(n_col):         
             heapq.heappush(contents, (0, 'Col_{}'.format(i), [])) # initialize each column, order depends on ranking rule    
-            for pin in pins:         
-                col_height, col_name, pin_lst = heapq.heappop(contents) # pop out shortest column        
-                heapq.heappush(contents, (height+pin.height, name_col, lst+[pin.name]))    
+        for pin in pins:         
+            col_height, col_name, pin_lst = heapq.heappop(contents) # pop out shortest column        
+            heapq.heappush(contents, (height+pin.height, name_col, lst+[pin.name]))    
         return contents
     
 Pinterest主⻚页上有N个column，给⼀一个set of pins，pins有score和 length，每次把score最⾼高的pin贴到最短的
