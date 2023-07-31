@@ -51,7 +51,7 @@ class Solution:
   
         return self.dfs(0, k, nums, self.target)
 
-    def dfs(self, start, k, nums, target):
+    def dfs(self, start, k, nums, target): # note consider all senarios in dfs, not the main function
 
         if k == 1: # k won't go to 0
             return True

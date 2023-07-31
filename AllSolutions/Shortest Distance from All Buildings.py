@@ -27,8 +27,9 @@ Note:
 There will be at least one building. If it is not possible to build such house according to the above rules, return -1.
 
 """
-# https://www.cnblogs.com/grandyang/p/5297683.html incorrect????
-因为BFS遍历完一个点后，不会再来更改这个点的值 -- yes if only one building
+
+# use bfs to calculate distance from each building to each empty place, use self.all_sum to store incremental values
+# then get min(self.all_sum)
 import collections, sys
 class Solution:
     def shortestDistance(self, grid: List[List[int]]) -> int:         
@@ -38,9 +39,9 @@ class Solution:
         for i in range(m):
             for j in range(n):
                 if grid[i][j] == 1:
-                    self.bfs(grid, i, j)
+                    self.bfs(grid, i, j) # find shortest distance from building to all empty cells
         min_dist = sys.maxsize
-        for i in range(m):
+        for i in range(m):# cannot be replaced by min(self.all_sum), will return a list instead of an integer
             for j in range(n):
                 if grid[i][j] == 0:
                     min_dist = min(min_dist, self.all_sum[i][j])
@@ -57,9 +58,12 @@ class Solution:
             i, j, dist = q.popleft()
             for x, y in [(i,j+1),(i,j-1),(i-1,j),(i+1,j)]:
                 if 0<=x<m and 0<=y<n and grid[x][y] == 0:
-                    if distance[x][y] > dist+1:
-                        self.all_sum[i][j] -= distance[x][y] - dist-1
+                    if distance[x][y] > dist+1: # update distance
                         distance[x][y] = dist+1
                         q.append((x,y,distance[x][y]))
-                        
+        
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == 0:
+                    self.all_sum[i][j] += distance[i][j]
         return distance

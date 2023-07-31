@@ -60,33 +60,30 @@ Constraints:
 #        Return None if this NestedInteger holds a single integer
 #        """
 
-class NestedIterator(object):
 
-    def __init__(self, nestedList):
-        """
-        Initialize your data structure here.
-        :type nestedList: List[NestedInteger]
-        """
-        self.stack = nestedList
+# method 1: use recursion to flatten the list in the constructor
+# this method would cause a problem if the nestedList is huge
+class NestedIterator:
+    
+    def __init__(self, nestedList: [NestedInteger]):
+        def flatten_list(nested_list):
+            for nested_integer in nested_list:
+                if nested_integer.isInteger():
+                    self._integers.append(nested_integer.getInteger())
+                else:
+                    flatten_list(nested_integer.getList()) 
+        self._integers = []
+        self._position = -1 # Pointer to previous returned.
+        flatten_list(nestedList)
+    
+    def next(self) -> int:
+        self._position += 1
+        return self._integers[self._position]
         
-    def next(self):
-        """
-        :rtype: int
-        """
-        return self.stack.pop(0).getInteger()
-
-    def hasNext(self):
-        """
-        :rtype: bool
-        """
-        while self.stack: # critical
-            top = self.stack[0]
-            if top.isInteger():
-                return True
-            self.stack = top.getList() + self.stack[1:]
-        return False
-
+    def hasNext(self) -> bool:
+        return self._position + 1 < len(self._integers)
 
 # Your NestedIterator object will be instantiated and called as such:
 # i, v = NestedIterator(nestedList), []
 # while i.hasNext(): v.append(i.next())
+

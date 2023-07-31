@@ -91,3 +91,27 @@ class Solution:
             ni, nj = i + d[0], j + d[1]
             if 0 <= ni < m and 0 <= nj < n:
                 self.dfs(board, ni, nj)
+
+# another way to write the same logic via recursion
+class Solution:
+    def updateBoard(self, board: List[List[str]], click: List[int]) -> List[List[str]]:
+        if not board or not board[0]:
+            return board
+        r, c = click[0], click[1]
+        if board[r][c] == 'M':
+            board[r][c] = 'X'
+            return board
+        if board[r][c] == 'E':
+            cnt = 0
+            for x, y in [(r+1, c), (r-1, c), (r, c+1), (r, c-1), (r+1, c+1), (r-1, c+1), (r+1, c-1), (r-1, c-1)]:
+                if 0 <= x < len(board) and 0 <= y < len(board[0]) and board[x][y] == 'M': # critical
+                    cnt += 1
+            if cnt == 0: # no adjacent mine revealed
+                board[r][c] = 'B'
+                # recursively unreveal squares
+                for x, y in [(r+1, c), (r-1, c), (r, c+1), (r, c-1), (r+1, c+1), (r-1, c+1), (r+1, c-1), (r-1, c-1)]:
+                    if 0 <= x < len(board) and 0 <= y < len(board[0]) and board[x][y] == 'E': # critical, not 'B'
+                        self.updateBoard(board, [x, y])
+            else:
+                board[r][c] = str(cnt)
+        return board

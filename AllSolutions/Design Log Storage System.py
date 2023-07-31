@@ -48,3 +48,31 @@ class LogSystem:
 # obj = LogSystem()
 # obj.put(id,timestamp)
 # param_2 = obj.retrieve(start,end,granularity)
+
+
+# change list to set if consider duplicated input
+class LogSystem:
+
+    def __init__(self):
+        self.time2id = collections.defaultdict(set)
+        self.granularity = {"Year": 4, "Month": 7, "Day": 10, 
+                            "Hour": 13, "Minute": 16, "Second": 19}
+
+    def put(self, id: int, timestamp: str) -> None:
+        self.time2id[timestamp].add(id)
+
+    def retrieve(self, start: str, end: str, granularity: str) -> List[int]:
+        res = []
+        length = self.granularity[granularity]
+        start, end = start[:length], end[:length]
+        for time, ids in self.time2id.items():
+            if start <= time[:length] <= end:
+                res += list(ids)
+        return res
+            
+
+
+# Your LogSystem object will be instantiated and called as such:
+# obj = LogSystem()
+# obj.put(id,timestamp)
+# param_2 = obj.retrieve(start,end,granularity)

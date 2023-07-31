@@ -61,3 +61,18 @@ class Solution:
                 break
             i += 1
         return max((n+1)*(max_counts-1) + i, len(tasks))
+    
+
+class Solution:
+    def leastInterval(self, tasks: List[str], n: int) -> int:
+        task_count = collections.defaultdict(int)
+        maxcount = 0
+        for task in tasks:
+            task_count[task] += 1
+            maxcount = max(maxcount, task_count[task])
+        m = 0
+        for task, count in task_count.items():
+            if count == maxcount:
+                m += 1
+        return max(len(tasks), max(m, n+1)*(maxcount-1) + m)
+            

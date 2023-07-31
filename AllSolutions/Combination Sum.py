@@ -55,3 +55,24 @@ class Solution(object):
                 else:
                     self.dfs(candidates, result, i, path + [candidates[i]], target - candidates[i])
 
+
+class Solution:
+    def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        # combination instead of permutation since the number order returned doesn't matter
+        # all integers are distinct, so no need to worry about redundant answers in results
+        # all intergers are positive, so sort the candidates can allow early interruption of loop
+        # each number can be used an unlimited number of times
+        candidates.sort() # allow early interruption of DFS loop to make the code run faster
+        self.res = []
+        self.dfs(candidates, target, 0, 0, [])
+        return self.res
+    def dfs(self, candidates, target, start, cursum, path):
+        if cursum == target and path:
+            self.res.append(path)
+        else:
+            for i in range(start, len(candidates)):
+                if candidates[i] + cursum > target:
+                    break
+                else:
+                    self.dfs(candidates, target, i, cursum + candidates[i], path + [candidates[i]])
+        return

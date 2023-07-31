@@ -427,7 +427,7 @@ class Solution:
         for i in range(n):
             post = pre.copy() # important, pre and post are pointing to the same object, any changes in post will also modify the corresponding elements in pre
             for j in range(1, m+1):
-                if j >= A[i]:
+                if j >= A[i]: # note that there are multiple options at each step and you can always regrets
                     post[j] = max(pre[j], pre[j-A[i]] + A[i])
             pre = post
         return pre[-1]

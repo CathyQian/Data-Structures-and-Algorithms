@@ -35,6 +35,15 @@ Follow up: How would you extend your design to be generic and work with all type
 #         :rtype: int
 #         """
 
+"""
+Iterator: 
+The first property of an Iterator that we'll looked at is that it only needs to know how to get the next item. It doesn't need to store the entire data 
+in memory if we don't need the entire data structure. For massive data structures, this is invaluable!
+Another really interesting property of Iterators is that they can represent sequences without even using a data structure!
+
+"""
+
+
 # use cache to store next element
 class PeekingIterator:
     def __init__(self, iterator):

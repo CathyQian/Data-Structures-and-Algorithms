@@ -38,17 +38,22 @@ Constraints:
 # time complexity is still O(n*k2) as building a trie takes O(n*k2)
 
 # space complexity: lookup --- O(nk), res --- O(n2), pre/pos = O(k2)
+
 class Solution:
     def palindromePairs(self, words: List[str]) -> List[List[int]]:
         lookup = {word: i for i, word in enumerate(words)}
+        # time complexity: O(nk2)
         res = []
         for i, word in enumerate(words):
-            for j in range(len(word)+1): # j from 0 to len(word)
-                pre, pos = word[:j], word[j:]
-                # pre can be ''
-                if pre == pre[::-1] and pos[::-1] != word and pos[::-1] in lookup:
-                    res.append([lookup[pos[::-1]], i])
-                # pos cannot be ''; otherwise will create duplicates
-                if pos and pos == pos[::-1] and pre[::-1] != word and pre[::-1] in lookup:
+            for j in range(len(word)+1):
+                pre, post = word[:j], word[j:]
+                # pre - post - pre[::-1]
+                # post cannot be empty, prefix can be empty # word 1 longer than word 2
+                if post and post == post[::-1] and pre[::-1] in lookup:
                     res.append([i, lookup[pre[::-1]]])
+                # post[::-1] - pre - post 
+                # post and pre can be both empty # word 1 shorter or equal to word 2
+                if post[::-1] in lookup and pre == pre[::-1] and lookup[post[::-1]] != i:
+                    res.append([lookup[post[::-1]], i])
+
         return res

@@ -122,3 +122,20 @@ class Solution:
             if right < len(arr) and right not in visited:
                 q.append(right)
         return False
+
+# method 3, bfs solution, another way to write the code
+class Solution:
+    def canReach(self, arr: List[int], start: int) -> bool:
+        visited = {start} # record visited index, don't revisit
+        q = collections.deque([start])
+        while q:
+            i = q.popleft()
+            if arr[i] == 0:
+                return True
+            if 0 <= i + arr[i] < len(arr) and i + arr[i] not in visited:
+                q.append(i + arr[i])
+                visited.add(i + arr[i])
+            if 0 <= i - arr[i] < len(arr) and i - arr[i] not in visited:
+                q.append(i - arr[i])
+                visited.add(i - arr[i])
+        return False

@@ -54,3 +54,4 @@ class Solution:
         self.globalmax = max(left + node.val + right, self.globalmax)
         
         return max(left, right) + node.val
+    

@@ -59,11 +59,14 @@ class Solution:
         res = []
         q = deque()
         for i in range(len(nums)):
+            # pop out left element if index is correct; otherwise do nothing
             if q and q[0] == i - k:
                 _ = q.popleft()
+            # add new element, pop out anyone smaller than it before adding
             while q and nums[q[-1]] < nums[i]:
                 _ = q.pop()
             q.append(i)
+            # add max to res
             if i >= k - 1:
                 res.append(nums[q[0]])
         return res

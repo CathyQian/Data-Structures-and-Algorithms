@@ -39,14 +39,14 @@ Constraints:
 class Solution():
     def findLeaves(self, root):
         res = []
-        self.order(root, res)
+        self.findHeight(root, res) # find height of the root, find height of other nodes along the way, No need to use memo
         return res      
     
-    def order(self, root, res):
+    def findHeight(self, root, res):
         if not root:
             return -1
-        left = self.order(root.left, res)
-        right = self.order(root.right, res)
+        left = self.findHeight(root.left, res)
+        right = self.findHeight(root.right, res)
         height = max(left, right) + 1   # max not min
         if height >= len(res): # add the first element
             res.append([root.val])

@@ -23,7 +23,7 @@ class Solution:
     def alienOrder(self, words: List[str]) -> str:
 
         # Step 0: create data structures + the in_degree of each unique letter to 0.
-        adj_list = defaultdict(set) # set not list
+        adj_list = defaultdict(set) # set is faster than list
         in_degree = {c : 0 for word in words for c in word} # required
 
         # bfs traversal of graph (layer determined by the in_degree)
@@ -35,15 +35,15 @@ class Solution:
                 return ""
             for c, d in zip(w1, w2):
                 if c != d:
-                    if d not in adj_list[c]: # need to check to avoid duplicated input
+                    if d not in adj_list[c]: # need to check to avoid duplicated input, set is faster than list
                         adj_list[c].add(d)
                         in_degree[d] += 1
                     break
 
         # Step 2: We need to repeatedly pick off nodes with an indegree of 0.
-        output = []
+        output = [] # output can also be a string
         d = deque([c for c in in_degree if in_degree[c] == 0])
-        while queue:
+        while d:
             c = d.popleft()
             output.append(c)
             for v in adj_list[c]:
@@ -115,7 +115,7 @@ def alienOrder(self, words: List[str]) -> str:
         self.output.append(node)
 
  """
- get all possible order: use dfs, permute vertex in line 85
+ get all possible order: use dfs, permute vertex in line 85; or use BFS, permute the starting in_degree=0 nodes
  can tell if all nodes in the graph is connected or not (starting from one node, see if all nodes can be visited or not) in undirectional graph
  
  """

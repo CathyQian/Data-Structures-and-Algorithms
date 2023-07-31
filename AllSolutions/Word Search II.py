@@ -71,7 +71,7 @@ class Solution:
         if self.keyword in child: 
             self.res.append(child.pop(self.keyword)) # not popitem
         # continue searching along the same path to see if other words can be found
-        if child: # not elif
+        if child: # not elif, will get Time Exceed Limit without this line
             board[i][j] = '#' # don't forget this step
             for x, y in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
                 if 0 <= i+x < len(board) and 0 <= j+y < len(board[0]) and board[i+x][j+y] in child: # major change, if not trie, xxx and board[i+x][j+y] == 'xxx'

@@ -29,7 +29,7 @@ Hidden information: there is no overlaps in the intervals in A or B alone.
 Use of stack will make things complicated as we don't need to return stack information.
 Tell if there is overlap: (A[i][0] >= B[j][0] and A[i][0] <= B[j][1]) or (B[j][0] >= A[i][0] and B[j][0] <= A[i][1])
 """
-
+# time complexity: o(m+n)
 class Solution:
     def intervalIntersection(self, A: List[List[int]], B: List[List[int]]) -> List[List[int]]:   
         i, j = 0, 0
@@ -44,3 +44,30 @@ class Solution:
                 j+=1
                  
         return res
+
+
+# time complexity: ((m+n)log(m+n))  --- didn't use the sorted property of each list
+from heapq import heapify, heappop
+class Solution:
+    def intervalIntersection(self, firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:
+        
+        intervals, intersections = [], []
+        if len(firstList) == 0 or len(secondList) == 0:
+            return []
+
+        for inter in firstList:
+            intervals.append((inter[0], inter[1], 0))
+        for inter in secondList:
+            intervals.append((inter[0], inter[1], 1))
+        heapify(intervals) 
+        
+        _, e0, i0 = heappop(intervals)
+        while intervals: 
+            s1, e1, i1 = heappop(intervals)
+            if i0 != i1 and s1 <= e0:
+                intersections.append([s1, min(e0, e1)])
+            if e1 > e0:
+                _, e0, i0 = _, e1, i1
+        
+        return intersections
+

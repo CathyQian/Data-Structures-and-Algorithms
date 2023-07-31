@@ -66,3 +66,37 @@ employees, so can't use pointers
 - Interval list intersections: intervals are already sorted, so pointers can move from left to right
 - Employee free time: need to sort first, sort unknwon number of lists ---> minHeap
 """
+
+
+# the above solution doesn't use the sorted property in each employee list --- so how?
+# k employees, on average m intervals per employee --> mk intervals in total
+# k >> m or m >> k
+# time: O(n), space: O(k)
+import heapq
+class Solution:
+    def employeeFreeTime(self, schedule: '[[Interval]]') -> '[Interval]':
+        intervals = []
+        for i, sch in enumerate(schedule):
+            intervals.append((sch[0].start, sch[0].end, i, 0))
+        heapq.heapify(intervals) # O(k)
+        _, e0, i, j = heapq.heappop(intervals)
+        k = len(schedule)
+        idx = [0]*k # record indexes
+        res = []
+        while intervals:# O(n-k)
+            # not sure how to deal with else
+            while j >= 0 and j+1 >= len(schedule[i]): # when j overflow schedule[i]
+                idx[i] = -1
+                i = (i+1)%k # critical, point to the next available list
+                j = idx[i]
+            if j >= 0 and j + 1 < len(schedule[i]):
+                heapq.heappush(intervals, (schedule[i][j+1].start, schedule[i][j+1].end, i, j+1))
+                idx[i] += 1
+            s1, e1, i, j = heapq.heappop(intervals)
+            if s1 > e0:
+                new = Interval(start=e0, end=s1)
+                res.append(new)
+                e0 = e1
+            else:
+                e0 = max(e0, e1)
+        return res

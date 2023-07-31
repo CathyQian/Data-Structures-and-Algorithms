@@ -45,32 +45,13 @@ Note:
 # return a bool, whether a knows b
 # def knows(a: int, b: int) -> bool:
 
-# time exceed limit, O(n2), lots of repeated search
-class Solution:
-    def findCelebrity(self, n: int) -> int:
-        for j in range(n):
-            res = 0
-            for i in range(n):
-                if knows(i, j):
-                    res += 1
-            if res == n: # everyone knows j
-                for i in range(n):
-                    if j != i and knows(j, i):
-                        break
-                    elif j != i and not knows(j, i):
-                        res -= 1
-                        
-                if res == 1 and res != n: # j doesn't know anyone except itself
-                    return j
-
-        return -1
                     
 # O(n2) solution
 """
 - greedy search
 - there is only one possible celebrity
 """
-
+# o(n2)
 class Solution(object):
     def findCelebrity(self, n):
         """
@@ -87,4 +68,22 @@ class Solution(object):
                 if isCelebrity[i]:
                     return i
         return -1
-        
+
+# Logical Deduction, O(n) 
+class Solution:
+    def findCelebrity(self, n: int) -> int:
+        self.n = n
+        celebrity_candidate = 0
+        for i in range(1, n): # o(n)
+            if knows(celebrity_candidate, i):
+                celebrity_candidate = i
+        if self.is_celebrity(celebrity_candidate): # O(n)
+            return celebrity_candidate
+        return -1
+
+    def is_celebrity(self, i):
+        for j in range(self.n):
+            if i == j: continue
+            if knows(i, j) or not knows(j, i):
+                return False
+        return True

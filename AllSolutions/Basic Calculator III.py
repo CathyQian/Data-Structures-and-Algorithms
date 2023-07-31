@@ -73,3 +73,48 @@ class Solution:
                 i += 1
         return sum(stack)
     
+
+# Time exceed limit
+
+class Solution:
+    def calculate(self, s: str) -> int:
+        nums = []
+        cur, i = -1, 0
+        ops = '+'
+        while i < len(s):
+            if s[i].isdigit():
+                cur = 0
+                while i < len(s) and s[i].isdigit():
+                    cur = cur*10 + int(s[i])
+                    i += 1
+                i -= 1
+            elif s[i] == '(':
+                # keep going until find ')'
+                start, parenthesisCnt = i, 1
+                i += 1
+                while i < len(s) and parenthesisCnt != 0:
+                    if s[i] == '(':
+                        parenthesisCnt += 1
+                    elif s[i] == ')':
+                        parenthesisCnt -= 1
+                    i += 1
+                cur = self.calculate(s[start+1:i])
+            
+            elif s[i] in ['*', '/', '-', '+']:
+                ops = s[i]
+
+            if cur >= 0: # non-negative
+                if ops == '+':
+                    nums.append(cur)
+                elif ops == '-':
+                    nums.append(-1*cur)
+                elif ops == '*':
+                    nums[-1] *= cur
+                elif ops == '/':
+                    nums[-1] //= cur
+                ops = '+'
+                cur = -1
+            i += 1
+            
+            print(ops, cur, nums)
+        return sum(nums)
